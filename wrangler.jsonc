@@ -5,12 +5,12 @@
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist",
   
-  // Banco D1 - MeuPolitico.Digital (novo banco será criado)
+  // Banco D1 - MeuPolitico.Digital (criado em 17/03/2026)
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "meupolitico-production",
-      "database_id": ""
+      "database_id": "318dba28-af2a-4d71-857a-059243e7f771"
     }
   ]
 }
