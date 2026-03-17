@@ -1,0 +1,2094 @@
+{
+  "data_geracao": "2026-03-17T17:55:19.445448",
+  "fonte": "TSE - Perfil do Eleitorado 2024",
+  "arquivo_origem": "perfil_eleitor_secao_2024_BA.csv",
+  "total_municipios": 417,
+  "total_eleitores": 11283507,
+  "municipios": [
+    {
+      "codigo_tse": "38490",
+      "nome": "SALVADOR",
+      "eleitores": 1969757
+    },
+    {
+      "codigo_tse": "35157",
+      "nome": "FEIRA DE SANTANA",
+      "eleitores": 426887
+    },
+    {
+      "codigo_tse": "39659",
+      "nome": "VITÓRIA DA CONQUISTA",
+      "eleitores": 257784
+    },
+    {
+      "codigo_tse": "34134",
+      "nome": "CAMAÇARI",
+      "eleitores": 205865
+    },
+    {
+      "codigo_tse": "36854",
+      "nome": "LAURO DE FREITAS",
+      "eleitores": 160968
+    },
+    {
+      "codigo_tse": "36692",
+      "nome": "JUAZEIRO",
+      "eleitores": 160673
+    },
+    {
+      "codigo_tse": "35971",
+      "nome": "ITABUNA",
+      "eleitores": 141802
+    },
+    {
+      "codigo_tse": "35734",
+      "nome": "ILHÉUS",
+      "eleitores": 130067
+    },
+    {
+      "codigo_tse": "36617",
+      "nome": "JEQUIÉ",
+      "eleitores": 118674
+    },
+    {
+      "codigo_tse": "38075",
+      "nome": "PORTO SEGURO",
+      "eleitores": 114539
+    },
+    {
+      "codigo_tse": "33138",
+      "nome": "ALAGOINHAS",
+      "eleitores": 114306
+    },
+    {
+      "codigo_tse": "33634",
+      "nome": "BARREIRAS",
+      "eleitores": 107089
+    },
+    {
+      "codigo_tse": "39934",
+      "nome": "TEIXEIRA DE FREITAS",
+      "eleitores": 104743
+    },
+    {
+      "codigo_tse": "39136",
+      "nome": "SIMÕES FILHO",
+      "eleitores": 88728
+    },
+    {
+      "codigo_tse": "30058",
+      "nome": "EUNÁPOLIS",
+      "eleitores": 84917
+    },
+    {
+      "codigo_tse": "37818",
+      "nome": "PAULO AFONSO",
+      "eleitores": 82857
+    },
+    {
+      "codigo_tse": "38733",
+      "nome": "SANTO ANTÔNIO DE JESUS",
+      "eleitores": 78195
+    },
+    {
+      "codigo_tse": "30007",
+      "nome": "LUÍS EDUARDO MAGALHÃES",
+      "eleitores": 75135
+    },
+    {
+      "codigo_tse": "39578",
+      "nome": "VALENÇA",
+      "eleitores": 66502
+    },
+    {
+      "codigo_tse": "35335",
+      "nome": "GUANAMBI",
+      "eleitores": 66413
+    },
+    {
+      "codigo_tse": "34290",
+      "nome": "CANDEIAS",
+      "eleitores": 65532
+    },
+    {
+      "codigo_tse": "39098",
+      "nome": "SERRINHA",
+      "eleitores": 63726
+    },
+    {
+      "codigo_tse": "36510",
+      "nome": "JACOBINA",
+      "eleitores": 61848
+    },
+    {
+      "codigo_tse": "34193",
+      "nome": "CAMPO FORMOSO",
+      "eleitores": 57312
+    },
+    {
+      "codigo_tse": "34436",
+      "nome": "CASA NOVA",
+      "eleitores": 56680
+    },
+    {
+      "codigo_tse": "34673",
+      "nome": "CONCEIÇÃO DO COITÉ",
+      "eleitores": 53878
+    },
+    {
+      "codigo_tse": "39012",
+      "nome": "SENHOR DO BONFIM",
+      "eleitores": 53406
+    },
+    {
+      "codigo_tse": "30872",
+      "nome": "DIAS D'ÁVILA",
+      "eleitores": 53110
+    },
+    {
+      "codigo_tse": "33910",
+      "nome": "BRUMADO",
+      "eleitores": 52960
+    },
+    {
+      "codigo_tse": "35939",
+      "nome": "IRECÊ",
+      "eleitores": 50377
+    },
+    {
+      "codigo_tse": "34959",
+      "nome": "CRUZ DAS ALMAS",
+      "eleitores": 49017
+    },
+    {
+      "codigo_tse": "35815",
+      "nome": "IPIRÁ",
+      "eleitores": 48556
+    },
+    {
+      "codigo_tse": "33774",
+      "nome": "BOM JESUS DA LAPA",
+      "eleitores": 48148
+    },
+    {
+      "codigo_tse": "35955",
+      "nome": "ITABERABA",
+      "eleitores": 48076
+    },
+    {
+      "codigo_tse": "38717",
+      "nome": "SANTO AMARO",
+      "eleitores": 47931
+    },
+    {
+      "codigo_tse": "36293",
+      "nome": "ITAPETINGA",
+      "eleitores": 47855
+    },
+    {
+      "codigo_tse": "36137",
+      "nome": "ITAMARAJU",
+      "eleitores": 45630
+    },
+    {
+      "codigo_tse": "35130",
+      "nome": "EUCLIDES DA CUNHA",
+      "eleitores": 45081
+    },
+    {
+      "codigo_tse": "38334",
+      "nome": "RIBEIRA DO POMBAL",
+      "eleitores": 44535
+    },
+    {
+      "codigo_tse": "37214",
+      "nome": "MATA DE SÃO JOÃO",
+      "eleitores": 43412
+    },
+    {
+      "codigo_tse": "39373",
+      "nome": "TUCANO",
+      "eleitores": 41756
+    },
+    {
+      "codigo_tse": "34037",
+      "nome": "CAETITÉ",
+      "eleitores": 41698
+    },
+    {
+      "codigo_tse": "37311",
+      "nome": "MONTE SANTO",
+      "eleitores": 41393
+    },
+    {
+      "codigo_tse": "34495",
+      "nome": "CATU",
+      "eleitores": 41165
+    },
+    {
+      "codigo_tse": "33413",
+      "nome": "ARACI",
+      "eleitores": 39530
+    },
+    {
+      "codigo_tse": "38750",
+      "nome": "SANTO ESTEVÃO",
+      "eleitores": 39119
+    },
+    {
+      "codigo_tse": "33537",
+      "nome": "BARRA",
+      "eleitores": 37019
+    },
+    {
+      "codigo_tse": "38032",
+      "nome": "POÇÕES",
+      "eleitores": 36985
+    },
+    {
+      "codigo_tse": "39632",
+      "nome": "VERA CRUZ",
+      "eleitores": 36330
+    },
+    {
+      "codigo_tse": "36536",
+      "nome": "JAGUAQUARA",
+      "eleitores": 36008
+    },
+    {
+      "codigo_tse": "38970",
+      "nome": "SEABRA",
+      "eleitores": 35334
+    },
+    {
+      "codigo_tse": "39713",
+      "nome": "XIQUE-XIQUE",
+      "eleitores": 35122
+    },
+    {
+      "codigo_tse": "38830",
+      "nome": "SÃO FRANCISCO DO CONDE",
+      "eleitores": 34543
+    },
+    {
+      "codigo_tse": "37133",
+      "nome": "MARAGOGIPE",
+      "eleitores": 34470
+    },
+    {
+      "codigo_tse": "36919",
+      "nome": "LIVRAMENTO DE NOSSA SENHORA",
+      "eleitores": 34208
+    },
+    {
+      "codigo_tse": "38890",
+      "nome": "SÃO SEBASTIÃO DO PASSÉ",
+      "eleitores": 34153
+    },
+    {
+      "codigo_tse": "36978",
+      "nome": "MACAÚBAS",
+      "eleitores": 33080
+    },
+    {
+      "codigo_tse": "35793",
+      "nome": "IPIAÚ",
+      "eleitores": 33006
+    },
+    {
+      "codigo_tse": "38210",
+      "nome": "REMANSO",
+      "eleitores": 31725
+    },
+    {
+      "codigo_tse": "38610",
+      "nome": "SANTALUZ",
+      "eleitores": 31720
+    },
+    {
+      "codigo_tse": "35092",
+      "nome": "ENTRE RIOS",
+      "eleitores": 31500
+    },
+    {
+      "codigo_tse": "37613",
+      "nome": "NOVA VIÇOSA",
+      "eleitores": 30720
+    },
+    {
+      "codigo_tse": "39039",
+      "nome": "SENTO SÉ",
+      "eleitores": 30170
+    },
+    {
+      "codigo_tse": "38636",
+      "nome": "SANTA MARIA DA VITÓRIA",
+      "eleitores": 30131
+    },
+    {
+      "codigo_tse": "38857",
+      "nome": "SÃO GONÇALO DOS CAMPOS",
+      "eleitores": 29931
+    },
+    {
+      "codigo_tse": "38059",
+      "nome": "POJUCA",
+      "eleitores": 29373
+    },
+    {
+      "codigo_tse": "37419",
+      "nome": "MUCURI",
+      "eleitores": 28908
+    },
+    {
+      "codigo_tse": "38415",
+      "nome": "RIO REAL",
+      "eleitores": 28750
+    },
+    {
+      "codigo_tse": "34355",
+      "nome": "CANSANÇÃO",
+      "eleitores": 28670
+    },
+    {
+      "codigo_tse": "33570",
+      "nome": "BARRA DO CHOÇA",
+      "eleitores": 28632
+    },
+    {
+      "codigo_tse": "34690",
+      "nome": "CONCEIÇÃO DO JACUÍPE",
+      "eleitores": 28567
+    },
+    {
+      "codigo_tse": "36633",
+      "nome": "JEREMOABO",
+      "eleitores": 28561
+    },
+    {
+      "codigo_tse": "37893",
+      "nome": "PILÃO ARCADO",
+      "eleitores": 28399
+    },
+    {
+      "codigo_tse": "38776",
+      "nome": "SÃO DESIDÉRIO",
+      "eleitores": 28156
+    },
+    {
+      "codigo_tse": "33197",
+      "nome": "AMARGOSA",
+      "eleitores": 28003
+    },
+    {
+      "codigo_tse": "34851",
+      "nome": "CORRENTINA",
+      "eleitores": 27807
+    },
+    {
+      "codigo_tse": "38270",
+      "nome": "RIACHÃO DO JACUÍPE",
+      "eleitores": 27529
+    },
+    {
+      "codigo_tse": "35750",
+      "nome": "INHAMBUPE",
+      "eleitores": 27434
+    },
+    {
+      "codigo_tse": "36412",
+      "nome": "ITIÚBA",
+      "eleitores": 27343
+    },
+    {
+      "codigo_tse": "34975",
+      "nome": "CURAÇÁ",
+      "eleitores": 27085
+    },
+    {
+      "codigo_tse": "35114",
+      "nome": "ESPLANADA",
+      "eleitores": 26850
+    },
+    {
+      "codigo_tse": "38555",
+      "nome": "SANTA CRUZ CABRÁLIA",
+      "eleitores": 26318
+    },
+    {
+      "codigo_tse": "34258",
+      "nome": "CANAVIEIRAS",
+      "eleitores": 26167
+    },
+    {
+      "codigo_tse": "34550",
+      "nome": "CÍCERO DANTAS",
+      "eleitores": 26064
+    },
+    {
+      "codigo_tse": "37354",
+      "nome": "MORRO DO CHAPÉU",
+      "eleitores": 26063
+    },
+    {
+      "codigo_tse": "33979",
+      "nome": "CACHOEIRA",
+      "eleitores": 25643
+    },
+    {
+      "codigo_tse": "39047",
+      "nome": "SERRA DO RAMALHO",
+      "eleitores": 25425
+    },
+    {
+      "codigo_tse": "35912",
+      "nome": "IRARÁ",
+      "eleitores": 25132
+    },
+    {
+      "codigo_tse": "38113",
+      "nome": "PRADO",
+      "eleitores": 25069
+    },
+    {
+      "codigo_tse": "34150",
+      "nome": "CAMAMU",
+      "eleitores": 24611
+    },
+    {
+      "codigo_tse": "37753",
+      "nome": "PARATINGA",
+      "eleitores": 24269
+    },
+    {
+      "codigo_tse": "30830",
+      "nome": "CAPIM GROSSO",
+      "eleitores": 24172
+    },
+    {
+      "codigo_tse": "37478",
+      "nome": "MURITIBA",
+      "eleitores": 23951
+    },
+    {
+      "codigo_tse": "38458",
+      "nome": "RUY BARBOSA",
+      "eleitores": 23765
+    },
+    {
+      "codigo_tse": "38296",
+      "nome": "RIACHO DE SANTANA",
+      "eleitores": 23672
+    },
+    {
+      "codigo_tse": "37770",
+      "nome": "PARIPIRANGA",
+      "eleitores": 23542
+    },
+    {
+      "codigo_tse": "35238",
+      "nome": "GANDU",
+      "eleitores": 23410
+    },
+    {
+      "codigo_tse": "34177",
+      "nome": "CAMPO ALEGRE DE LOURDES",
+      "eleitores": 23301
+    },
+    {
+      "codigo_tse": "36315",
+      "nome": "ITAPICURU",
+      "eleitores": 23276
+    },
+    {
+      "codigo_tse": "35491",
+      "nome": "SANTA RITA DE CÁSSIA",
+      "eleitores": 23002
+    },
+    {
+      "codigo_tse": "34452",
+      "nome": "CASTRO ALVES",
+      "eleitores": 22753
+    },
+    {
+      "codigo_tse": "35947",
+      "nome": "ITABELA",
+      "eleitores": 22365
+    },
+    {
+      "codigo_tse": "34410",
+      "nome": "CARINHANHA",
+      "eleitores": 22358
+    },
+    {
+      "codigo_tse": "36552",
+      "nome": "JAGUARARI",
+      "eleitores": 22187
+    },
+    {
+      "codigo_tse": "34770",
+      "nome": "CORAÇÃO DE MARIA",
+      "eleitores": 22052
+    },
+    {
+      "codigo_tse": "39390",
+      "nome": "UAUÁ",
+      "eleitores": 21886
+    },
+    {
+      "codigo_tse": "37516",
+      "nome": "NAZARÉ",
+      "eleitores": 21842
+    },
+    {
+      "codigo_tse": "39730",
+      "nome": "LAPÃO",
+      "eleitores": 21801
+    },
+    {
+      "codigo_tse": "38164",
+      "nome": "PRESIDENTE TANCREDO NEVES",
+      "eleitores": 21519
+    },
+    {
+      "codigo_tse": "35653",
+      "nome": "IBOTIRAMA",
+      "eleitores": 21166
+    },
+    {
+      "codigo_tse": "37117",
+      "nome": "MARACÁS",
+      "eleitores": 21103
+    },
+    {
+      "codigo_tse": "34339",
+      "nome": "CÂNDIDO SALES",
+      "eleitores": 21088
+    },
+    {
+      "codigo_tse": "37591",
+      "nome": "NOVA SOURE",
+      "eleitores": 20973
+    },
+    {
+      "codigo_tse": "38199",
+      "nome": "QUIJINGUE",
+      "eleitores": 20937
+    },
+    {
+      "codigo_tse": "38652",
+      "nome": "SANTANA",
+      "eleitores": 20814
+    },
+    {
+      "codigo_tse": "33553",
+      "nome": "BARRA DA ESTIVA",
+      "eleitores": 20639
+    },
+    {
+      "codigo_tse": "39985",
+      "nome": "SOBRADINHO",
+      "eleitores": 20570
+    },
+    {
+      "codigo_tse": "36773",
+      "nome": "LAJE",
+      "eleitores": 20463
+    },
+    {
+      "codigo_tse": "35378",
+      "nome": "IAÇU",
+      "eleitores": 20413
+    },
+    {
+      "codigo_tse": "38016",
+      "nome": "PLANALTO",
+      "eleitores": 20297
+    },
+    {
+      "codigo_tse": "35211",
+      "nome": "FORMOSA DO RIO PRETO",
+      "eleitores": 20247
+    },
+    {
+      "codigo_tse": "38172",
+      "nome": "QUEIMADAS",
+      "eleitores": 20234
+    },
+    {
+      "codigo_tse": "38512",
+      "nome": "SANTA BÁRBARA",
+      "eleitores": 19960
+    },
+    {
+      "codigo_tse": "34231",
+      "nome": "CANARANA",
+      "eleitores": 19938
+    },
+    {
+      "codigo_tse": "39594",
+      "nome": "VALENTE",
+      "eleitores": 19885
+    },
+    {
+      "codigo_tse": "37257",
+      "nome": "MIGUEL CALMON",
+      "eleitores": 19849
+    },
+    {
+      "codigo_tse": "36234",
+      "nome": "ITAPARICA",
+      "eleitores": 19807
+    },
+    {
+      "codigo_tse": "38253",
+      "nome": "RIACHÃO DAS NEVES",
+      "eleitores": 19775
+    },
+    {
+      "codigo_tse": "37630",
+      "nome": "OLINDINA",
+      "eleitores": 19751
+    },
+    {
+      "codigo_tse": "35998",
+      "nome": "ITACARÉ",
+      "eleitores": 19666
+    },
+    {
+      "codigo_tse": "33219",
+      "nome": "AMÉLIA RODRIGUES",
+      "eleitores": 19490
+    },
+    {
+      "codigo_tse": "30996",
+      "nome": "JOÃO DOURADO",
+      "eleitores": 19451
+    },
+    {
+      "codigo_tse": "35319",
+      "nome": "GOVERNADOR MANGABEIRA",
+      "eleitores": 18932
+    },
+    {
+      "codigo_tse": "39853",
+      "nome": "RAFAEL JAMBEIRO",
+      "eleitores": 18835
+    },
+    {
+      "codigo_tse": "37230",
+      "nome": "MEDEIROS NETO",
+      "eleitores": 18802
+    },
+    {
+      "codigo_tse": "34711",
+      "nome": "CONDE",
+      "eleitores": 18792
+    },
+    {
+      "codigo_tse": "33154",
+      "nome": "ALCOBAÇA",
+      "eleitores": 18760
+    },
+    {
+      "codigo_tse": "39292",
+      "nome": "TEOFILÂNDIA",
+      "eleitores": 18674
+    },
+    {
+      "codigo_tse": "35890",
+      "nome": "IRAQUARA",
+      "eleitores": 18664
+    },
+    {
+      "codigo_tse": "33235",
+      "nome": "ANAGÉ",
+      "eleitores": 18604
+    },
+    {
+      "codigo_tse": "39535",
+      "nome": "URUÇUCA",
+      "eleitores": 18530
+    },
+    {
+      "codigo_tse": "35416",
+      "nome": "IBICARAÍ",
+      "eleitores": 18281
+    },
+    {
+      "codigo_tse": "36170",
+      "nome": "ITAMBÉ",
+      "eleitores": 18071
+    },
+    {
+      "codigo_tse": "35718",
+      "nome": "IGUAÍ",
+      "eleitores": 17974
+    },
+    {
+      "codigo_tse": "33995",
+      "nome": "CACULÉ",
+      "eleitores": 17913
+    },
+    {
+      "codigo_tse": "36471",
+      "nome": "ITUBERÁ",
+      "eleitores": 17869
+    },
+    {
+      "codigo_tse": "37494",
+      "nome": "MUTUÍPE",
+      "eleitores": 17846
+    },
+    {
+      "codigo_tse": "39195",
+      "nome": "TANHAÇU",
+      "eleitores": 17795
+    },
+    {
+      "codigo_tse": "38814",
+      "nome": "SÃO FELIPE",
+      "eleitores": 17604
+    },
+    {
+      "codigo_tse": "34630",
+      "nome": "CONCEIÇÃO DA FEIRA",
+      "eleitores": 17467
+    },
+    {
+      "codigo_tse": "34118",
+      "nome": "CAMACÃ",
+      "eleitores": 17454
+    },
+    {
+      "codigo_tse": "37877",
+      "nome": "PIATÃ",
+      "eleitores": 17361
+    },
+    {
+      "codigo_tse": "39071",
+      "nome": "SERRA PRETA",
+      "eleitores": 17359
+    },
+    {
+      "codigo_tse": "39497",
+      "nome": "UNA",
+      "eleitores": 17294
+    },
+    {
+      "codigo_tse": "37699",
+      "nome": "PALMAS DE MONTE ALTO",
+      "eleitores": 17289
+    },
+    {
+      "codigo_tse": "39748",
+      "nome": "MADRE DE DEUS",
+      "eleitores": 17211
+    },
+    {
+      "codigo_tse": "37737",
+      "nome": "PARAMIRIM",
+      "eleitores": 16927
+    },
+    {
+      "codigo_tse": "33812",
+      "nome": "BOQUIRA",
+      "eleitores": 16813
+    },
+    {
+      "codigo_tse": "34916",
+      "nome": "CRISÓPOLIS",
+      "eleitores": 16726
+    },
+    {
+      "codigo_tse": "39691",
+      "nome": "WENCESLAU GUIMARÃES",
+      "eleitores": 16706
+    },
+    {
+      "codigo_tse": "34614",
+      "nome": "COCOS",
+      "eleitores": 16662
+    },
+    {
+      "codigo_tse": "37150",
+      "nome": "MARAÚ",
+      "eleitores": 16657
+    },
+    {
+      "codigo_tse": "34371",
+      "nome": "CARAVELAS",
+      "eleitores": 16555
+    },
+    {
+      "codigo_tse": "37656",
+      "nome": "OLIVEIRA DOS BREJINHOS",
+      "eleitores": 16550
+    },
+    {
+      "codigo_tse": "39896",
+      "nome": "SÃO GABRIEL",
+      "eleitores": 16345
+    },
+    {
+      "codigo_tse": "36439",
+      "nome": "ITORORÓ",
+      "eleitores": 16313
+    },
+    {
+      "codigo_tse": "35599",
+      "nome": "IBIRATAIA",
+      "eleitores": 16263
+    },
+    {
+      "codigo_tse": "38911",
+      "nome": "SAPEAÇU",
+      "eleitores": 16229
+    },
+    {
+      "codigo_tse": "36110",
+      "nome": "ITAJUÍPE",
+      "eleitores": 16206
+    },
+    {
+      "codigo_tse": "37931",
+      "nome": "PINDOBAÇU",
+      "eleitores": 16063
+    },
+    {
+      "codigo_tse": "35076",
+      "nome": "ENCRUZILHADA",
+      "eleitores": 15960
+    },
+    {
+      "codigo_tse": "39411",
+      "nome": "UBAÍRA",
+      "eleitores": 15903
+    },
+    {
+      "codigo_tse": "35432",
+      "nome": "IBICOARA",
+      "eleitores": 15867
+    },
+    {
+      "codigo_tse": "34070",
+      "nome": "CAIRU",
+      "eleitores": 15856
+    },
+    {
+      "codigo_tse": "34592",
+      "nome": "COARACI",
+      "eleitores": 15784
+    },
+    {
+      "codigo_tse": "35351",
+      "nome": "GUARATINGA",
+      "eleitores": 15779
+    },
+    {
+      "codigo_tse": "33693",
+      "nome": "BELO CAMPO",
+      "eleitores": 15721
+    },
+    {
+      "codigo_tse": "30791",
+      "nome": "BURITIRAMA",
+      "eleitores": 15667
+    },
+    {
+      "codigo_tse": "38474",
+      "nome": "SALINAS DA MARGARIDA",
+      "eleitores": 15646
+    },
+    {
+      "codigo_tse": "35637",
+      "nome": "IBITITÁ",
+      "eleitores": 15588
+    },
+    {
+      "codigo_tse": "36455",
+      "nome": "ITUAÇU",
+      "eleitores": 15554
+    },
+    {
+      "codigo_tse": "39357",
+      "nome": "TREMEDAL",
+      "eleitores": 15527
+    },
+    {
+      "codigo_tse": "39055",
+      "nome": "SERRA DOURADA",
+      "eleitores": 15475
+    },
+    {
+      "codigo_tse": "36579",
+      "nome": "JAGUARIPE",
+      "eleitores": 15396
+    },
+    {
+      "codigo_tse": "34738",
+      "nome": "CONDEÚBA",
+      "eleitores": 15357
+    },
+    {
+      "codigo_tse": "36218",
+      "nome": "ITANHÉM",
+      "eleitores": 15291
+    },
+    {
+      "codigo_tse": "30899",
+      "nome": "FÁTIMA",
+      "eleitores": 15276
+    },
+    {
+      "codigo_tse": "30910",
+      "nome": "FILADÉLFIA",
+      "eleitores": 15265
+    },
+    {
+      "codigo_tse": "35777",
+      "nome": "IPECAETÁ",
+      "eleitores": 15249
+    },
+    {
+      "codigo_tse": "33510",
+      "nome": "BAIXA GRANDE",
+      "eleitores": 15245
+    },
+    {
+      "codigo_tse": "37435",
+      "nome": "MUNDO NOVO",
+      "eleitores": 15075
+    },
+    {
+      "codigo_tse": "34835",
+      "nome": "CORONEL JOÃO SÁ",
+      "eleitores": 15062
+    },
+    {
+      "codigo_tse": "33677",
+      "nome": "BELMONTE",
+      "eleitores": 14931
+    },
+    {
+      "codigo_tse": "35556",
+      "nome": "IBIRAPITANGA",
+      "eleitores": 14926
+    },
+    {
+      "codigo_tse": "34576",
+      "nome": "CIPÓ",
+      "eleitores": 14890
+    },
+    {
+      "codigo_tse": "30775",
+      "nome": "BARROCAS",
+      "eleitores": 14845
+    },
+    {
+      "codigo_tse": "38067",
+      "nome": "PONTO NOVO",
+      "eleitores": 14814
+    },
+    {
+      "codigo_tse": "33030",
+      "nome": "ABARÉ",
+      "eleitores": 14618
+    },
+    {
+      "codigo_tse": "37680",
+      "nome": "OUROLÂNDIA",
+      "eleitores": 14597
+    },
+    {
+      "codigo_tse": "33960",
+      "nome": "CABACEIRAS DO PARAGUAÇU",
+      "eleitores": 14581
+    },
+    {
+      "codigo_tse": "39438",
+      "nome": "UBAITABA",
+      "eleitores": 14516
+    },
+    {
+      "codigo_tse": "39918",
+      "nome": "TANQUE NOVO",
+      "eleitores": 14447
+    },
+    {
+      "codigo_tse": "39233",
+      "nome": "TAPEROÁ",
+      "eleitores": 14366
+    },
+    {
+      "codigo_tse": "34657",
+      "nome": "CONCEIÇÃO DO ALMEIDA",
+      "eleitores": 14360
+    },
+    {
+      "codigo_tse": "33758",
+      "nome": "BOA VISTA DO TUPIM",
+      "eleitores": 14357
+    },
+    {
+      "codigo_tse": "34053",
+      "nome": "CAFARNAUM",
+      "eleitores": 14302
+    },
+    {
+      "codigo_tse": "37974",
+      "nome": "PIRITIBA",
+      "eleitores": 14240
+    },
+    {
+      "codigo_tse": "39152",
+      "nome": "SOUTO SOARES",
+      "eleitores": 14166
+    },
+    {
+      "codigo_tse": "36714",
+      "nome": "JUSSARA",
+      "eleitores": 14126
+    },
+    {
+      "codigo_tse": "38938",
+      "nome": "SÁTIRO DIAS",
+      "eleitores": 13981
+    },
+    {
+      "codigo_tse": "36374",
+      "nome": "ITARANTIM",
+      "eleitores": 13975
+    },
+    {
+      "codigo_tse": "33375",
+      "nome": "APORÁ",
+      "eleitores": 13968
+    },
+    {
+      "codigo_tse": "35475",
+      "nome": "IBIPEBA",
+      "eleitores": 13742
+    },
+    {
+      "codigo_tse": "37036",
+      "nome": "MAIRI",
+      "eleitores": 13735
+    },
+    {
+      "codigo_tse": "39519",
+      "nome": "URANDI",
+      "eleitores": 13682
+    },
+    {
+      "codigo_tse": "34517",
+      "nome": "CENTRAL",
+      "eleitores": 13608
+    },
+    {
+      "codigo_tse": "38946",
+      "nome": "SAUBARA",
+      "eleitores": 13577
+    },
+    {
+      "codigo_tse": "33936",
+      "nome": "BUERAREMA",
+      "eleitores": 13526
+    },
+    {
+      "codigo_tse": "37095",
+      "nome": "MANOEL VITORINO",
+      "eleitores": 13444
+    },
+    {
+      "codigo_tse": "33260",
+      "nome": "ANDORINHA",
+      "eleitores": 13431
+    },
+    {
+      "codigo_tse": "36056",
+      "nome": "ITAGIBÁ",
+      "eleitores": 13387
+    },
+    {
+      "codigo_tse": "33715",
+      "nome": "BIRITINGA",
+      "eleitores": 13313
+    },
+    {
+      "codigo_tse": "37052",
+      "nome": "MALHADA",
+      "eleitores": 13306
+    },
+    {
+      "codigo_tse": "39551",
+      "nome": "UTINGA",
+      "eleitores": 13285
+    },
+    {
+      "codigo_tse": "33073",
+      "nome": "ÁGUA FRIA",
+      "eleitores": 13234
+    },
+    {
+      "codigo_tse": "35270",
+      "nome": "GLÓRIA",
+      "eleitores": 13178
+    },
+    {
+      "codigo_tse": "35513",
+      "nome": "IBIPITANGA",
+      "eleitores": 13119
+    },
+    {
+      "codigo_tse": "34819",
+      "nome": "CORIBE",
+      "eleitores": 13038
+    },
+    {
+      "codigo_tse": "30856",
+      "nome": "CANUDOS",
+      "eleitores": 12996
+    },
+    {
+      "codigo_tse": "36951",
+      "nome": "MACARANI",
+      "eleitores": 12976
+    },
+    {
+      "codigo_tse": "33731",
+      "nome": "BOA NOVA",
+      "eleitores": 12960
+    },
+    {
+      "codigo_tse": "30970",
+      "nome": "HELIÓPOLIS",
+      "eleitores": 12948
+    },
+    {
+      "codigo_tse": "36676",
+      "nome": "JITAÚNA",
+      "eleitores": 12924
+    },
+    {
+      "codigo_tse": "36382",
+      "nome": "ITATIM",
+      "eleitores": 12841
+    },
+    {
+      "codigo_tse": "38237",
+      "nome": "RETIROLÂNDIA",
+      "eleitores": 12829
+    },
+    {
+      "codigo_tse": "33278",
+      "nome": "ANGICAL",
+      "eleitores": 12782
+    },
+    {
+      "codigo_tse": "38822",
+      "nome": "SÃO FÉLIX DO CORIBE",
+      "eleitores": 12778
+    },
+    {
+      "codigo_tse": "37559",
+      "nome": "NOVA CANAÃ",
+      "eleitores": 12719
+    },
+    {
+      "codigo_tse": "30716",
+      "nome": "AMÉRICA DOURADA",
+      "eleitores": 12688
+    },
+    {
+      "codigo_tse": "37290",
+      "nome": "MIRANGABA",
+      "eleitores": 12688
+    },
+    {
+      "codigo_tse": "37915",
+      "nome": "PINDAÍ",
+      "eleitores": 12635
+    },
+    {
+      "codigo_tse": "33391",
+      "nome": "ARACATU",
+      "eleitores": 12581
+    },
+    {
+      "codigo_tse": "33499",
+      "nome": "BAIANÓPOLIS",
+      "eleitores": 12523
+    },
+    {
+      "codigo_tse": "34932",
+      "nome": "CRISTÓPOLIS",
+      "eleitores": 12471
+    },
+    {
+      "codigo_tse": "33065",
+      "nome": "ADUSTINA",
+      "eleitores": 12344
+    },
+    {
+      "codigo_tse": "33804",
+      "nome": "BONITO",
+      "eleitores": 12332
+    },
+    {
+      "codigo_tse": "39454",
+      "nome": "UBATÃ",
+      "eleitores": 12317
+    },
+    {
+      "codigo_tse": "33332",
+      "nome": "ANTÔNIO CARDOSO",
+      "eleitores": 12264
+    },
+    {
+      "codigo_tse": "35696",
+      "nome": "IGAPORÃ",
+      "eleitores": 12215
+    },
+    {
+      "codigo_tse": "35610",
+      "nome": "IBITIARA",
+      "eleitores": 12212
+    },
+    {
+      "codigo_tse": "38350",
+      "nome": "RIO DE CONTAS",
+      "eleitores": 12194
+    },
+    {
+      "codigo_tse": "38318",
+      "nome": "RIBEIRA DO AMPARO",
+      "eleitores": 12185
+    },
+    {
+      "codigo_tse": "39470",
+      "nome": "UIBAÍ",
+      "eleitores": 12124
+    },
+    {
+      "codigo_tse": "39810",
+      "nome": "PÉ DE SERRA",
+      "eleitores": 12098
+    },
+    {
+      "codigo_tse": "33596",
+      "nome": "BARRA DO MENDES",
+      "eleitores": 12058
+    },
+    {
+      "codigo_tse": "38130",
+      "nome": "PRESIDENTE DUTRA",
+      "eleitores": 12034
+    },
+    {
+      "codigo_tse": "34878",
+      "nome": "COTEGIPE",
+      "eleitores": 11931
+    },
+    {
+      "codigo_tse": "39489",
+      "nome": "UMBURANAS",
+      "eleitores": 11931
+    },
+    {
+      "codigo_tse": "33057",
+      "nome": "ACAJUTIBA",
+      "eleitores": 11866
+    },
+    {
+      "codigo_tse": "38539",
+      "nome": "SANTA BRÍGIDA",
+      "eleitores": 11841
+    },
+    {
+      "codigo_tse": "38393",
+      "nome": "RIO DO PIRES",
+      "eleitores": 11828
+    },
+    {
+      "codigo_tse": "36498",
+      "nome": "JACARACI",
+      "eleitores": 11814
+    },
+    {
+      "codigo_tse": "35459",
+      "nome": "IBICUÍ",
+      "eleitores": 11690
+    },
+    {
+      "codigo_tse": "30759",
+      "nome": "BARRO ALTO",
+      "eleitores": 11588
+    },
+    {
+      "codigo_tse": "34312",
+      "nome": "CANDIBA",
+      "eleitores": 11559
+    },
+    {
+      "codigo_tse": "39314",
+      "nome": "TEOLÂNDIA",
+      "eleitores": 11431
+    },
+    {
+      "codigo_tse": "39179",
+      "nome": "TABOCAS DO BREJO VELHO",
+      "eleitores": 11403
+    },
+    {
+      "codigo_tse": "36650",
+      "nome": "JIQUIRIÇÁ",
+      "eleitores": 11350
+    },
+    {
+      "codigo_tse": "36013",
+      "nome": "ITAETÉ",
+      "eleitores": 11337
+    },
+    {
+      "codigo_tse": "39144",
+      "nome": "SÍTIO DO MATO",
+      "eleitores": 11222
+    },
+    {
+      "codigo_tse": "39250",
+      "nome": "TAPIRAMUTÁ",
+      "eleitores": 11206
+    },
+    {
+      "codigo_tse": "39110",
+      "nome": "SERROLÂNDIA",
+      "eleitores": 11154
+    },
+    {
+      "codigo_tse": "34029",
+      "nome": "CAETANOS",
+      "eleitores": 11112
+    },
+    {
+      "codigo_tse": "33529",
+      "nome": "BANZAÊ",
+      "eleitores": 11060
+    },
+    {
+      "codigo_tse": "33383",
+      "nome": "ARAÇÁS",
+      "eleitores": 10991
+    },
+    {
+      "codigo_tse": "33855",
+      "nome": "BREJÕES",
+      "eleitores": 10954
+    },
+    {
+      "codigo_tse": "36030",
+      "nome": "ITAGI",
+      "eleitores": 10928
+    },
+    {
+      "codigo_tse": "33790",
+      "nome": "BONINAL",
+      "eleitores": 10911
+    },
+    {
+      "codigo_tse": "39977",
+      "nome": "VÁRZEA DA ROÇA",
+      "eleitores": 10902
+    },
+    {
+      "codigo_tse": "37427",
+      "nome": "MULUNGU DO MORRO",
+      "eleitores": 10852
+    },
+    {
+      "codigo_tse": "39950",
+      "nome": "VÁRZEA NOVA",
+      "eleitores": 10823
+    },
+    {
+      "codigo_tse": "33316",
+      "nome": "ANTAS",
+      "eleitores": 10816
+    },
+    {
+      "codigo_tse": "36080",
+      "nome": "ITAGUAÇU DA BAHIA",
+      "eleitores": 10794
+    },
+    {
+      "codigo_tse": "39772",
+      "nome": "MANSIDÃO",
+      "eleitores": 10784
+    },
+    {
+      "codigo_tse": "39993",
+      "nome": "WANDERLEY",
+      "eleitores": 10783
+    },
+    {
+      "codigo_tse": "38156",
+      "nome": "PRESIDENTE JÂNIO QUADROS",
+      "eleitores": 10715
+    },
+    {
+      "codigo_tse": "38377",
+      "nome": "RIO DO ANTÔNIO",
+      "eleitores": 10667
+    },
+    {
+      "codigo_tse": "36765",
+      "nome": "LAGOA REAL",
+      "eleitores": 10649
+    },
+    {
+      "codigo_tse": "35017",
+      "nome": "DOM BASÍLIO",
+      "eleitores": 10611
+    },
+    {
+      "codigo_tse": "34096",
+      "nome": "CALDEIRÃO GRANDE",
+      "eleitores": 10510
+    },
+    {
+      "codigo_tse": "30678",
+      "nome": "JABORANDI",
+      "eleitores": 10500
+    },
+    {
+      "codigo_tse": "39330",
+      "nome": "TERRA NOVA",
+      "eleitores": 10438
+    },
+    {
+      "codigo_tse": "39799",
+      "nome": "NORDESTINA",
+      "eleitores": 10375
+    },
+    {
+      "codigo_tse": "37850",
+      "nome": "PEDRO ALEXANDRE",
+      "eleitores": 10180
+    },
+    {
+      "codigo_tse": "38792",
+      "nome": "SÃO FÉLIX",
+      "eleitores": 10176
+    },
+    {
+      "codigo_tse": "33472",
+      "nome": "AURELINO LEAL",
+      "eleitores": 10168
+    },
+    {
+      "codigo_tse": "36935",
+      "nome": "MACAJUBA",
+      "eleitores": 10074
+    },
+    {
+      "codigo_tse": "33294",
+      "nome": "ANGUERA",
+      "eleitores": 10012
+    },
+    {
+      "codigo_tse": "33430",
+      "nome": "ARAMARI",
+      "eleitores": 9943
+    },
+    {
+      "codigo_tse": "37532",
+      "nome": "NILO PEÇANHA",
+      "eleitores": 9935
+    },
+    {
+      "codigo_tse": "36897",
+      "nome": "LICÍNIO DE ALMEIDA",
+      "eleitores": 9872
+    },
+    {
+      "codigo_tse": "37460",
+      "nome": "MUQUÉM DO SÃO FRANCISCO",
+      "eleitores": 9805
+    },
+    {
+      "codigo_tse": "39900",
+      "nome": "SÍTIO DO QUINTO",
+      "eleitores": 9801
+    },
+    {
+      "codigo_tse": "37397",
+      "nome": "MUCUGÊ",
+      "eleitores": 9787
+    },
+    {
+      "codigo_tse": "33251",
+      "nome": "ANDARAÍ",
+      "eleitores": 9778
+    },
+    {
+      "codigo_tse": "35254",
+      "nome": "GENTIO DO OURO",
+      "eleitores": 9703
+    },
+    {
+      "codigo_tse": "37222",
+      "nome": "MATINA",
+      "eleitores": 9674
+    },
+    {
+      "codigo_tse": "30813",
+      "nome": "CAPELA DO ALTO ALEGRE",
+      "eleitores": 9669
+    },
+    {
+      "codigo_tse": "38679",
+      "nome": "SANTANÓPOLIS",
+      "eleitores": 9650
+    },
+    {
+      "codigo_tse": "33839",
+      "nome": "BOTUPORÃ",
+      "eleitores": 9628
+    },
+    {
+      "codigo_tse": "39624",
+      "nome": "VARZEDO",
+      "eleitores": 9542
+    },
+    {
+      "codigo_tse": "37370",
+      "nome": "MORTUGABA",
+      "eleitores": 9534
+    },
+    {
+      "codigo_tse": "33898",
+      "nome": "BROTAS DE MACAÚBAS",
+      "eleitores": 9528
+    },
+    {
+      "codigo_tse": "37192",
+      "nome": "MASCOTE",
+      "eleitores": 9473
+    },
+    {
+      "codigo_tse": "33782",
+      "nome": "BOM JESUS DA SERRA",
+      "eleitores": 9384
+    },
+    {
+      "codigo_tse": "39870",
+      "nome": "SANTA LUZIA",
+      "eleitores": 9332
+    },
+    {
+      "codigo_tse": "38695",
+      "nome": "SANTA TEREZINHA",
+      "eleitores": 9243
+    },
+    {
+      "codigo_tse": "38954",
+      "nome": "SAÚDE",
+      "eleitores": 9231
+    },
+    {
+      "codigo_tse": "39942",
+      "nome": "NOVO HORIZONTE",
+      "eleitores": 9191
+    },
+    {
+      "codigo_tse": "35700",
+      "nome": "IGRAPIÚNA",
+      "eleitores": 9181
+    },
+    {
+      "codigo_tse": "38873",
+      "nome": "SÃO MIGUEL DAS MATAS",
+      "eleitores": 9140
+    },
+    {
+      "codigo_tse": "36595",
+      "nome": "JANDAÍRA",
+      "eleitores": 9119
+    },
+    {
+      "codigo_tse": "36390",
+      "nome": "ITIRUÇU",
+      "eleitores": 9101
+    },
+    {
+      "codigo_tse": "37958",
+      "nome": "PIRIPÁ",
+      "eleitores": 9080
+    },
+    {
+      "codigo_tse": "38342",
+      "nome": "RIBEIRÃO DO LARGO",
+      "eleitores": 9072
+    },
+    {
+      "codigo_tse": "39837",
+      "nome": "PINTADAS",
+      "eleitores": 9059
+    },
+    {
+      "codigo_tse": "34533",
+      "nome": "CHORROCHÓ",
+      "eleitores": 8925
+    },
+    {
+      "codigo_tse": "33359",
+      "nome": "ANTÔNIO GONÇALVES",
+      "eleitores": 8882
+    },
+    {
+      "codigo_tse": "37273",
+      "nome": "MILAGRES",
+      "eleitores": 8849
+    },
+    {
+      "codigo_tse": "39845",
+      "nome": "QUIXABEIRA",
+      "eleitores": 8845
+    },
+    {
+      "codigo_tse": "38865",
+      "nome": "SÃO JOSÉ DO JACUÍPE",
+      "eleitores": 8830
+    },
+    {
+      "codigo_tse": "35831",
+      "nome": "IPUPIARA",
+      "eleitores": 8829
+    },
+    {
+      "codigo_tse": "34215",
+      "nome": "CANÁPOLIS",
+      "eleitores": 8804
+    },
+    {
+      "codigo_tse": "36250",
+      "nome": "ITAPÉ",
+      "eleitores": 8754
+    },
+    {
+      "codigo_tse": "30660",
+      "nome": "IUIU",
+      "eleitores": 8727
+    },
+    {
+      "codigo_tse": "34991",
+      "nome": "DÁRIO MEIRA",
+      "eleitores": 8684
+    },
+    {
+      "codigo_tse": "36277",
+      "nome": "ITAPEBI",
+      "eleitores": 8662
+    },
+    {
+      "codigo_tse": "33871",
+      "nome": "BREJOLÂNDIA",
+      "eleitores": 8648
+    },
+    {
+      "codigo_tse": "36838",
+      "nome": "LAMARÃO",
+      "eleitores": 8639
+    },
+    {
+      "codigo_tse": "33090",
+      "nome": "ÉRICO CARDOSO",
+      "eleitores": 8631
+    },
+    {
+      "codigo_tse": "33456",
+      "nome": "ARATUÍPE",
+      "eleitores": 8623
+    },
+    {
+      "codigo_tse": "36706",
+      "nome": "JUCURUÇU",
+      "eleitores": 8611
+    },
+    {
+      "codigo_tse": "34363",
+      "nome": "CARAÍBAS",
+      "eleitores": 8550
+    },
+    {
+      "codigo_tse": "35874",
+      "nome": "IRAMAIA",
+      "eleitores": 8539
+    },
+    {
+      "codigo_tse": "35394",
+      "nome": "IBIASSUCÊ",
+      "eleitores": 8440
+    },
+    {
+      "codigo_tse": "37451",
+      "nome": "MUNIZ FERREIRA",
+      "eleitores": 8372
+    },
+    {
+      "codigo_tse": "37621",
+      "nome": "NOVO TRIUNFO",
+      "eleitores": 8351
+    },
+    {
+      "codigo_tse": "34010",
+      "nome": "CAEM",
+      "eleitores": 8331
+    },
+    {
+      "codigo_tse": "38598",
+      "nome": "SANTA INÊS",
+      "eleitores": 8176
+    },
+    {
+      "codigo_tse": "38091",
+      "nome": "POTIRAGUÁ",
+      "eleitores": 8123
+    },
+    {
+      "codigo_tse": "37303",
+      "nome": "MIRANTE",
+      "eleitores": 8079
+    },
+    {
+      "codigo_tse": "34398",
+      "nome": "CARDEAL DA SILVA",
+      "eleitores": 8023
+    },
+    {
+      "codigo_tse": "35190",
+      "nome": "FLORESTA AZUL",
+      "eleitores": 8021
+    },
+    {
+      "codigo_tse": "36870",
+      "nome": "LENÇÓIS",
+      "eleitores": 7984
+    },
+    {
+      "codigo_tse": "37567",
+      "nome": "NOVA FÁTIMA",
+      "eleitores": 7984
+    },
+    {
+      "codigo_tse": "38806",
+      "nome": "SÃO DOMINGOS",
+      "eleitores": 7978
+    },
+    {
+      "codigo_tse": "37710",
+      "nome": "PALMEIRAS",
+      "eleitores": 7964
+    },
+    {
+      "codigo_tse": "37079",
+      "nome": "MALHADA DE PEDRAS",
+      "eleitores": 7910
+    },
+    {
+      "codigo_tse": "34274",
+      "nome": "CANDEAL",
+      "eleitores": 7810
+    },
+    {
+      "codigo_tse": "37176",
+      "nome": "MARCIONÍLIO SOUZA",
+      "eleitores": 7794
+    },
+    {
+      "codigo_tse": "37338",
+      "nome": "MORPARÁ",
+      "eleitores": 7784
+    },
+    {
+      "codigo_tse": "35050",
+      "nome": "ELÍSIO MEDRADO",
+      "eleitores": 7732
+    },
+    {
+      "codigo_tse": "37796",
+      "nome": "PAU BRASIL",
+      "eleitores": 7724
+    },
+    {
+      "codigo_tse": "39217",
+      "nome": "TANQUINHO",
+      "eleitores": 7705
+    },
+    {
+      "codigo_tse": "38431",
+      "nome": "RODELAS",
+      "eleitores": 7561
+    },
+    {
+      "codigo_tse": "35572",
+      "nome": "IBIRAPUÃ",
+      "eleitores": 7537
+    },
+    {
+      "codigo_tse": "37010",
+      "nome": "MAIQUINIQUE",
+      "eleitores": 7466
+    },
+    {
+      "codigo_tse": "34797",
+      "nome": "CORDEIROS",
+      "eleitores": 7254
+    },
+    {
+      "codigo_tse": "37940",
+      "nome": "PIRAÍ DO NORTE",
+      "eleitores": 7245
+    },
+    {
+      "codigo_tse": "38997",
+      "nome": "SEBASTIÃO LARANJEIRAS",
+      "eleitores": 7237
+    },
+    {
+      "codigo_tse": "34509",
+      "nome": "CATURAMA",
+      "eleitores": 7215
+    },
+    {
+      "codigo_tse": "39616",
+      "nome": "VÁRZEA DO POÇO",
+      "eleitores": 7211
+    },
+    {
+      "codigo_tse": "37672",
+      "nome": "OURIÇANGAS",
+      "eleitores": 7210
+    },
+    {
+      "codigo_tse": "36196",
+      "nome": "ITANAGRA",
+      "eleitores": 7014
+    },
+    {
+      "codigo_tse": "37990",
+      "nome": "PLANALTINO",
+      "eleitores": 7002
+    },
+    {
+      "codigo_tse": "39640",
+      "nome": "VEREDA",
+      "eleitores": 6976
+    },
+    {
+      "codigo_tse": "36358",
+      "nome": "ITAQUARA",
+      "eleitores": 6970
+    },
+    {
+      "codigo_tse": "30732",
+      "nome": "ARATACA",
+      "eleitores": 6970
+    },
+    {
+      "codigo_tse": "33014",
+      "nome": "ABAÍRA",
+      "eleitores": 6937
+    },
+    {
+      "codigo_tse": "39276",
+      "nome": "TEODORO SAMPAIO",
+      "eleitores": 6930
+    },
+    {
+      "codigo_tse": "39675",
+      "nome": "WAGNER",
+      "eleitores": 6876
+    },
+    {
+      "codigo_tse": "39756",
+      "nome": "MAETINGA",
+      "eleitores": 6822
+    },
+    {
+      "codigo_tse": "36072",
+      "nome": "ITAGIMIRIM",
+      "eleitores": 6784
+    },
+    {
+      "codigo_tse": "37834",
+      "nome": "PEDRÃO",
+      "eleitores": 6671
+    },
+    {
+      "codigo_tse": "36730",
+      "nome": "JUSSIAPE",
+      "eleitores": 6655
+    },
+    {
+      "codigo_tse": "36994",
+      "nome": "MACURURÉ",
+      "eleitores": 6610
+    },
+    {
+      "codigo_tse": "37575",
+      "nome": "NOVA ITARANA",
+      "eleitores": 6518
+    },
+    {
+      "codigo_tse": "30953",
+      "nome": "GUAJERU",
+      "eleitores": 6518
+    },
+    {
+      "codigo_tse": "37583",
+      "nome": "NOVA REDENÇÃO",
+      "eleitores": 6487
+    },
+    {
+      "codigo_tse": "36099",
+      "nome": "ITAJU DO COLÔNIA",
+      "eleitores": 6469
+    },
+    {
+      "codigo_tse": "33405",
+      "nome": "APUAREMA",
+      "eleitores": 6415
+    },
+    {
+      "codigo_tse": "36820",
+      "nome": "LAJEDO DO TABOCAL",
+      "eleitores": 6380
+    },
+    {
+      "codigo_tse": "36153",
+      "nome": "ITAMARI",
+      "eleitores": 6303
+    },
+    {
+      "codigo_tse": "36331",
+      "nome": "ITAPITANGA",
+      "eleitores": 6120
+    },
+    {
+      "codigo_tse": "35670",
+      "nome": "ICHU",
+      "eleitores": 6115
+    },
+    {
+      "codigo_tse": "35173",
+      "nome": "FIRMINO ALVES",
+      "eleitores": 6040
+    },
+    {
+      "codigo_tse": "33650",
+      "nome": "BARRO PRETO",
+      "eleitores": 6040
+    },
+    {
+      "codigo_tse": "33952",
+      "nome": "CAATIBA",
+      "eleitores": 5948
+    },
+    {
+      "codigo_tse": "35297",
+      "nome": "GONGOGI",
+      "eleitores": 5758
+    },
+    {
+      "codigo_tse": "35858",
+      "nome": "IRAJUBA",
+      "eleitores": 5648
+    },
+    {
+      "codigo_tse": "39969",
+      "nome": "NOVA IBIÁ",
+      "eleitores": 5614
+    },
+    {
+      "codigo_tse": "39926",
+      "nome": "SÃO JOSÉ DA VITÓRIA",
+      "eleitores": 5443
+    },
+    {
+      "codigo_tse": "35149",
+      "nome": "FEIRA DA MATA",
+      "eleitores": 5277
+    },
+    {
+      "codigo_tse": "33170",
+      "nome": "ALMADINA",
+      "eleitores": 5092
+    },
+    {
+      "codigo_tse": "38571",
+      "nome": "SANTA CRUZ DA VITÓRIA",
+      "eleitores": 5073
+    },
+    {
+      "codigo_tse": "35033",
+      "nome": "DOM MACEDO COSTA",
+      "eleitores": 4913
+    },
+    {
+      "codigo_tse": "30694",
+      "nome": "JUSSARI",
+      "eleitores": 4870
+    },
+    {
+      "codigo_tse": "33618",
+      "nome": "BARRA DO ROCHA",
+      "eleitores": 4710
+    },
+    {
+      "codigo_tse": "36790",
+      "nome": "LAJEDÃO",
+      "eleitores": 4643
+    },
+    {
+      "codigo_tse": "34894",
+      "nome": "CRAVOLÂNDIA",
+      "eleitores": 4585
+    },
+    {
+      "codigo_tse": "34754",
+      "nome": "CONTENDAS DO SINCORÁ",
+      "eleitores": 4564
+    },
+    {
+      "codigo_tse": "33111",
+      "nome": "AIQUARA",
+      "eleitores": 4535
+    },
+    {
+      "codigo_tse": "36757",
+      "nome": "LAFAIETE COUTINHO",
+      "eleitores": 4517
+    },
+    {
+      "codigo_tse": "34479",
+      "nome": "CATOLÂNDIA",
+      "eleitores": 4492
+    },
+    {
+      "codigo_tse": "30937",
+      "nome": "GAVIÃO",
+      "eleitores": 4376
+    },
+    {
+      "codigo_tse": "35530",
+      "nome": "IBIQUERA",
+      "eleitores": 4289
+    },
+    {
+      "codigo_tse": "36811",
+      "nome": "LAJEDINHO",
+      "eleitores": 3643
+    }
+  ]
+}

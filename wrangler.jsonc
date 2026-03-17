@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "meupolitico-digital",
+  "compatibility_date": "2026-03-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "./dist",
+  
+  // Banco D1 - MeuPolitico.Digital (novo banco será criado)
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "meupolitico-production",
+      "database_id": ""
+    }
+  ]
+}

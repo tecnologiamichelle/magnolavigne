@@ -1,0 +1,129 @@
+{
+  "data_geracao": "2026-03-17T01:50:32.626Z",
+  "municipios_com_dados": 391,
+  "total_eleitores": 10644461,
+  "top_10_maiores": [
+    {
+      "nome": "SALVADOR",
+      "eleitores": 1969757
+    },
+    {
+      "nome": "FEIRA DE SANTANA",
+      "eleitores": 426887
+    },
+    {
+      "nome": "VITÓRIA DA CONQUISTA",
+      "eleitores": 257784
+    },
+    {
+      "nome": "LAURO DE FREITAS",
+      "eleitores": 160968
+    },
+    {
+      "nome": "JUAZEIRO",
+      "eleitores": 160673
+    },
+    {
+      "nome": "ITABUNA",
+      "eleitores": 141802
+    },
+    {
+      "nome": "ILHÉUS",
+      "eleitores": 130067
+    },
+    {
+      "nome": "JEQUIÉ",
+      "eleitores": 118674
+    },
+    {
+      "nome": "PORTO SEGURO",
+      "eleitores": 114539
+    },
+    {
+      "nome": "ALAGOINHAS",
+      "eleitores": 114306
+    }
+  ],
+  "amostra_municipios": [
+    {
+      "nome": "SALVADOR",
+      "eleitores": 1969757
+    },
+    {
+      "nome": "FEIRA DE SANTANA",
+      "eleitores": 426887
+    },
+    {
+      "nome": "VITÓRIA DA CONQUISTA",
+      "eleitores": 257784
+    },
+    {
+      "nome": "LAURO DE FREITAS",
+      "eleitores": 160968
+    },
+    {
+      "nome": "JUAZEIRO",
+      "eleitores": 160673
+    },
+    {
+      "nome": "ITABUNA",
+      "eleitores": 141802
+    },
+    {
+      "nome": "ILHÉUS",
+      "eleitores": 130067
+    },
+    {
+      "nome": "JEQUIÉ",
+      "eleitores": 118674
+    },
+    {
+      "nome": "PORTO SEGURO",
+      "eleitores": 114539
+    },
+    {
+      "nome": "ALAGOINHAS",
+      "eleitores": 114306
+    },
+    {
+      "nome": "BARREIRAS",
+      "eleitores": 107089
+    },
+    {
+      "nome": "TEIXEIRA DE FREITAS",
+      "eleitores": 104743
+    },
+    {
+      "nome": "SIMÕES FILHO",
+      "eleitores": 88728
+    },
+    {
+      "nome": "EUNÁPOLIS",
+      "eleitores": 84917
+    },
+    {
+      "nome": "PAULO AFONSO",
+      "eleitores": 82857
+    },
+    {
+      "nome": "SANTO ANTÔNIO DE JESUS",
+      "eleitores": 78195
+    },
+    {
+      "nome": "LUÍS EDUARDO MAGALHÃES",
+      "eleitores": 75135
+    },
+    {
+      "nome": "VALENÇA",
+      "eleitores": 66502
+    },
+    {
+      "nome": "GUANAMBI",
+      "eleitores": 66413
+    },
+    {
+      "nome": "CANDEIAS",
+      "eleitores": 65532
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+/* ============================================
+   MAGNO LAVIGNE - PARTIDO VERDE + REDE
+   Sustentabilidade • Transparência • Crescimento
+   ============================================ */
+
+:root {
+  /* Cores Primárias - Verde Esperança PV */
+  --magno-primary: #16a34a;
+  --magno-primary-dark: #15803d;
+  --magno-primary-light: #22c55e;
+  --magno-primary-hover: #166534;
+  
+  /* Cores Secundárias - Amarelo Sol */
+  --magno-secondary: #facc15;
+  --magno-secondary-dark: #eab308;
+  --magno-secondary-light: #fde047;
+  
+  /* Cores de Destaque - Azul REDE (Transparência e Conexão) */
+  --magno-accent: #0ea5e9;
+  --magno-accent-dark: #0284c7;
+  --magno-accent-light: #38bdf8;
+  
+  /* Cores de Status */
+  --magno-success: #16a34a;
+  --magno-warning: #eab308;
+  --magno-danger: #ef4444;
+  --magno-info: #0ea5e9;
+  
+  /* Gradientes Sustentáveis */
+  --gradient-pv: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  --gradient-pv-light: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  --gradient-nature: linear-gradient(135deg, #16a34a 0%, #0ea5e9 100%);
+  --gradient-sun: linear-gradient(135deg, #facc15 0%, #16a34a 100%);
+  --gradient-sky: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  --gradient-nature: linear-gradient(135deg, #16a34a 0%, #0ea5e9 100%);
+  --gradient-sun: linear-gradient(135deg, #facc15 0%, #16a34a 100%);
+  --gradient-forest: linear-gradient(135deg, #15803d 0%, #064e3b 100%);
+}
+
+/* ============================================
+   CUSTOMIZAÇÕES GLOBAIS
+   ============================================ */
+
+/* Botões Primários - Verde PV */
+.btn-primary-magno {
+  background: var(--magno-primary);
+  color: white;
+  transition: all 0.3s;
+}
+
+.btn-primary-magno:hover {
+  background: var(--magno-primary-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+}
+
+/* Botões Secundários */
+.btn-secondary-magno {
+  background: var(--magno-secondary);
+  color: #1f2937;
+  transition: all 0.3s;
+}
+
+.btn-secondary-magno:hover {
+  background: var(--magno-secondary-dark);
+}
+
+/* Cards com Gradiente PV */
+.card-gradient-pv {
+  background: var(--gradient-pv);
+  color: white;
+}
+
+.card-gradient-nature {
+  background: var(--gradient-nature);
+  color: white;
+}
+
+.card-gradient-sun {
+  background: var(--gradient-sun);
+  color: white;
+}
+
+/* Menu Ativo - Verde PV */
+.menu-item-active {
+  background: #f0fdf4;
+  color: var(--magno-primary-dark);
+  border-left: 4px solid var(--magno-primary);
+}
+
+/* Badges */
+.badge-pv {
+  background: var(--magno-primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-sun {
+  background: var(--magno-secondary);
+  color: #1f2937;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Header PV */
+.header-pv {
+  background: var(--gradient-pv);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+}
+
+/* Inputs Focus PT */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--magno-primary) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Checkbox e Radio PT */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: var(--magno-primary);
+  border-color: var(--magno-primary);
+}
+
+/* Links PT */
+a.link-pt {
+  color: var(--magno-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a.link-pt:hover {
+  color: var(--magno-primary-dark);
+  text-decoration: underline;
+}
+
+/* Tabs PV */
+.tab-active-pv {
+  border-bottom: 3px solid var(--magno-primary);
+  color: var(--magno-primary);
+  font-weight: 600;
+}
+
+/* Folha PV (ícone destaque) */
+.leaf-pv {
+  color: var(--magno-secondary);
+  text-shadow: 0 2px 4px rgba(250, 204, 21, 0.3);
+}
+
+/* Animação de Crescimento PV */
+@keyframes grow-pv {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-grow-pv {
+  animation: grow-pv 2s ease-in-out infinite;
+}
+
+/* Animação de Folha Balançando */
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 3s ease-in-out infinite;
+}
+
+/* Hover Cards - Verde PV */
+.card-hover-pv {
+  transition: all 0.3s;
+}
+
+.card-hover-pv:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(22, 163, 74, 0.2);
+}
+
+/* Loading Spinner PV */
+.spinner-pv {
+  border: 3px solid #dcfce7;
+  border-top-color: var(--magno-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tooltip PV */
+.tooltip-pv {
+  position: relative;
+}
+
+.tooltip-pv:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: var(--magno-primary);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* Scrollbar PT */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--magno-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--magno-primary-dark);
+}
