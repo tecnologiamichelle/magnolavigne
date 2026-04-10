@@ -203,12 +203,13 @@ app.post('/api/liderancas', async (c) => {
     
     const result = await c.env.DB.prepare(`
       INSERT INTO liderancas (
-        candidato_id, nome, telefone, email, municipio, bairro,
+        candidato_id, coordenador_id, nome, telefone, email, municipio, bairro,
         zona_eleitoral, nivel_influencia, qtd_influenciados, qtd_eleitores,
-        territorio_id, observacoes
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        territorio_id, meta_eleitores, observacoes
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       data.candidato_id,
+      data.coordenador_id || null,
       data.nome,
       data.telefone || null,
       data.email || null,
@@ -219,8 +220,18 @@ app.post('/api/liderancas', async (c) => {
       data.qtd_influenciados || 0,
       data.qtd_eleitores || 0,
       data.territorio_id || null,
+      data.meta_eleitores || 100,
       data.observacoes || null
     ).run()
+
+    // Atualizar contador no coordenador
+    if (data.coordenador_id) {
+      await c.env.DB.prepare(`
+        UPDATE coordenadores 
+        SET qtd_liderancas = qtd_liderancas + 1
+        WHERE id = ?
+      `).bind(data.coordenador_id).run()
+    }
 
     return c.json({ id: result.meta.last_row_id, ...data })
   } catch (error) {
@@ -239,12 +250,13 @@ app.put('/api/liderancas/:id', async (c) => {
     
     await c.env.DB.prepare(`
       UPDATE liderancas SET
-        nome = ?, telefone = ?, email = ?, municipio = ?, bairro = ?,
+        coordenador_id = ?, nome = ?, telefone = ?, email = ?, municipio = ?, bairro = ?,
         zona_eleitoral = ?, nivel_influencia = ?, qtd_influenciados = ?,
-        qtd_eleitores = ?, territorio_id = ?, observacoes = ?,
+        qtd_eleitores = ?, territorio_id = ?, meta_eleitores = ?, observacoes = ?,
         updated_at = datetime('now')
       WHERE id = ?
     `).bind(
+      data.coordenador_id || null,
       data.nome,
       data.telefone || null,
       data.email || null,
@@ -255,6 +267,7 @@ app.put('/api/liderancas/:id', async (c) => {
       data.qtd_influenciados || 0,
       data.qtd_eleitores || 0,
       data.territorio_id || null,
+      data.meta_eleitores || 100,
       data.observacoes || null,
       id
     ).run()
@@ -273,14 +286,49 @@ app.delete('/api/liderancas/:id', async (c) => {
   try {
     const id = c.req.param('id')
     
+    // Buscar liderança para atualizar coordenador
+    const lideranca = await c.env.DB.prepare(`
+      SELECT coordenador_id FROM liderancas WHERE id = ?
+    `).bind(id).first()
+    
     await c.env.DB.prepare(`
       DELETE FROM liderancas WHERE id = ?
     `).bind(id).run()
+
+    // Atualizar contador no coordenador
+    if (lideranca?.coordenador_id) {
+      await c.env.DB.prepare(`
+        UPDATE coordenadores 
+        SET qtd_liderancas = qtd_liderancas - 1
+        WHERE id = ?
+      `).bind(lideranca.coordenador_id).run()
+    }
 
     return c.json({ success: true })
   } catch (error) {
     console.error('Erro ao deletar liderança:', error)
     return c.json({ error: 'Erro ao deletar liderança' }, 500)
+  }
+})
+
+/**
+ * GET /api/liderancas/coordenador/:coordenadorId
+ * Lista lideranças de um coordenador específico
+ */
+app.get('/api/liderancas/coordenador/:coordenadorId', async (c) => {
+  try {
+    const coordenadorId = c.req.param('coordenadorId')
+    
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM liderancas 
+      WHERE coordenador_id = ?
+      ORDER BY created_at DESC
+    `).bind(coordenadorId).all()
+    
+    return c.json(result.results || [])
+  } catch (error) {
+    console.error('Erro ao listar lideranças do coordenador:', error)
+    return c.json({ error: 'Erro ao listar lideranças do coordenador' }, 500)
   }
 })
 
@@ -315,15 +363,19 @@ app.post('/api/coordenadores', async (c) => {
     
     const result = await c.env.DB.prepare(`
       INSERT INTO coordenadores (
-        candidato_id, nome, telefone, email, municipio, area_atuacao
-      ) VALUES (?, ?, ?, ?, ?, ?)
+        candidato_id, nome, telefone, email, municipio, territorio_id, area_atuacao, 
+        meta_liderancas, meta_eleitores
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       data.candidato_id,
       data.nome,
       data.telefone || null,
       data.email || null,
       data.municipio,
-      data.area_atuacao || null
+      data.territorio_id || null,
+      data.area_atuacao || null,
+      data.meta_liderancas || 10,
+      data.meta_eleitores || 1000
     ).run()
 
     return c.json({ id: result.meta.last_row_id, ...data })
@@ -343,7 +395,8 @@ app.put('/api/coordenadores/:id', async (c) => {
     
     await c.env.DB.prepare(`
       UPDATE coordenadores SET
-        nome = ?, telefone = ?, email = ?, municipio = ?, area_atuacao = ?,
+        nome = ?, telefone = ?, email = ?, municipio = ?, territorio_id = ?, 
+        area_atuacao = ?, meta_liderancas = ?, meta_eleitores = ?,
         updated_at = datetime('now')
       WHERE id = ?
     `).bind(
@@ -351,7 +404,10 @@ app.put('/api/coordenadores/:id', async (c) => {
       data.telefone || null,
       data.email || null,
       data.municipio,
+      data.territorio_id || null,
       data.area_atuacao || null,
+      data.meta_liderancas || 10,
+      data.meta_eleitores || 1000,
       id
     ).run()
 
@@ -1392,6 +1448,373 @@ app.get('/api/bi/roi-territorios', async (c) => {
   } catch (error) {
     console.error('Erro ao buscar ROI de territórios:', error)
     return c.json({ error: 'Erro ao buscar ROI de territórios' }, 500)
+  }
+})
+
+// ============================================
+// ROTAS: ELEITORES (com hierarquia)
+// ============================================
+
+/**
+ * GET /api/eleitores
+ * Lista todos os eleitores do candidato
+ */
+app.get('/api/eleitores', async (c) => {
+  try {
+    const candidatoId = c.req.header('X-Candidato-Id') || '1'
+    
+    const result = await c.env.DB.prepare(`
+      SELECT 
+        e.*,
+        l.nome as lideranca_nome,
+        coord.nome as coordenador_nome
+      FROM eleitores e
+      LEFT JOIN liderancas l ON l.id = e.lideranca_id
+      LEFT JOIN coordenadores coord ON coord.id = e.coordenador_id
+      WHERE e.candidato_id = ?
+      ORDER BY e.created_at DESC
+    `).bind(candidatoId).all()
+    
+    return c.json(result.results || [])
+  } catch (error) {
+    console.error('Erro ao listar eleitores:', error)
+    return c.json({ error: 'Erro ao listar eleitores' }, 500)
+  }
+})
+
+/**
+ * GET /api/eleitores/:id
+ * Busca um eleitor específico
+ */
+app.get('/api/eleitores/:id', async (c) => {
+  try {
+    const id = c.req.param('id')
+    
+    const result = await c.env.DB.prepare(`
+      SELECT 
+        e.*,
+        l.nome as lideranca_nome,
+        l.telefone as lideranca_telefone,
+        coord.nome as coordenador_nome,
+        coord.telefone as coordenador_telefone
+      FROM eleitores e
+      LEFT JOIN liderancas l ON l.id = e.lideranca_id
+      LEFT JOIN coordenadores coord ON coord.id = e.coordenador_id
+      WHERE e.id = ?
+    `).bind(id).first()
+    
+    return c.json(result || {})
+  } catch (error) {
+    console.error('Erro ao buscar eleitor:', error)
+    return c.json({ error: 'Erro ao buscar eleitor' }, 500)
+  }
+})
+
+/**
+ * POST /api/eleitores
+ * Cria um novo eleitor (sempre vinculado a uma liderança)
+ */
+app.post('/api/eleitores', async (c) => {
+  try {
+    const data = await c.req.json()
+    
+    // Validar campos obrigatórios
+    if (!data.lideranca_id || !data.nome || !data.municipio) {
+      return c.json({ 
+        error: 'Campos obrigatórios: lideranca_id, nome, municipio' 
+      }, 400)
+    }
+    
+    // Buscar coordenador_id da liderança
+    const lideranca = await c.env.DB.prepare(`
+      SELECT coordenador_id FROM liderancas WHERE id = ?
+    `).bind(data.lideranca_id).first()
+    
+    const result = await c.env.DB.prepare(`
+      INSERT INTO eleitores (
+        candidato_id, lideranca_id, coordenador_id,
+        nome, cpf, telefone, email,
+        municipio, bairro, zona, secao,
+        titulo_eleitor, local_votacao,
+        status_apoio, nivel_engajamento, confirmado, compareceu_evento,
+        observacoes, tags, data_captacao
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      data.candidato_id || 1,
+      data.lideranca_id,
+      lideranca?.coordenador_id || null,
+      data.nome,
+      data.cpf || null,
+      data.telefone || null,
+      data.email || null,
+      data.municipio,
+      data.bairro || null,
+      data.zona || null,
+      data.secao || null,
+      data.titulo_eleitor || null,
+      data.local_votacao || null,
+      data.status_apoio || 'simpatizante',
+      data.nivel_engajamento || 'baixo',
+      data.confirmado || 0,
+      data.compareceu_evento || 0,
+      data.observacoes || null,
+      data.tags || null,
+      data.data_captacao || new Date().toISOString().split('T')[0]
+    ).run()
+    
+    // Atualizar contador na liderança
+    await c.env.DB.prepare(`
+      UPDATE liderancas 
+      SET qtd_eleitores = qtd_eleitores + 1,
+          qtd_eleitores_confirmados = qtd_eleitores_confirmados + ?
+      WHERE id = ?
+    `).bind(data.confirmado || 0, data.lideranca_id).run()
+    
+    // Atualizar contador no coordenador
+    if (lideranca?.coordenador_id) {
+      await c.env.DB.prepare(`
+        UPDATE coordenadores 
+        SET qtd_eleitores_captados = qtd_eleitores_captados + 1
+        WHERE id = ?
+      `).bind(lideranca.coordenador_id).run()
+    }
+    
+    return c.json({ 
+      id: result.meta.last_row_id,
+      ...data
+    })
+  } catch (error) {
+    console.error('Erro ao criar eleitor:', error)
+    return c.json({ error: 'Erro ao criar eleitor' }, 500)
+  }
+})
+
+/**
+ * PUT /api/eleitores/:id
+ * Atualiza um eleitor
+ */
+app.put('/api/eleitores/:id', async (c) => {
+  try {
+    const id = c.req.param('id')
+    const data = await c.req.json()
+    
+    // Buscar eleitor atual
+    const eleitorAtual = await c.env.DB.prepare(`
+      SELECT * FROM eleitores WHERE id = ?
+    `).bind(id).first()
+    
+    if (!eleitorAtual) {
+      return c.json({ error: 'Eleitor não encontrado' }, 404)
+    }
+    
+    await c.env.DB.prepare(`
+      UPDATE eleitores SET
+        nome = ?,
+        cpf = ?,
+        telefone = ?,
+        email = ?,
+        municipio = ?,
+        bairro = ?,
+        zona = ?,
+        secao = ?,
+        titulo_eleitor = ?,
+        local_votacao = ?,
+        status_apoio = ?,
+        nivel_engajamento = ?,
+        confirmado = ?,
+        compareceu_evento = ?,
+        observacoes = ?,
+        tags = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).bind(
+      data.nome || eleitorAtual.nome,
+      data.cpf || eleitorAtual.cpf,
+      data.telefone || eleitorAtual.telefone,
+      data.email || eleitorAtual.email,
+      data.municipio || eleitorAtual.municipio,
+      data.bairro || eleitorAtual.bairro,
+      data.zona || eleitorAtual.zona,
+      data.secao || eleitorAtual.secao,
+      data.titulo_eleitor || eleitorAtual.titulo_eleitor,
+      data.local_votacao || eleitorAtual.local_votacao,
+      data.status_apoio || eleitorAtual.status_apoio,
+      data.nivel_engajamento || eleitorAtual.nivel_engajamento,
+      data.confirmado !== undefined ? data.confirmado : eleitorAtual.confirmado,
+      data.compareceu_evento !== undefined ? data.compareceu_evento : eleitorAtual.compareceu_evento,
+      data.observacoes || eleitorAtual.observacoes,
+      data.tags || eleitorAtual.tags,
+      id
+    ).run()
+    
+    // Atualizar contador de confirmados na liderança (se mudou status)
+    if (data.confirmado !== undefined && data.confirmado !== eleitorAtual.confirmado) {
+      const delta = data.confirmado - eleitorAtual.confirmado
+      await c.env.DB.prepare(`
+        UPDATE liderancas 
+        SET qtd_eleitores_confirmados = qtd_eleitores_confirmados + ?
+        WHERE id = ?
+      `).bind(delta, eleitorAtual.lideranca_id).run()
+    }
+    
+    return c.json({ success: true })
+  } catch (error) {
+    console.error('Erro ao atualizar eleitor:', error)
+    return c.json({ error: 'Erro ao atualizar eleitor' }, 500)
+  }
+})
+
+/**
+ * DELETE /api/eleitores/:id
+ * Remove um eleitor
+ */
+app.delete('/api/eleitores/:id', async (c) => {
+  try {
+    const id = c.req.param('id')
+    
+    // Buscar eleitor para atualizar contadores
+    const eleitor = await c.env.DB.prepare(`
+      SELECT lideranca_id, coordenador_id, confirmado FROM eleitores WHERE id = ?
+    `).bind(id).first()
+    
+    if (eleitor) {
+      // Atualizar contador na liderança
+      await c.env.DB.prepare(`
+        UPDATE liderancas 
+        SET qtd_eleitores = qtd_eleitores - 1,
+            qtd_eleitores_confirmados = qtd_eleitores_confirmados - ?
+        WHERE id = ?
+      `).bind(eleitor.confirmado || 0, eleitor.lideranca_id).run()
+      
+      // Atualizar contador no coordenador
+      if (eleitor.coordenador_id) {
+        await c.env.DB.prepare(`
+          UPDATE coordenadores 
+          SET qtd_eleitores_captados = qtd_eleitores_captados - 1
+          WHERE id = ?
+        `).bind(eleitor.coordenador_id).run()
+      }
+    }
+    
+    await c.env.DB.prepare('DELETE FROM eleitores WHERE id = ?').bind(id).run()
+    
+    return c.json({ success: true })
+  } catch (error) {
+    console.error('Erro ao deletar eleitor:', error)
+    return c.json({ error: 'Erro ao deletar eleitor' }, 500)
+  }
+})
+
+/**
+ * GET /api/eleitores/lideranca/:liderancaId
+ * Lista eleitores de uma liderança específica
+ */
+app.get('/api/eleitores/lideranca/:liderancaId', async (c) => {
+  try {
+    const liderancaId = c.req.param('liderancaId')
+    
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM eleitores 
+      WHERE lideranca_id = ?
+      ORDER BY created_at DESC
+    `).bind(liderancaId).all()
+    
+    return c.json(result.results || [])
+  } catch (error) {
+    console.error('Erro ao listar eleitores da liderança:', error)
+    return c.json({ error: 'Erro ao listar eleitores da liderança' }, 500)
+  }
+})
+
+/**
+ * GET /api/eleitores/coordenador/:coordenadorId
+ * Lista eleitores de um coordenador específico
+ */
+app.get('/api/eleitores/coordenador/:coordenadorId', async (c) => {
+  try {
+    const coordenadorId = c.req.param('coordenadorId')
+    
+    const result = await c.env.DB.prepare(`
+      SELECT 
+        e.*,
+        l.nome as lideranca_nome
+      FROM eleitores e
+      LEFT JOIN liderancas l ON l.id = e.lideranca_id
+      WHERE e.coordenador_id = ?
+      ORDER BY e.created_at DESC
+    `).bind(coordenadorId).all()
+    
+    return c.json(result.results || [])
+  } catch (error) {
+    console.error('Erro ao listar eleitores do coordenador:', error)
+    return c.json({ error: 'Erro ao listar eleitores do coordenador' }, 500)
+  }
+})
+
+/**
+ * GET /api/relatorios/hierarquia
+ * Relatório completo da hierarquia organizacional
+ */
+app.get('/api/relatorios/hierarquia', async (c) => {
+  try {
+    const candidatoId = c.req.header('X-Candidato-Id') || '1'
+    
+    // Resumo geral
+    const resumo = await c.env.DB.prepare(`
+      SELECT 
+        (SELECT COUNT(*) FROM coordenadores WHERE candidato_id = ?) as total_coordenadores,
+        (SELECT COUNT(*) FROM liderancas WHERE candidato_id = ?) as total_liderancas,
+        (SELECT COUNT(*) FROM eleitores WHERE candidato_id = ?) as total_eleitores,
+        (SELECT SUM(qtd_eleitores_captados) FROM coordenadores WHERE candidato_id = ?) as total_captacoes
+    `).bind(candidatoId, candidatoId, candidatoId, candidatoId).first()
+    
+    // Performance por coordenador
+    const coordenadores = await c.env.DB.prepare(`
+      SELECT 
+        coord.id,
+        coord.nome,
+        coord.municipio,
+        coord.telefone,
+        coord.email,
+        coord.meta_liderancas,
+        coord.meta_eleitores,
+        coord.qtd_liderancas,
+        coord.qtd_eleitores_captados,
+        ROUND(CAST(coord.qtd_liderancas AS REAL) / CAST(coord.meta_liderancas AS REAL) * 100, 2) as percentual_meta_liderancas,
+        ROUND(CAST(coord.qtd_eleitores_captados AS REAL) / CAST(coord.meta_eleitores AS REAL) * 100, 2) as percentual_meta_eleitores,
+        (SELECT COUNT(*) FROM eleitores WHERE coordenador_id = coord.id AND confirmado = 1) as eleitores_confirmados
+      FROM coordenadores coord
+      WHERE coord.candidato_id = ?
+      ORDER BY coord.qtd_eleitores_captados DESC
+    `).bind(candidatoId).all()
+    
+    // Top 10 lideranças
+    const topLiderancas = await c.env.DB.prepare(`
+      SELECT 
+        l.id,
+        l.nome,
+        l.municipio,
+        l.telefone,
+        l.qtd_eleitores,
+        l.qtd_eleitores_confirmados,
+        l.meta_eleitores,
+        coord.nome as coordenador_nome,
+        ROUND(CAST(l.qtd_eleitores AS REAL) / CAST(l.meta_eleitores AS REAL) * 100, 2) as percentual_meta
+      FROM liderancas l
+      LEFT JOIN coordenadores coord ON coord.id = l.coordenador_id
+      WHERE l.candidato_id = ?
+      ORDER BY l.qtd_eleitores DESC
+      LIMIT 10
+    `).bind(candidatoId).all()
+    
+    return c.json({
+      resumo: resumo || {},
+      coordenadores: coordenadores.results || [],
+      topLiderancas: topLiderancas.results || []
+    })
+  } catch (error) {
+    console.error('Erro ao gerar relatório de hierarquia:', error)
+    return c.json({ error: 'Erro ao gerar relatório de hierarquia' }, 500)
   }
 })
 
