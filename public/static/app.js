@@ -7047,14 +7047,21 @@ async function handleRegister() {
       telefone: telefone.replace(/\D/g, ''),
       municipio,
       estado,
-      senha
+      senha,
+      dados: {
+        cpf: cpf.replace(/\D/g, ''),
+        estado
+      }
     });
     
-    if (response.data.success) {
+    // Backend retorna { id, ...data }, então se tem id, foi sucesso
+    if (response.data && response.data.id) {
       showRegisterSuccess('Solicitação enviada com sucesso! Aguarde a aprovação do administrador.');
       setTimeout(() => {
         backToLogin();
       }, 3000);
+    } else {
+      showRegisterError('Erro inesperado ao enviar solicitação. Tente novamente.');
     }
   } catch (error) {
     console.error('Erro ao registrar:', error);
