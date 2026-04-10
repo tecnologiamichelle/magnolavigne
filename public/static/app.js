@@ -34,7 +34,9 @@ const state = {
     municipiosTerritori: [], // Municípios do território selecionado
     biDashboard: null, // Dashboard executivo BI
     biInvestimento: [], // Análise de investimento por território
-    biPrioritarios: [] // Territórios prioritários
+    biPrioritarios: [], // Territórios prioritários
+    eleitores: [], // Lista de eleitores
+    hierarquia: null // Relatório de hierarquia
   }
 };
 
@@ -254,12 +256,12 @@ function renderDashboard() {
       <div class="sidebar bg-gradient-to-b from-green-700 to-green-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
         <div class="mb-8">
           <h2 class="text-2xl font-bold flex items-center">
-            <i class="fas fa-vote-yea text-yellow-400 mr-3 text-3xl"></i>
-            <span>MeuPolitico.Digital</span>
+            <i class="fas fa-leaf text-yellow-400 mr-3 text-3xl"></i>
+            <span>Magno Lavigne</span>
           </h2>
           <p class="text-green-200 text-sm mt-1 flex items-center gap-2">
-            <i class="fas fa-users text-xs"></i>
-            Gestão de Campanhas Políticas
+            <i class="fas fa-seedling text-xs"></i>
+            PV + REDE
           </p>
         </div>
         
@@ -275,6 +277,8 @@ function renderDashboard() {
           ${renderMenuItem('dados-eleitorais', 'fa-globe-americas', 'Dados Eleitorais')}
           ${renderMenuItem('liderancas', 'fa-tree', 'Lideranças')}
           ${renderMenuItem('coordenadores', 'fa-project-diagram', 'Coordenadores')}
+          ${renderMenuItem('eleitores', 'fa-users', 'Eleitores')}
+          ${renderMenuItem('hierarquia', 'fa-sitemap', 'Hierarquia')}
           ${renderMenuItem('profissionais', 'fa-briefcase', 'Profissionais')}
           ${renderMenuItem('agenda', 'fa-sun', 'Agenda')}
           <div class="border-t border-green-600 my-2"></div>
@@ -342,6 +346,8 @@ function renderModuleContent() {
     case 'dados-eleitorais': return renderDadosEleitoraisModule();
     case 'liderancas': return renderLiderancasModule();
     case 'coordenadores': return renderCoordenadoresModule();
+    case 'eleitores': return renderEleitoresModule();
+    case 'hierarquia': return renderHierarquiaModule();
     case 'profissionais': return renderProfissionaisModule();
     case 'agenda': return renderAgendaModule();
     case 'territorios': return renderTerritoriosModule();
@@ -2153,6 +2159,506 @@ function renderCoordenadorCard(coord) {
   `;
 }
 
+// ============= MÓDULO: ELEITORES =============
+
+function renderEleitoresModule() {
+  const eleitores = state.data.eleitores || [];
+  const liderancas = state.data.liderancas || [];
+  const coordenadores = state.data.coordenadores || [];
+  
+  // Filtros
+  const filtroLideranca = state.filtroEleitorLideranca || 'todos';
+  const filtroStatus = state.filtroEleitorStatus || 'todos';
+  const filtroMunicipio = state.filtroEleitorMunicipio || 'todos';
+  
+  // Aplicar filtros
+  let eleitoresFiltrados = [...eleitores];
+  
+  if (filtroLideranca !== 'todos') {
+    eleitoresFiltrados = eleitoresFiltrados.filter(e => e.lideranca_id == filtroLideranca);
+  }
+  
+  if (filtroStatus !== 'todos') {
+    eleitoresFiltrados = eleitoresFiltrados.filter(e => e.status_apoio === filtroStatus);
+  }
+  
+  if (filtroMunicipio !== 'todos') {
+    eleitoresFiltrados = eleitoresFiltrados.filter(e => e.municipio === filtroMunicipio);
+  }
+  
+  // Estatísticas
+  const totalEleitores = eleitores.length;
+  const totalConfirmados = eleitores.filter(e => e.confirmado === 1).length;
+  const totalApoiadores = eleitores.filter(e => e.status_apoio === 'apoiador').length;
+  const totalMilitantes = eleitores.filter(e => e.status_apoio === 'militante').length;
+  
+  // Municípios únicos
+  const municipios = [...new Set(eleitores.map(e => e.municipio))].sort();
+  
+  return `
+    <div>
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">
+            <i class="fas fa-users mr-3 text-blue-600"></i>Eleitores
+          </h1>
+          <p class="text-gray-600">Gestão da base de apoio captada pelas lideranças</p>
+        </div>
+        <button 
+          onclick="abrirModalEleitor()"
+          class="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform"
+        >
+          <i class="fas fa-plus mr-2"></i>Cadastrar Eleitor
+        </button>
+      </div>
+      
+      <!-- Estatísticas -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Total Eleitores</p>
+              <p class="text-3xl font-bold">${totalEleitores}</p>
+            </div>
+            <i class="fas fa-users text-4xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Confirmados</p>
+              <p class="text-3xl font-bold">${totalConfirmados}</p>
+              <p class="text-xs opacity-75">${totalEleitores > 0 ? Math.round(totalConfirmados/totalEleitores*100) : 0}% do total</p>
+            </div>
+            <i class="fas fa-check-circle text-4xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Apoiadores</p>
+              <p class="text-3xl font-bold">${totalApoiadores}</p>
+            </div>
+            <i class="fas fa-handshake text-4xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Militantes</p>
+              <p class="text-3xl font-bold">${totalMilitantes}</p>
+            </div>
+            <i class="fas fa-star text-4xl opacity-50"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Filtros -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <h3 class="font-semibold text-gray-800 mb-4">
+          <i class="fas fa-filter mr-2"></i>Filtros
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Liderança</label>
+            <select 
+              id="filtro-eleitor-lideranca"
+              onchange="aplicarFiltrosEleitores()"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="todos">Todas as lideranças</option>
+              ${liderancas.map(l => `
+                <option value="${l.id}" ${filtroLideranca == l.id ? 'selected' : ''}>
+                  ${l.nome}
+                </option>
+              `).join('')}
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Status de Apoio</label>
+            <select 
+              id="filtro-eleitor-status"
+              onchange="aplicarFiltrosEleitores()"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="todos">Todos os status</option>
+              <option value="simpatizante" ${filtroStatus === 'simpatizante' ? 'selected' : ''}>Simpatizante</option>
+              <option value="apoiador" ${filtroStatus === 'apoiador' ? 'selected' : ''}>Apoiador</option>
+              <option value="militante" ${filtroStatus === 'militante' ? 'selected' : ''}>Militante</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Município</label>
+            <select 
+              id="filtro-eleitor-municipio"
+              onchange="aplicarFiltrosEleitores()"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="todos">Todos os municípios</option>
+              ${municipios.map(m => `
+                <option value="${m}" ${filtroMunicipio === m ? 'selected' : ''}>
+                  ${m}
+                </option>
+              `).join('')}
+            </select>
+          </div>
+        </div>
+        
+        ${(filtroLideranca !== 'todos' || filtroStatus !== 'todos' || filtroMunicipio !== 'todos') ? `
+          <div class="mt-4">
+            <button 
+              onclick="limparFiltrosEleitores()"
+              class="text-sm text-blue-600 hover:text-blue-800 font-medium"
+            >
+              <i class="fas fa-times mr-1"></i>Limpar filtros
+            </button>
+          </div>
+        ` : ''}
+      </div>
+      
+      <!-- Lista de Eleitores -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">
+              <i class="fas fa-list mr-2"></i>
+              ${eleitoresFiltrados.length} eleitor${eleitoresFiltrados.length !== 1 ? 'es' : ''} encontrado${eleitoresFiltrados.length !== 1 ? 's' : ''}
+            </h3>
+          </div>
+        </div>
+        
+        ${eleitoresFiltrados.length === 0 ? `
+          <div class="p-12 text-center">
+            <i class="fas fa-users text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-600 text-lg">Nenhum eleitor encontrado</p>
+            <p class="text-gray-500 text-sm mt-2">
+              ${totalEleitores === 0 ? 'Cadastre o primeiro eleitor clicando no botão acima' : 'Ajuste os filtros ou limpe-os para ver mais resultados'}
+            </p>
+          </div>
+        ` : `
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Nome</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Liderança</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Município</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Telefone</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Confirmado</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Ações</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                ${eleitoresFiltrados.map(eleitor => `
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4">
+                      <div>
+                        <p class="font-medium text-gray-900">${eleitor.nome}</p>
+                        ${eleitor.email ? `<p class="text-sm text-gray-500">${eleitor.email}</p>` : ''}
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <p class="text-sm text-gray-900">${eleitor.lideranca_nome || 'N/A'}</p>
+                      ${eleitor.coordenador_nome ? `<p class="text-xs text-gray-500">Coord: ${eleitor.coordenador_nome}</p>` : ''}
+                    </td>
+                    <td class="px-6 py-4">
+                      <p class="text-sm text-gray-900">${eleitor.municipio}</p>
+                      ${eleitor.bairro ? `<p class="text-xs text-gray-500">${eleitor.bairro}</p>` : ''}
+                    </td>
+                    <td class="px-6 py-4">
+                      <p class="text-sm text-gray-900">${eleitor.telefone || 'N/A'}</p>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      <span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full
+                        ${eleitor.status_apoio === 'militante' ? 'bg-orange-100 text-orange-800' : 
+                          eleitor.status_apoio === 'apoiador' ? 'bg-purple-100 text-purple-800' : 
+                          'bg-blue-100 text-blue-800'}">
+                        ${eleitor.status_apoio === 'militante' ? '⭐ Militante' : 
+                          eleitor.status_apoio === 'apoiador' ? '🤝 Apoiador' : 
+                          '👋 Simpatizante'}
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                      ${eleitor.confirmado === 1 ? 
+                        '<span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800"><i class="fas fa-check mr-1"></i>Sim</span>' : 
+                        '<span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Não</span>'}
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center justify-center gap-2">
+                        <button 
+                          onclick="visualizarEleitor(${eleitor.id})"
+                          class="text-blue-600 hover:text-blue-800 p-2 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Visualizar"
+                        >
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button 
+                          onclick="editarEleitor(${eleitor.id})"
+                          class="text-green-600 hover:text-green-800 p-2 hover:bg-green-50 rounded-lg transition-colors"
+                          title="Editar"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button 
+                          onclick="deletarEleitor(${eleitor.id}, '${eleitor.nome}')"
+                          class="text-red-600 hover:text-red-800 p-2 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Deletar"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: HIERARQUIA =============
+
+function renderHierarquiaModule() {
+  const hierarquia = state.data.hierarquia;
+  
+  if (!hierarquia) {
+    return `
+      <div class="text-center py-12">
+        <i class="fas fa-spinner fa-spin text-4xl text-purple-600 mb-4"></i>
+        <p class="text-gray-600 text-lg">Carregando relatório de hierarquia...</p>
+      </div>
+    `;
+  }
+  
+  const resumo = hierarquia.resumo || {};
+  const coordenadores = hierarquia.coordenadores || [];
+  const topLiderancas = hierarquia.topLiderancas || [];
+  
+  return `
+    <div>
+      <!-- Header -->
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+          <i class="fas fa-sitemap mr-3 text-purple-600"></i>Hierarquia Organizacional
+        </h1>
+        <p class="text-gray-600">Visão completa da estrutura de mobilização e performance</p>
+      </div>
+      
+      <!-- Resumo Geral -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Coordenadores</p>
+              <p class="text-4xl font-bold">${resumo.total_coordenadores || 0}</p>
+            </div>
+            <i class="fas fa-project-diagram text-5xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Lideranças</p>
+              <p class="text-4xl font-bold">${resumo.total_liderancas || 0}</p>
+            </div>
+            <i class="fas fa-tree text-5xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Eleitores</p>
+              <p class="text-4xl font-bold">${resumo.total_eleitores || 0}</p>
+            </div>
+            <i class="fas fa-users text-5xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white shadow-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90 mb-1">Total Captações</p>
+              <p class="text-4xl font-bold">${resumo.total_captacoes || 0}</p>
+            </div>
+            <i class="fas fa-chart-line text-5xl opacity-50"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Performance por Coordenador -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+        <div class="p-6 border-b border-gray-200">
+          <h3 class="font-semibold text-gray-800">
+            <i class="fas fa-medal mr-2 text-yellow-500"></i>
+            Performance por Coordenador
+          </h3>
+        </div>
+        
+        ${coordenadores.length === 0 ? `
+          <div class="p-12 text-center">
+            <i class="fas fa-project-diagram text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-600 text-lg">Nenhum coordenador cadastrado ainda</p>
+          </div>
+        ` : `
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Coordenador</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Contato</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Lideranças</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Meta Lideranças</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Eleitores</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Meta Eleitores</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Confirmados</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                ${coordenadores.map(coord => {
+                  const percLiderancas = coord.percentual_meta_liderancas || 0;
+                  const percEleitores = coord.percentual_meta_eleitores || 0;
+                  return `
+                    <tr class="hover:bg-gray-50 transition-colors">
+                      <td class="px-6 py-4">
+                        <p class="font-medium text-gray-900">${coord.nome}</p>
+                        <p class="text-sm text-gray-500">${coord.municipio || 'N/A'}</p>
+                      </td>
+                      <td class="px-6 py-4">
+                        <p class="text-sm text-gray-900">${coord.telefone || 'N/A'}</p>
+                        <p class="text-xs text-gray-500">${coord.email || 'N/A'}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div class="flex flex-col items-center">
+                          <p class="text-lg font-bold text-gray-900">${coord.qtd_liderancas || 0}</p>
+                          <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: ${Math.min(percLiderancas, 100)}%"></div>
+                          </div>
+                          <p class="text-xs text-gray-500 mt-1">${percLiderancas.toFixed(0)}%</p>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <p class="text-sm font-medium text-gray-900">${coord.meta_liderancas || 0}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div class="flex flex-col items-center">
+                          <p class="text-lg font-bold text-gray-900">${coord.qtd_eleitores_captados || 0}</p>
+                          <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                            <div class="bg-green-600 h-2 rounded-full" style="width: ${Math.min(percEleitores, 100)}%"></div>
+                          </div>
+                          <p class="text-xs text-gray-500 mt-1">${percEleitores.toFixed(0)}%</p>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <p class="text-sm font-medium text-gray-900">${coord.meta_eleitores || 0}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-800">
+                          ${coord.eleitores_confirmados || 0}
+                        </span>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `}
+      </div>
+      
+      <!-- Top 10 Lideranças -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 border-b border-gray-200">
+          <h3 class="font-semibold text-gray-800">
+            <i class="fas fa-trophy mr-2 text-yellow-500"></i>
+            Top 10 Lideranças
+          </h3>
+        </div>
+        
+        ${topLiderancas.length === 0 ? `
+          <div class="p-12 text-center">
+            <i class="fas fa-tree text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-600 text-lg">Nenhuma liderança cadastrada ainda</p>
+          </div>
+        ` : `
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">#</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Liderança</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Coordenador</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Eleitores</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Confirmados</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Meta</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">% Meta</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                ${topLiderancas.map((lid, index) => {
+                  const percMeta = lid.percentual_meta || 0;
+                  const posicao = index + 1;
+                  return `
+                    <tr class="hover:bg-gray-50 transition-colors ${posicao <= 3 ? 'bg-yellow-50' : ''}">
+                      <td class="px-6 py-4 text-center">
+                        ${posicao === 1 ? '<span class="text-2xl">🥇</span>' : 
+                          posicao === 2 ? '<span class="text-2xl">🥈</span>' : 
+                          posicao === 3 ? '<span class="text-2xl">🥉</span>' : 
+                          `<span class="font-semibold text-gray-600">${posicao}</span>`}
+                      </td>
+                      <td class="px-6 py-4">
+                        <p class="font-medium text-gray-900">${lid.nome}</p>
+                        <p class="text-sm text-gray-500">${lid.municipio || 'N/A'}</p>
+                        <p class="text-xs text-gray-500">${lid.telefone || 'N/A'}</p>
+                      </td>
+                      <td class="px-6 py-4">
+                        <p class="text-sm text-gray-900">${lid.coordenador_nome || 'N/A'}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <p class="text-xl font-bold text-blue-600">${lid.qtd_eleitores || 0}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-800">
+                          ${lid.qtd_eleitores_confirmados || 0}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <p class="text-sm font-medium text-gray-900">${lid.meta_eleitores || 0}</p>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <div class="flex flex-col items-center">
+                          <div class="w-full bg-gray-200 rounded-full h-3 mb-1">
+                            <div class="h-3 rounded-full ${percMeta >= 100 ? 'bg-green-600' : percMeta >= 75 ? 'bg-blue-600' : percMeta >= 50 ? 'bg-yellow-500' : 'bg-red-500'}" 
+                                 style="width: ${Math.min(percMeta, 100)}%"></div>
+                          </div>
+                          <p class="text-sm font-bold ${percMeta >= 100 ? 'text-green-600' : percMeta >= 75 ? 'text-blue-600' : percMeta >= 50 ? 'text-yellow-600' : 'text-red-600'}">
+                            ${percMeta.toFixed(0)}%
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
 // ============= MÓDULO: PROFISSIONAIS =============
 
 function renderProfissionaisModule() {
@@ -2856,7 +3362,7 @@ function renderConfiguracoesModule() {
             <span class="text-gray-600">Versão do Sistema</span>
             <span class="font-semibold text-green-700 flex items-center gap-2">
               <i class="fas fa-leaf text-sm"></i>
-              V1.0.0 - MeuPolitico.Digital
+              V8.3.6 - Magno Lavigne
             </span>
           </div>
           
@@ -5100,6 +5606,22 @@ async function loadAllData() {
     const agendaResponse = await axios.get(`/api/agenda/${candidatoId}`);
     state.data.agenda = agendaResponse.data || [];
     
+    console.log('👥 Carregando eleitores...');
+    // Carregar eleitores
+    const eleitoresResponse = await axios.get('/api/eleitores', {
+      headers: { 'X-Candidato-Id': candidatoId }
+    });
+    state.data.eleitores = eleitoresResponse.data || [];
+    console.log('✅ Eleitores carregados:', state.data.eleitores.length);
+    
+    console.log('📊 Carregando hierarquia...');
+    // Carregar hierarquia
+    const hierarquiaResponse = await axios.get('/api/relatorios/hierarquia', {
+      headers: { 'X-Candidato-Id': candidatoId }
+    });
+    state.data.hierarquia = hierarquiaResponse.data || {};
+    console.log('✅ Hierarquia carregada');
+    
     console.log('📄 Carregando relatórios...');
     // Carregar relatórios
     const relatoriosResponse = await axios.get(`/api/relatorios/${candidatoId}`);
@@ -5769,6 +6291,553 @@ async function deleteCoordenador(id) {
   } catch (error) {
     alert('Erro ao deletar');
   }
+}
+
+// ============= FUNÇÕES: ELEITORES =============
+
+function abrirModalEleitor(eleitorId = null) {
+  state.modalAtivo = 'eleitor';
+  state.modalEditId = eleitorId;
+  
+  if (eleitorId) {
+    // Buscar dados do eleitor para edição
+    const eleitor = state.data.eleitores.find(e => e.id == eleitorId);
+    if (eleitor) {
+      state.modalData = {...eleitor};
+    }
+  } else {
+    state.modalData = {};
+  }
+  
+  renderModalEleitor();
+}
+
+function renderModalEleitor() {
+  const isEdit = !!state.modalEditId;
+  const data = state.modalData || {};
+  const liderancas = state.data.liderancas || [];
+  
+  const modalHtml = `
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="if(event.target === this) fecharModal()">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-6 rounded-t-2xl">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold text-white">
+              <i class="fas fa-user mr-3"></i>
+              ${isEdit ? 'Editar Eleitor' : 'Cadastrar Novo Eleitor'}
+            </h2>
+            <button onclick="fecharModal()" class="text-white hover:text-gray-200 text-2xl">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Form -->
+        <form onsubmit="salvarEleitor(event)" class="p-6 space-y-6">
+          <!-- Seção 1: Identificação -->
+          <div class="bg-blue-50 rounded-xl p-6">
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-id-card mr-2 text-blue-600"></i>
+              Identificação
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Nome Completo <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-nome"
+                  value="${data.nome || ''}"
+                  placeholder="Nome completo do eleitor"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">CPF</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-cpf"
+                  value="${data.cpf || ''}"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                <input 
+                  type="tel" 
+                  id="modal-eleitor-telefone"
+                  value="${data.telefone || ''}"
+                  placeholder="(00) 00000-0000"
+                  maxlength="15"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                <input 
+                  type="email" 
+                  id="modal-eleitor-email"
+                  value="${data.email || ''}"
+                  placeholder="exemplo@email.com"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <!-- Seção 2: Hierarquia -->
+          <div class="bg-purple-50 rounded-xl p-6">
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-sitemap mr-2 text-purple-600"></i>
+              Hierarquia
+            </h3>
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Liderança <span class="text-red-500">*</span>
+                </label>
+                <select 
+                  id="modal-eleitor-lideranca"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                >
+                  <option value="">Selecione uma liderança</option>
+                  ${liderancas.map(l => `
+                    <option value="${l.id}" ${data.lideranca_id == l.id ? 'selected' : ''}>
+                      ${l.nome} - ${l.municipio}
+                    </option>
+                  `).join('')}
+                </select>
+                <p class="text-xs text-gray-500 mt-1">
+                  <i class="fas fa-info-circle mr-1"></i>
+                  O coordenador será vinculado automaticamente
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Seção 3: Localização -->
+          <div class="bg-green-50 rounded-xl p-6">
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-map-marker-alt mr-2 text-green-600"></i>
+              Localização
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Município <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-municipio"
+                  value="${data.municipio || ''}"
+                  placeholder="Nome do município"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Bairro</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-bairro"
+                  value="${data.bairro || ''}"
+                  placeholder="Bairro"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Zona Eleitoral</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-zona"
+                  value="${data.zona || ''}"
+                  placeholder="Ex: 001"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Seção Eleitoral</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-secao"
+                  value="${data.secao || ''}"
+                  placeholder="Ex: 0123"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Título de Eleitor</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-titulo"
+                  value="${data.titulo_eleitor || ''}"
+                  placeholder="Número do título"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Local de Votação</label>
+                <input 
+                  type="text" 
+                  id="modal-eleitor-local-votacao"
+                  value="${data.local_votacao || ''}"
+                  placeholder="Escola, clube, etc"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <!-- Seção 4: Engajamento -->
+          <div class="bg-orange-50 rounded-xl p-6">
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-chart-line mr-2 text-orange-600"></i>
+              Engajamento
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status de Apoio</label>
+                <select 
+                  id="modal-eleitor-status-apoio"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                >
+                  <option value="simpatizante" ${(data.status_apoio || 'simpatizante') === 'simpatizante' ? 'selected' : ''}>👋 Simpatizante</option>
+                  <option value="apoiador" ${data.status_apoio === 'apoiador' ? 'selected' : ''}>🤝 Apoiador</option>
+                  <option value="militante" ${data.status_apoio === 'militante' ? 'selected' : ''}>⭐ Militante</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nível de Engajamento</label>
+                <select 
+                  id="modal-eleitor-nivel-engajamento"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                >
+                  <option value="baixo" ${(data.nivel_engajamento || 'baixo') === 'baixo' ? 'selected' : ''}>Baixo</option>
+                  <option value="medio" ${data.nivel_engajamento === 'medio' ? 'selected' : ''}>Médio</option>
+                  <option value="alto" ${data.nivel_engajamento === 'alto' ? 'selected' : ''}>Alto</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    id="modal-eleitor-confirmado"
+                    ${data.confirmado === 1 ? 'checked' : ''}
+                    class="w-5 h-5 text-orange-600 border-gray-300 rounded focus:ring-2 focus:ring-orange-500"
+                  />
+                  <span class="text-sm font-medium text-gray-700">Eleitor confirmado</span>
+                </label>
+              </div>
+              
+              <div>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    id="modal-eleitor-compareceu"
+                    ${data.compareceu_evento === 1 ? 'checked' : ''}
+                    class="w-5 h-5 text-orange-600 border-gray-300 rounded focus:ring-2 focus:ring-orange-500"
+                  />
+                  <span class="text-sm font-medium text-gray-700">Compareceu a evento</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Seção 5: Observações -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
+            <textarea 
+              id="modal-eleitor-observacoes"
+              rows="3"
+              placeholder="Informações adicionais sobre o eleitor..."
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >${data.observacoes || ''}</textarea>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Tags (separadas por vírgula)</label>
+            <input 
+              type="text" 
+              id="modal-eleitor-tags"
+              value="${data.tags || ''}"
+              placeholder="whatsapp, facebook, lider-comunitario"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          
+          <!-- Botões -->
+          <div class="flex gap-4 pt-4">
+            <button 
+              type="button"
+              onclick="fecharModal()"
+              class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              <i class="fas fa-times mr-2"></i>Cancelar
+            </button>
+            <button 
+              type="submit"
+              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
+            >
+              <i class="fas fa-save mr-2"></i>${isEdit ? 'Atualizar' : 'Cadastrar'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  
+  // Inserir modal no DOM
+  let modalContainer = document.getElementById('modal-container');
+  if (!modalContainer) {
+    modalContainer = document.createElement('div');
+    modalContainer.id = 'modal-container';
+    document.body.appendChild(modalContainer);
+  }
+  modalContainer.innerHTML = modalHtml;
+  
+  // Aplicar máscaras após renderizar
+  setTimeout(() => {
+    const cpfInput = document.getElementById('modal-eleitor-cpf');
+    const telefoneInput = document.getElementById('modal-eleitor-telefone');
+    
+    if (cpfInput) {
+      cpfInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        e.target.value = value;
+      });
+    }
+    
+    if (telefoneInput) {
+      telefoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+        value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+        e.target.value = value;
+      });
+    }
+  }, 100);
+}
+
+async function salvarEleitor(event) {
+  event.preventDefault();
+  
+  const eleitorData = {
+    candidato_id: state.candidato.id,
+    lideranca_id: document.getElementById('modal-eleitor-lideranca').value,
+    nome: document.getElementById('modal-eleitor-nome').value,
+    cpf: document.getElementById('modal-eleitor-cpf')?.value?.replace(/\D/g, '') || null,
+    telefone: document.getElementById('modal-eleitor-telefone')?.value?.replace(/\D/g, '') || null,
+    email: document.getElementById('modal-eleitor-email').value || null,
+    municipio: document.getElementById('modal-eleitor-municipio').value,
+    bairro: document.getElementById('modal-eleitor-bairro').value || null,
+    zona: document.getElementById('modal-eleitor-zona').value || null,
+    secao: document.getElementById('modal-eleitor-secao').value || null,
+    titulo_eleitor: document.getElementById('modal-eleitor-titulo').value || null,
+    local_votacao: document.getElementById('modal-eleitor-local-votacao').value || null,
+    status_apoio: document.getElementById('modal-eleitor-status-apoio').value,
+    nivel_engajamento: document.getElementById('modal-eleitor-nivel-engajamento').value,
+    confirmado: document.getElementById('modal-eleitor-confirmado').checked ? 1 : 0,
+    compareceu_evento: document.getElementById('modal-eleitor-compareceu').checked ? 1 : 0,
+    observacoes: document.getElementById('modal-eleitor-observacoes').value || null,
+    tags: document.getElementById('modal-eleitor-tags').value || null
+  };
+  
+  try {
+    if (state.modalEditId) {
+      // Atualizar eleitor existente
+      await axios.put(`/api/eleitores/${state.modalEditId}`, eleitorData);
+      showSuccessMessage('✅ Eleitor atualizado com sucesso!');
+    } else {
+      // Criar novo eleitor
+      await axios.post('/api/eleitores', eleitorData);
+      showSuccessMessage('✅ Eleitor cadastrado com sucesso!');
+    }
+    
+    fecharModal();
+    await loadAllData();
+    render();
+  } catch (error) {
+    console.error('Erro ao salvar eleitor:', error);
+    showErrorMessage('❌ ' + (error.response?.data?.error || 'Erro ao salvar eleitor'));
+  }
+}
+
+async function visualizarEleitor(id) {
+  const eleitor = state.data.eleitores.find(e => e.id == id);
+  if (!eleitor) return;
+  
+  const statusBadge = eleitor.status_apoio === 'militante' ? '⭐ Militante' : 
+                      eleitor.status_apoio === 'apoiador' ? '🤝 Apoiador' : 
+                      '👋 Simpatizante';
+  
+  const modalHtml = `
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="if(event.target === this) fecharModal()">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-6 rounded-t-2xl">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold text-white">
+              <i class="fas fa-user mr-3"></i>Detalhes do Eleitor
+            </h2>
+            <button onclick="fecharModal()" class="text-white hover:text-gray-200 text-2xl">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="p-6 space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">Nome</p>
+              <p class="font-semibold">${eleitor.nome}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">CPF</p>
+              <p class="font-semibold">${eleitor.cpf || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Telefone</p>
+              <p class="font-semibold">${eleitor.telefone || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">E-mail</p>
+              <p class="font-semibold">${eleitor.email || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Liderança</p>
+              <p class="font-semibold">${eleitor.lideranca_nome || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Coordenador</p>
+              <p class="font-semibold">${eleitor.coordenador_nome || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Município</p>
+              <p class="font-semibold">${eleitor.municipio}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Bairro</p>
+              <p class="font-semibold">${eleitor.bairro || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Zona / Seção</p>
+              <p class="font-semibold">${eleitor.zona || 'N/A'} / ${eleitor.secao || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Título</p>
+              <p class="font-semibold">${eleitor.titulo_eleitor || 'N/A'}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Status</p>
+              <span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full
+                ${eleitor.status_apoio === 'militante' ? 'bg-orange-100 text-orange-800' : 
+                  eleitor.status_apoio === 'apoiador' ? 'bg-purple-100 text-purple-800' : 
+                  'bg-blue-100 text-blue-800'}">
+                ${statusBadge}
+              </span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Confirmado</p>
+              <p class="font-semibold">${eleitor.confirmado === 1 ? '✅ Sim' : '❌ Não'}</p>
+            </div>
+          </div>
+          
+          ${eleitor.observacoes ? `
+            <div>
+              <p class="text-sm text-gray-500">Observações</p>
+              <p class="font-semibold">${eleitor.observacoes}</p>
+            </div>
+          ` : ''}
+          
+          ${eleitor.tags ? `
+            <div>
+              <p class="text-sm text-gray-500">Tags</p>
+              <div class="flex flex-wrap gap-2 mt-2">
+                ${eleitor.tags.split(',').map(tag => `
+                  <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                    ${tag.trim()}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <div class="flex gap-4 pt-4">
+            <button 
+              onclick="fecharModal()"
+              class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              <i class="fas fa-times mr-2"></i>Fechar
+            </button>
+            <button 
+              onclick="fecharModal(); editarEleitor(${eleitor.id})"
+              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              <i class="fas fa-edit mr-2"></i>Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  let modalContainer = document.getElementById('modal-container');
+  if (!modalContainer) {
+    modalContainer = document.createElement('div');
+    modalContainer.id = 'modal-container';
+    document.body.appendChild(modalContainer);
+  }
+  modalContainer.innerHTML = modalHtml;
+}
+
+function editarEleitor(id) {
+  abrirModalEleitor(id);
+}
+
+async function deletarEleitor(id, nome) {
+  if (!confirm(`Deseja realmente deletar o eleitor "${nome}"?`)) return;
+  
+  try {
+    await axios.delete(`/api/eleitores/${id}`);
+    showSuccessMessage('✅ Eleitor deletado com sucesso!');
+    await loadAllData();
+    render();
+  } catch (error) {
+    console.error('Erro ao deletar eleitor:', error);
+    showErrorMessage('❌ Erro ao deletar eleitor');
+  }
+}
+
+function aplicarFiltrosEleitores() {
+  state.filtroEleitorLideranca = document.getElementById('filtro-eleitor-lideranca').value;
+  state.filtroEleitorStatus = document.getElementById('filtro-eleitor-status').value;
+  state.filtroEleitorMunicipio = document.getElementById('filtro-eleitor-municipio').value;
+  render();
+}
+
+function limparFiltrosEleitores() {
+  state.filtroEleitorLideranca = 'todos';
+  state.filtroEleitorStatus = 'todos';
+  state.filtroEleitorMunicipio = 'todos';
+  render();
 }
 
 async function deleteProfissional(id) {
