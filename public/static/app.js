@@ -175,6 +175,15 @@ function renderLogin() {
             <span>Criar Nova Conta</span>
           </button>
           
+          <!-- Botão Cadastro de Eleitor -->
+          <button 
+            onclick="showEleitorPublicForm(); return false;"
+            class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-4 rounded-xl font-bold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-3"
+          >
+            <i class="fas fa-user-check"></i>
+            <span>Cadastrar como Eleitor</span>
+          </button>
+          
           <!-- Footer -->
           <div class="mt-6 text-center space-y-3">
             <p class="text-xs text-gray-400 flex items-center justify-center gap-2">
@@ -259,7 +268,7 @@ function renderLogin() {
 function renderDashboard() {
   return `
     <div class="flex flex-col md:flex-row min-h-screen">
-      <!-- Sidebar - Tema Verde PV + REDE Sustentabilidade -->
+      <!-- Sidebar - Sistema Profissional de Gestão -->
       <div class="sidebar bg-gradient-to-b from-blue-700 to-indigo-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
         <div class="mb-8">
           <h2 class="text-2xl font-bold flex items-center">
@@ -268,22 +277,21 @@ function renderDashboard() {
               <span class="text-2xl font-bold">MeuPolitico</span>
               <span class="text-xs block text-blue-300 -mt-1">.Digital</span>
             </div>
-            <span>${state.candidato.nome || 'Usuário'}</span>
           </h2>
-          <p class="text-green-200 text-sm mt-1 flex items-center gap-2">
-            <i class="fas fa-seedling text-xs"></i>
-            PV + REDE
+          <p class="text-blue-200 text-sm mt-2 flex items-center gap-2 px-3 py-2 bg-blue-800 bg-opacity-30 rounded-lg border border-blue-500">
+            <i class="fas fa-flag text-xs"></i>
+            <span class="font-medium">${state.candidato.partido || 'Seu Partido'}</span>
           </p>
         </div>
         
-        <div class="mb-6 p-4 bg-green-800 bg-opacity-50 rounded-lg border border-green-600">
-          <p class="text-sm text-green-200">Conectado como:</p>
+        <div class="mb-6 p-4 bg-blue-800 bg-opacity-40 rounded-lg border border-blue-500">
+          <p class="text-sm text-blue-200">Conectado como:</p>
           <p class="font-semibold truncate">${state.candidato.nome}</p>
-          <p class="text-xs text-green-200 truncate">${state.candidato.email}</p>
+          <p class="text-xs text-blue-200 truncate">${state.candidato.email}</p>
         </div>
         
         <nav class="space-y-2 flex-1 overflow-y-auto">
-          ${renderMenuItem('dashboard', 'fa-seedling', 'Dashboard')}
+          ${renderMenuItem('dashboard', 'fa-chart-line', 'Dashboard')}
           ${renderMenuItem('aprovacoes', 'fa-user-check', 'Aprovações', state.data.solicitacoesPendentes || 0)}
           ${renderMenuItem('dados-eleitorais', 'fa-globe-americas', 'Dados Eleitorais')}
           ${renderMenuItem('liderancas', 'fa-tree', 'Lideranças')}
@@ -3398,6 +3406,95 @@ function renderConfiguracoesModule() {
           </div>
         </div>
       </div>
+      
+      <!-- Gestão de Usuários (Admin) -->
+      ${state.candidato.tipo === 'admin' || state.candidato.tipo === 'super_admin' ? `
+      <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <i class="fas fa-users-cog text-blue-600"></i>
+            Gestão de Usuários
+          </h2>
+          <button 
+            onclick="abrirModalNovoUsuario()"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all shadow-lg"
+          >
+            <i class="fas fa-user-plus mr-2"></i>Novo Usuário
+          </button>
+        </div>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+              <tr>
+                <th class="px-4 py-3 text-left">Nome</th>
+                <th class="px-4 py-3 text-left">Email</th>
+                <th class="px-4 py-3 text-left">Tipo</th>
+                <th class="px-4 py-3 text-left">Status</th>
+                <th class="px-4 py-3 text-center">Ações</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              ${(state.data.usuarios || []).map(usuario => `
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-user-circle text-blue-500"></i>
+                      <span class="font-medium">${usuario.nome}</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-gray-600">${usuario.email}</td>
+                  <td class="px-4 py-3">
+                    <span class="px-2 py-1 rounded-full text-xs font-semibold ${
+                      usuario.tipo === 'super_admin' ? 'bg-purple-100 text-purple-700' :
+                      usuario.tipo === 'admin' ? 'bg-blue-100 text-blue-700' :
+                      'bg-gray-100 text-gray-700'
+                    }">
+                      ${usuario.tipo === 'super_admin' ? 'Super Admin' :
+                        usuario.tipo === 'admin' ? 'Administrador' :
+                        'Usuário'}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3">
+                    <span class="px-2 py-1 rounded-full text-xs font-semibold ${
+                      usuario.status === 'ativo' ? 'bg-green-100 text-green-700' :
+                      'bg-red-100 text-red-700'
+                    }">
+                      ${usuario.status === 'ativo' ? 'Ativo' : 'Inativo'}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 text-center">
+                    <button 
+                      onclick="editarUsuario(${usuario.id})"
+                      class="text-blue-600 hover:text-blue-800 mx-1"
+                      title="Editar"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    ${usuario.id !== state.candidato.id ? `
+                    <button 
+                      onclick="deletarUsuario(${usuario.id})"
+                      class="text-red-600 hover:text-red-800 mx-1"
+                      title="Deletar"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    ` : ''}
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          ${(!state.data.usuarios || state.data.usuarios.length === 0) ? `
+            <div class="text-center py-8 text-gray-500">
+              <i class="fas fa-users text-4xl mb-2"></i>
+              <p>Nenhum usuário cadastrado</p>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+      ` : ''}
     </div>
   `;
 }
@@ -7154,6 +7251,15 @@ async function deleteUsuario(id) {
   }
 }
 
+// Alias para compatibilidade
+async function deletarUsuario(id) {
+  return await deleteUsuario(id);
+}
+
+async function abrirModalNovoUsuario() {
+  await abrirModalUsuario(null);
+}
+
 // ============= FUNÇÕES DE AGENDA =============
 
 function showAddAgendaForm() {
@@ -8166,6 +8272,193 @@ function showRegisterSuccess(message) {
   const successMessage = document.getElementById('register-success-message');
   successMessage.textContent = message;
   successDiv.classList.remove('hidden');
+}
+
+// ============= CADASTRO PÚBLICO DE ELEITOR =============
+
+function showEleitorPublicForm() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="min-h-screen bg-gradient-to-br from-green-600 via-green-700 to-green-800 flex items-center justify-center p-4">
+      <div class="w-full max-w-2xl">
+        <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8">
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-4">
+              <i class="fas fa-user-check text-3xl text-white"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">
+              Cadastro de Eleitor
+            </h1>
+            <p class="text-gray-600">
+              Preencha o formulário abaixo para declarar seu apoio
+            </p>
+          </div>
+          
+          <div id="eleitor-public-error" class="hidden mb-4 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-xl">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-exclamation-circle"></i>
+              <span id="eleitor-public-error-message"></span>
+            </div>
+          </div>
+          
+          <div id="eleitor-public-success" class="hidden mb-4 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded-xl">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-check-circle"></i>
+              <span id="eleitor-public-success-message"></span>
+            </div>
+          </div>
+          
+          <form id="eleitor-public-form" class="space-y-4" onsubmit="submitEleitorPublicForm(event)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Nome Completo <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="eleitor-nome"
+                  required
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="Seu nome completo"
+                >
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Telefone/WhatsApp <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="eleitor-telefone"
+                  required
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="(00) 00000-0000"
+                  maxlength="15"
+                  onkeyup="mascaraTelefone(this)"
+                >
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  E-mail
+                </label>
+                <input 
+                  type="email" 
+                  id="eleitor-email"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="seu@email.com"
+                >
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Município <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="eleitor-municipio"
+                  required
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="Ex: Salvador"
+                >
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Bairro
+                </label>
+                <input 
+                  type="text" 
+                  id="eleitor-bairro"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="Seu bairro"
+                >
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Zona Eleitoral
+                </label>
+                <input 
+                  type="text" 
+                  id="eleitor-zona"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="Ex: 001"
+                >
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Observações
+              </label>
+              <textarea 
+                id="eleitor-observacoes"
+                rows="3"
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
+                placeholder="Conte-nos um pouco sobre você ou como podemos ajudar..."
+              ></textarea>
+            </div>
+            
+            <div class="flex gap-3">
+              <button 
+                type="button"
+                onclick="backToLogin()"
+                class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300 transition-all"
+              >
+                <i class="fas fa-arrow-left mr-2"></i>Voltar
+              </button>
+              <button 
+                type="submit"
+                class="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-bold hover:from-green-700 hover:to-green-800 transition-all"
+              >
+                <i class="fas fa-check mr-2"></i>Confirmar Cadastro
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function submitEleitorPublicForm(e) {
+  e.preventDefault();
+  
+  try {
+    const dados = {
+      candidato_id: 1, // ID padrão do candidato (ajustar conforme necessidade)
+      nome: document.getElementById('eleitor-nome').value,
+      telefone: document.getElementById('eleitor-telefone').value.replace(/\D/g, ''),
+      email: document.getElementById('eleitor-email').value || null,
+      municipio: document.getElementById('eleitor-municipio').value,
+      bairro: document.getElementById('eleitor-bairro').value || null,
+      zona: document.getElementById('eleitor-zona').value || null,
+      observacoes: document.getElementById('eleitor-observacoes').value || null,
+      status_apoio: 'simpatizante',
+      nivel_engajamento: 'baixo'
+    };
+    
+    const response = await axios.post('/api/eleitores', dados);
+    
+    if (response.data && response.data.id) {
+      document.getElementById('eleitor-public-success-message').textContent = '✅ Cadastro realizado com sucesso! Obrigado pelo seu apoio!';
+      document.getElementById('eleitor-public-success').classList.remove('hidden');
+      document.getElementById('eleitor-public-form').reset();
+      
+      setTimeout(() => {
+        backToLogin();
+      }, 3000);
+    }
+  } catch (error) {
+    console.error('Erro ao cadastrar eleitor:', error);
+    document.getElementById('eleitor-public-error-message').textContent = error.response?.data?.error || 'Erro ao realizar cadastro. Tente novamente.';
+    document.getElementById('eleitor-public-error').classList.remove('hidden');
+  }
 }
 
 // ============= INICIALIZAÇÃO =============
