@@ -1,8 +1,8 @@
 # 🌐 MeuPolitico.Digital - Plataforma de Gestão Política
 
-**Plataforma:** Multi-Tenant para Gestão de Campanhas Políticas  
-**Versão:** 1.0.0 (Baseado em Magno Lavigne V8.3.6)  
-**Status:** 🟡 EM DESENVOLVIMENTO (Redundância Ativa)
+**Plataforma:** SaaS Multi-Tenant para Gestão de Campanhas Políticas  
+**Versão:** V2.0.1 (Baseado em Magno Lavigne V8.4.1)  
+**Status:** ✅ PRODUÇÃO - Pronta para Comercialização
 
 ---
 
@@ -23,18 +23,20 @@
 
 ## 🎯 CARACTERÍSTICAS DA PLATAFORMA
 
-### **Funcionalidades Core (Herdadas do Piloto)**
+### **Funcionalidades Core (100% Operacionais)**
 
-1. **Dashboard Executivo** - Visão geral em tempo real
-2. **Gestão de Lideranças** - Cadastro ilimitado com territórios
-3. **Coordenadores e Equipe** - Gestão de coordenação
-4. **Profissionais de Apoio** - Cadastro de especialistas
-5. **Dados Eleitorais** - Análise por zona, seção, município
-6. **Agenda e Eventos** - Calendário de compromissos
-7. **Territórios de Identidade** - 27 territórios da Bahia
-8. **BI Investimento** - Onde investir recursos
-9. **Relatórios Avançados** - 8 tipos de análises
-10. **Multi-Usuário** - Roles: Admin, Coordenador, Deputado
+1. **Dashboard Executivo** - Visão geral em tempo real com 4 métricas principais
+2. **Hierarquia Organizacional** ⭐ - Coordenadores → Lideranças → Eleitores
+3. **Gestão de Eleitores** ⭐ - Cadastro completo com 18 campos
+4. **Gestão de Lideranças** - Cadastro ilimitado com territórios e metas
+5. **Coordenadores e Equipe** - Gestão territorial com performance
+6. **Profissionais de Apoio** - Cadastro de especialistas por categoria
+7. **Dados Eleitorais TSE** - Análise de 417 municípios e 10,6M eleitores
+8. **Territórios de Identidade** - 27 territórios da Bahia georreferenciados
+9. **BI Investimento** - Analytics de onde investir recursos
+10. **Relatórios Avançados** - 8 tipos de análises + Relatório de Hierarquia
+11. **Multi-Usuário** - Roles: Super Admin, Admin, Deputado, Coordenador
+12. **Aprovações** - Sistema de aprovação de solicitações de cadastro
 
 ### **Novidades Multi-Tenant (Futuro)**
 
@@ -49,73 +51,103 @@
 
 ## 🗄️ BANCO DE DADOS
 
-### **Produção:** `meupolitico-production` (a ser criado)
+### **Produção:** `meupolitico-production` ✅ ATIVO
+
+**Database ID:** `318dba28-af2a-4d71-857a-059243e7f771`  
+**Região:** ENAM (East North America)  
+**Tamanho:** 0.45 MB  
+**Status:** Operacional
 
 **Estrutura:**
-- 14 tabelas principais
-- 4 tabelas de territórios
-- Estrutura multi-tenant preparada
+- 12 tabelas principais ✅
+- 7 migrações aplicadas ✅
+- Hierarquia organizacional completa ✅
+- 417 municípios + 27 territórios ✅
+- ~10,6M eleitores cadastrados ✅
 
 **Tabelas principais:**
-- `candidatos` - Usuários/Clientes
+- `candidatos` - Usuários/Clientes (3 contas ativas)
+- `eleitores` ⭐ - Base de apoio com hierarquia
 - `liderancas` - Lideranças por cliente
-- `coordenadores` - Coordenadores
+- `coordenadores` - Coordenadores territoriais
 - `profissionais` - Profissionais de apoio
-- `agenda` - Eventos e compromissos
 - `solicitacoes` - Solicitações/Aprovações
-- `dados_eleitorais` - Dados eleitorais
+- `dados_eleitorais` - Dados eleitorais TSE
 - `territorios` - Territórios de identidade (27 da BA)
 - `territorios_municipios` - 417 municípios
-- `bi_views` - Views para Business Intelligence
+- `bi_eleitorado` - Business Intelligence
 
 ---
 
-## 👥 USUÁRIOS PADRÃO (Desenvolvimento)
+## 👥 CREDENCIAIS DE ACESSO
+
+### **Conta Principal (Produção)**
+
+```
+Email: admin@meupolitico.digital
+Senha: Admin@2026
+Tipo: Administrador da Plataforma
+```
+
+**⚠️ IMPORTANTE:** Altere a senha padrão após primeiro acesso!
+
+### **Contas de Teste (Projeto Piloto)**
 
 ```
 1. Super Admin
-   Email: admin@meupolitico.digital
-   Senha: Admin@2026
+   Email: pitanga@magnolavigne.com.br
+   Senha: B@hia2026
 
-2. Demo Client 1
-   Email: demo1@meupolitico.digital
-   Senha: demo123
-
-3. Demo Client 2
-   Email: demo2@meupolitico.digital
-   Senha: demo123
+2. Deputado Federal
+   Email: magno@magnolavigne.com.br
+   Senha: senha123
 ```
+
+**📖 Documentação Completa:** Consulte `CREDENCIAIS_E_ACESSO.md` para todos os detalhes.
 
 ---
 
-## 🚀 QUICK START
+## 🚀 ACESSO RÁPIDO
 
-### **1. Criar Banco D1**
+### **URLs de Produção**
+
+✅ **Produção Principal:** https://meupolitico-digital.pages.dev  
+✅ **Preview Atual:** https://c912efe0.meupolitico-digital.pages.dev  
+📊 **Status:** Online e operacional
+
+### **Login**
+
+1. Acesse: https://meupolitico-digital.pages.dev
+2. Use: `admin@meupolitico.digital` / `Admin@2026`
+3. Explore a plataforma!
+
+---
+
+## 🚀 DESENVOLVIMENTO LOCAL (Opcional)
+
+### **1. Clone e Instale**
 ```bash
 cd /home/user/meupolitico-digital
-npm run db:create
-# Copiar database_id retornado para wrangler.jsonc
+npm install
 ```
 
-### **2. Atualizar wrangler.jsonc**
+### **2. Configure wrangler.jsonc** (já configurado)
 ```jsonc
 {
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "meupolitico-production",
-      "database_id": "SEU_DATABASE_ID_AQUI"
-    }
-  ]
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "meupolitico-production",
+    "database_id": "318dba28-af2a-4d71-857a-059243e7f771"
+  }]
 }
 ```
 
-### **3. Aplicar Migrations**
+### **3. Aplicar Migrations Locais**
 ```bash
 npm run db:migrate:local
 ```
 
-### **4. Build**
+### **4. Build e Desenvolvimento**
 ```bash
 npm run build
 ```
@@ -192,10 +224,30 @@ meupolitico-digital/
 - `GET /api/dashboard/:candidatoId`
 
 ### **Lideranças**
-- `GET /api/liderancas/:candidatoId`
-- `POST /api/liderancas`
-- `PUT /api/liderancas/:id`
-- `DELETE /api/liderancas/:id`
+- `GET /api/liderancas` - Listar (requer X-Candidato-Id)
+- `GET /api/liderancas/:id` - Detalhe
+- `POST /api/liderancas` - Criar
+- `PUT /api/liderancas/:id` - Atualizar
+- `DELETE /api/liderancas/:id` - Deletar
+
+### **Coordenadores**
+- `GET /api/coordenadores` - Listar
+- `GET /api/coordenadores/:id` - Detalhe
+- `POST /api/coordenadores` - Criar
+- `PUT /api/coordenadores/:id` - Atualizar
+- `DELETE /api/coordenadores/:id` - Deletar
+
+### **Eleitores** ⭐ NOVO
+- `GET /api/eleitores` - Listar eleitores
+- `GET /api/eleitores/:id` - Detalhe
+- `POST /api/eleitores` - Criar eleitor
+- `PUT /api/eleitores/:id` - Atualizar
+- `DELETE /api/eleitores/:id` - Deletar
+- `GET /api/eleitores/lideranca/:id` - Por liderança
+- `GET /api/eleitores/coordenador/:id` - Por coordenador
+
+### **Relatórios** ⭐ NOVO
+- `GET /api/relatorios/hierarquia` - Relatório completo de hierarquia
 
 ### **Dados Eleitorais**
 - `GET /api/dados-eleitorais/:candidatoId`
@@ -221,11 +273,12 @@ meupolitico-digital/
 - Cloudflare D1 (SQLite)
 
 **Frontend:**
-- Vanilla JavaScript (7.000+ linhas)
+- Vanilla JavaScript (10.000+ linhas)
 - Tailwind CSS (CDN)
 - Font Awesome 6.4.0
 - Chart.js 4.4.0
 - Axios 1.6.0
+- Tema customizado MeuPolitico
 
 **Infraestrutura:**
 - Cloudflare Pages (Edge Deploy)
@@ -234,48 +287,73 @@ meupolitico-digital/
 
 ---
 
-## 📈 ROADMAP
+## 📈 STATUS DO PROJETO
 
-### **Fase 1: Redundância (Atual)**
-- [x] Duplicar projeto Magno Lavigne
+### **✅ Fase 1: Base e Deploy (Concluído)**
+- [x] Duplicar projeto Magno Lavigne V8
 - [x] Renomear para MeuPolitico.Digital
-- [ ] Criar banco D1 próprio
-- [ ] Deploy inicial
-- [ ] Testes de redundância
+- [x] Criar banco D1 produção
+- [x] Deploy inicial funcionando
+- [x] Testes de funcionalidade
 
-### **Fase 2: Melhorias (Q2 2026)**
-- [ ] Refatorar para multi-tenant
-- [ ] Sistema de billing
-- [ ] Painel administrativo
-- [ ] Autenticação JWT
-- [ ] API pública
+### **✅ Fase 2: Hierarquia Organizacional (Concluído)**
+- [x] Implementar módulo Eleitores
+- [x] Criar hierarquia Coordenadores → Lideranças → Eleitores
+- [x] Contadores automáticos
+- [x] Sistema de metas e performance
+- [x] Relatório de hierarquia completo
+- [x] Frontend com filtros e dashboards
 
-### **Fase 3: Expansão (Q3 2026)**
-- [ ] White-label
-- [ ] Integrações (TSE, APIs externas)
-- [ ] Mobile-first redesign
-- [ ] Analytics avançado
-- [ ] Export/Import de dados
+### **✅ Fase 3: Rebranding Comercial (Concluído)**
+- [x] Nova identidade visual
+- [x] Cores e tema customizado
+- [x] Títulos e textos atualizados
+- [x] Credenciais admin@meupolitico.digital
+- [x] Documentação comercial completa
+- [x] Apresentação e modelo de negócio
 
-### **Fase 4: Escala (Q4 2026)**
-- [ ] Multi-região
+### **⏳ Fase 4: Melhorias (Q2 2026)**
+- [ ] Refatorar para multi-tenant real
+- [ ] Sistema de billing integrado
+- [ ] Painel administrativo SaaS
+- [ ] Autenticação JWT melhorada
+- [ ] API pública documentada
+
+### **⏳ Fase 5: Expansão (Q3 2026)**
+- [ ] White-label completo
+- [ ] Integrações TSE automáticas
+- [ ] Mobile app (React Native)
+- [ ] Analytics avançado com IA
+- [ ] Export/Import completo
+
+### **⏳ Fase 6: Escala (Q4 2026)**
+- [ ] Multi-região global
 - [ ] CDN otimizado
-- [ ] Cache inteligente
+- [ ] Cache Redis/KV
 - [ ] Performance 99.9% uptime
 - [ ] Suporte 24/7
 
 ---
 
-## 🔗 LINKS
+## 🔗 LINKS E DOCUMENTAÇÃO
 
-### **Referência (Piloto):**
-- **Magno V8.3.6:** https://magnolavigne-v8.pages.dev
-- **GitHub:** (a configurar)
+### **Produção Atual:**
+- **MeuPolitico V2.0.1:** https://meupolitico-digital.pages.dev
+- **Preview Deployment:** https://c912efe0.meupolitico-digital.pages.dev
 
-### **MeuPolitico.Digital:**
-- **Produção:** (a fazer primeiro deploy)
-- **Staging:** (a configurar)
-- **GitHub:** (a configurar)
+### **Referência (Projeto Piloto):**
+- **Magno V8.4.1:** https://magnolavigne-v8.pages.dev
+- **Preview Piloto:** https://f9c4a041.magnolavigne-v8.pages.dev
+
+### **Documentação:**
+- `README.md` - Este arquivo (visão geral)
+- `README_COMERCIAL.md` - Informações comerciais e preços
+- `APRESENTACAO_COMERCIAL.md` - Pitch e modelo de negócio
+- `CREDENCIAIS_E_ACESSO.md` - Credenciais, URLs, APIs
+- `PROPOSTA_HIERARQUIA_ORGANIZACIONAL.md` - Arquitetura hierárquica
+
+### **GitHub:**
+- (a configurar após push final)
 
 ---
 
@@ -323,6 +401,7 @@ Este é um projeto proprietário. Para contribuir:
 ---
 
 **Desenvolvido com ❤️ para a democracia brasileira**  
-**Versão:** 1.0.0  
-**Data:** 17/03/2026  
-**Status:** 🟡 Redundância Ativa | Preparando Multi-Tenant
+**Versão:** V2.0.1  
+**Data:** 10/04/2026  
+**Status:** ✅ Produção | Pronta para Comercialização  
+**Deploy:** https://meupolitico-digital.pages.dev
