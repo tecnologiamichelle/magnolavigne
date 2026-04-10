@@ -1,0 +1,287 @@
+/* ============================================
+   MeuPolitico.Digital - Tema Customizado
+   ============================================ */
+
+:root {
+  --primary-blue: #3B82F6;
+  --primary-indigo: #6366F1;
+  --primary-purple: #8B5CF6;
+  --success-green: #10B981;
+  --warning-orange: #F97316;
+  --info-cyan: #06B6D4;
+  --danger-red: #EF4444;
+  --neutral-gray: #6B7280;
+}
+
+/* Tipografia */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1F2937;
+}
+
+/* Gradientes de marca */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-indigo) 50%, var(--primary-purple) 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, var(--warning-orange) 0%, #EA580C 100%);
+}
+
+/* Componentes de cards */
+.stat-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.25);
+}
+
+/* Botões */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+/* Animações */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Sidebar */
+.sidebar-item {
+  transition: all 0.2s;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.sidebar-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid white;
+}
+
+/* Tabelas */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead th {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 16px;
+}
+
+tbody tr {
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* Formulários */
+input, select, textarea {
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: all 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-top-color: var(--primary-blue);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success-green);
+}
+
+.badge-warning {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--warning-orange);
+}
+
+.badge-info {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--info-cyan);
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger-red);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+  
+  .stat-card {
+    margin-bottom: 16px;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+  
+  thead th, tbody td {
+    padding: 8px;
+  }
+}
+
+/* Scroll customizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-indigo);
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, var(--success-green), #059669);
+  color: white;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, var(--danger-red), #DC2626);
+  color: white;
+}
+
+/* Modais */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

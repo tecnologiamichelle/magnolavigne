@@ -29,15 +29,16 @@ app.get('/', (c) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Magno Lavigne - Sistema de Gestão de Lideranças V8.0</title>
+        <title>MeuPolitico.Digital - Plataforma Profissional de Gestão de Campanhas</title>
+        <meta name="description" content="Plataforma inteligente de gestão de campanhas políticas com hierarquia organizacional, analytics e muito mais.">
+        <meta name="keywords" content="campanha política, gestão eleitoral, lideranças, coordenadores, eleitores, saas">
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-        <link href="/static/magno-theme.css" rel="stylesheet">
         <style>
           body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-          .gradient-bg { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); }
+          .gradient-bg { background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%); }
           .card { transition: transform 0.3s, box-shadow 0.3s; }
-          .card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 32px rgba(22, 163, 74, 0.2); }
+          .card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 32px rgba(59, 130, 246, 0.2); }
           .sidebar { height: 100vh; position: sticky; top: 0; }
           @media (max-width: 768px) {
             .sidebar { position: relative; height: auto; }

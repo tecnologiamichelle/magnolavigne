@@ -3371,9 +3371,9 @@ function renderConfiguracoesModule() {
         <div class="space-y-3">
           <div class="flex justify-between py-2 border-b border-gray-200">
             <span class="text-gray-600">Versão do Sistema</span>
-            <span class="font-semibold text-green-700 flex items-center gap-2">
-              <i class="fas fa-leaf text-sm"></i>
-              V8.3.6 - Magno Lavigne
+            <span class="font-semibold text-blue-700 flex items-center gap-2">
+              <i class="fas fa-code-branch text-sm"></i>
+              V2.0.0 - MeuPolitico.Digital
             </span>
           </div>
           
