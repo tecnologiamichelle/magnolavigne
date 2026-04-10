@@ -62,9 +62,9 @@ function renderLogin() {
   return `
     <div class="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
       <!-- Background animado com gradiente -->
-      <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
         <div class="absolute inset-0 opacity-30">
-          <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+          <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
           <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
           <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
@@ -76,16 +76,16 @@ function renderLogin() {
         <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
           <!-- Header -->
           <div class="text-center mb-8 animate-fadeIn">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl mb-4 shadow-lg transform hover:rotate-6 transition-transform duration-300">
-              <i class="fas fa-users text-4xl text-white"></i>
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg transform hover:rotate-6 transition-transform duration-300">
+              <i class="fas fa-chart-network text-4xl text-white"></i>
             </div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-              Bem-vindo
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+              MeuPolitico.Digital
             </h1>
-            <p class="text-gray-600 font-medium">Sistema de Gestão de Lideranças</p>
-            <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-purple-50 rounded-full">
-              <i class="fas fa-globe text-green-600 text-sm"></i>
-              <p class="text-sm text-green-700 font-semibold">magnolavigne.com.br</p>
+            <p class="text-gray-600 font-medium">Plataforma Inteligente de Gestão de Campanha</p>
+            <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 rounded-full">
+              <i class="fas fa-shield-check text-blue-600 text-sm"></i>
+              <p class="text-sm text-blue-700 font-semibold">Sistema Seguro e Profissional</p>
             </div>
           </div>
           
@@ -115,7 +115,7 @@ function renderLogin() {
                   type="email" 
                   id="email" 
                   required
-                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all outline-none"
+                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
                   placeholder="seu@email.com"
                 />
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -138,7 +138,7 @@ function renderLogin() {
                   type="password" 
                   id="senha" 
                   required
-                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all outline-none"
+                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
                   placeholder="••••••••"
                 />
                 <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors">
@@ -149,7 +149,7 @@ function renderLogin() {
             
             <button 
               type="submit"
-              class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 rounded-xl font-bold hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 animate-fadeIn animation-delay-600"
+              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 animate-fadeIn animation-delay-600"
             >
               <i class="fas fa-sign-in-alt"></i>
               <span>Entrar no Sistema</span>
@@ -169,7 +169,7 @@ function renderLogin() {
           <!-- Botão Criar Conta -->
           <button 
             onclick="showRegisterForm(); return false;"
-            class="w-full bg-white border-2 border-purple-200 text-green-700 py-4 rounded-xl font-bold hover:bg-purple-50 hover:border-purple-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center justify-center gap-2"
+            class="w-full bg-white border-2 border-blue-200 text-blue-700 py-4 rounded-xl font-bold hover:bg-blue-50 hover:border-blue-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             <i class="fas fa-user-plus"></i>
             <span>Criar Nova Conta</span>
@@ -187,7 +187,14 @@ function renderLogin() {
         <!-- Créditos -->
         <div class="text-center mt-6 animate-fadeIn animation-delay-800">
           <p class="text-white/80 text-sm">
-            © 2026 Sistema de Gestão de Lideranças
+            <div class="flex items-center justify-between text-xs">
+              <span>© 2026 MeuPolitico.Digital</span>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-shield-check text-blue-400"></i>
+                <span class="text-blue-300">Plataforma Profissional</span>
+              </div>
+            </div>
+            <p class="text-xs text-blue-300 mt-1">Tecnologia para campanhas vencedoras</p>
           </p>
         </div>
       </div>
@@ -253,11 +260,15 @@ function renderDashboard() {
   return `
     <div class="flex flex-col md:flex-row min-h-screen">
       <!-- Sidebar - Tema Verde PV + REDE Sustentabilidade -->
-      <div class="sidebar bg-gradient-to-b from-green-700 to-green-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
+      <div class="sidebar bg-gradient-to-b from-blue-700 to-indigo-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
         <div class="mb-8">
           <h2 class="text-2xl font-bold flex items-center">
-            <i class="fas fa-leaf text-yellow-400 mr-3 text-3xl"></i>
-            <span>Magno Lavigne</span>
+            <i class="fas fa-chart-network text-blue-300 mr-3 text-3xl"></i>
+            <div>
+              <span class="text-2xl font-bold">MeuPolitico</span>
+              <span class="text-xs block text-blue-300 -mt-1">.Digital</span>
+            </div>
+            <span>${state.candidato.nome || 'Usuário'}</span>
           </h2>
           <p class="text-green-200 text-sm mt-1 flex items-center gap-2">
             <i class="fas fa-seedling text-xs"></i>
@@ -294,7 +305,7 @@ function renderDashboard() {
         <div class="mt-auto pt-4">
           <button 
             onclick="logout()"
-            class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
           >
             <i class="fas fa-sign-out-alt mr-2"></i>Sair
           </button>
@@ -382,10 +393,10 @@ function renderDashboardModule() {
       
       <!-- Cards de Estatísticas - Tema Verde PV -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        ${renderStatCard('Lideranças', stats.totalLiderancas, 'fa-tree', 'from-green-500 to-green-600')}
-        ${renderStatCard('Coordenadores', stats.totalCoordenadores, 'fa-leaf', 'from-yellow-500 to-yellow-600')}
-        ${renderStatCard('Profissionais', stats.totalProfissionais, 'fa-hand-holding-heart', 'from-green-600 to-green-700')}
-        ${renderStatCard('Solicitações', stats.solicitacoesPendentes, 'fa-clipboard-list', 'from-blue-500 to-blue-600')}
+        ${renderStatCard('Lideranças', stats.totalLiderancas, 'fa-tree', 'from-blue-500 to-blue-600')}
+        ${renderStatCard('Coordenadores', stats.totalCoordenadores, 'fa-project-diagram', 'from-indigo-500 to-indigo-600')}
+        ${renderStatCard('Profissionais', stats.totalProfissionais, 'fa-briefcase', 'from-purple-500 to-purple-600')}
+        ${renderStatCard('Solicitações', stats.solicitacoesPendentes, 'fa-clipboard-list', 'from-cyan-500 to-cyan-600')}
       </div>
       
       <!-- Próximos Eventos -->
@@ -7815,13 +7826,17 @@ function renderRegisterForm() {
               <i class="fas fa-arrow-left text-xl"></i>
             </button>
             
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl mb-4 shadow-lg">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg">
               <i class="fas fa-user-plus text-4xl text-white"></i>
             </div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              Criar Nova Conta
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+              Comece Agora
             </h1>
-            <p class="text-gray-600 font-medium">Preencha os dados para solicitar acesso</p>
+            <p class="text-gray-600 font-medium">Junte-se à plataforma profissional de gestão de campanhas</p>
+            <div class="mt-3 flex items-center justify-center gap-2 text-sm text-gray-500">
+              <i class="fas fa-shield-check text-blue-600"></i>
+              <span>Sua solicitação será analisada em até 24h</span>
+            </div>
           </div>
           
           <!-- Mensagens -->

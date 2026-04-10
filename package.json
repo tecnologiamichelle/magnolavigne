@@ -1,7 +1,11 @@
 {
   "name": "meupolitico-digital",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "Plataforma Profissional de Gestão de Campanhas Políticas - Sistema SaaS Multi-tenant",
   "type": "module",
+  "author": "MeuPolitico.Digital",
+  "license": "Commercial",
+  "keywords": ["campanha", "politica", "gestao", "liderancas", "eleitores", "hierarquia", "saas"],
   "scripts": {
     "dev": "vite",
     "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
