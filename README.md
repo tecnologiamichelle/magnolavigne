@@ -1,7 +1,7 @@
 # 🌐 MeuPolitico.Digital - Plataforma de Gestão Política
 
 **Plataforma:** SaaS Multi-Tenant para Gestão de Campanhas Políticas  
-**Versão:** V2.0.1 (Baseado em Magno Lavigne V8.4.1)  
+**Versão:** V2.1.2 (Baseado em Magno Lavigne V8.4.1)  
 **Status:** ✅ PRODUÇÃO - Pronta para Comercialização
 
 ---
@@ -37,6 +37,9 @@
 10. **Relatórios Avançados** - 8 tipos de análises + Relatório de Hierarquia
 11. **Multi-Usuário** - Roles: Super Admin, Admin, Deputado, Coordenador
 12. **Aprovações** - Sistema de aprovação de solicitações de cadastro
+13. **Projetos** 🆕 - Gestão de atividades e projetos em andamento (Interface criada)
+14. **Gabinete** 🆕 - Gestão de equipe, acessos e prestadores (Interface criada)
+15. **Finanças** 🆕 - Emendas, gastos e prestação de contas (Interface criada)
 
 ### **Novidades Multi-Tenant (Futuro)**
 
