@@ -16,6 +16,19 @@ const app = new Hono<{ Bindings: Bindings }>()
 // CORS para API
 app.use('/api/*', cors())
 
+// NOTA DE SEGURANÇA:
+// Os endpoints da API não têm autenticação de token/JWT implementada ainda.
+// A segurança atual depende de:
+// 1. Frontend validar login antes de fazer requisições
+// 2. Validação de candidato_id nos dados enviados
+// 3. CORS configurado para aceitar apenas origens confiáveis (em produção)
+// 
+// TODO (Futuro - Enterprise):
+// - Implementar JWT tokens após login
+// - Middleware de autenticação para rotas protegidas
+// - Rate limiting para prevenir abuse
+// - Validação de permissões por tipo de usuário (admin, coordenador, etc)
+
 // Servir arquivos estáticos
 app.use('/static/*', serveStatic({ root: './public' }))
 
