@@ -305,6 +305,10 @@ function renderDashboard() {
           ${renderMenuItem('bi-investimento', 'fa-chart-pie', 'BI Investimento')}
           <div class="border-t border-green-600 my-2"></div>
           ${renderMenuItem('relatorios', 'fa-chart-line', 'Relatórios', 0, true)}
+          <div class="border-t border-blue-600 my-2"></div>
+          ${renderMenuItem('projetos', 'fa-tasks', 'Projetos')}
+          ${renderMenuItem('gabinete', 'fa-building', 'Gabinete')}
+          ${renderMenuItem('financas', 'fa-coins', 'Finanças')}
           ${state.candidato.tipo === 'admin' ? renderMenuItem('usuarios', 'fa-users-cog', 'Usuários') : ''}
           ${state.candidato.tipo === 'admin' ? `<div class="border-t border-green-600 my-2"></div>` : ''}
           ${state.candidato.tipo === 'admin' ? renderMenuItem('configuracoes', 'fa-recycle', 'Configurações') : ''}
@@ -374,6 +378,9 @@ function renderModuleContent() {
     case 'usuarios': return renderUsuariosModule();
     case 'relatorios': return renderRelatoriosModule();
     case 'configuracoes': return renderConfiguracoesModule();
+    case 'projetos': return renderProjetosModule();
+    case 'gabinete': return renderGabineteModule();
+    case 'financas': return renderFinancasModule();
     default: return '<p>Módulo não encontrado</p>';
   }
 }
@@ -8272,6 +8279,653 @@ function showRegisterSuccess(message) {
   const successMessage = document.getElementById('register-success-message');
   successMessage.textContent = message;
   successDiv.classList.remove('hidden');
+}
+
+// ============= MÓDULO: PROJETOS =============
+
+function renderProjetosModule() {
+  return `
+    <div>
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+          <i class="fas fa-tasks text-purple-600"></i>
+          Gestão de Projetos
+        </h1>
+        <p class="text-gray-600">Gerencie projetos, atividades e acompanhe o progresso</p>
+      </div>
+      
+      <!-- Cards de Estatísticas -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-purple-100 text-sm font-medium">Projetos Ativos</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-project-diagram text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-blue-100 text-sm font-medium">Atividades Pendentes</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-tasks text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-green-100 text-sm font-medium">Concluídas</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-check-circle text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-yellow-100 text-sm font-medium">Prazo Próximo</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-exclamation-triangle text-4xl opacity-20"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card Em Breve -->
+      <div class="bg-gradient-to-r from-purple-50 to-indigo-50 border-2 border-purple-200 rounded-xl p-12 text-center">
+        <div class="max-w-2xl mx-auto">
+          <div class="inline-flex items-center justify-center w-24 h-24 bg-purple-100 rounded-full mb-6">
+            <i class="fas fa-rocket text-5xl text-purple-600"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Módulo de Projetos
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Funcionalidades completas de gestão de projetos em desenvolvimento
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mb-8">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-purple-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Gestão de Projetos</h4>
+                <p class="text-sm text-gray-600">Crie e acompanhe projetos com timeline</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-purple-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Atividades e Tarefas</h4>
+                <p class="text-sm text-gray-600">Organize tarefas por prioridade e status</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-purple-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Responsáveis</h4>
+                <p class="text-sm text-gray-600">Atribua responsáveis para cada atividade</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-purple-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Acompanhamento</h4>
+                <p class="text-sm text-gray-600">Gráficos de progresso e relatórios</p>
+              </div>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold">
+            <i class="fas fa-clock"></i>
+            <span>Em Breve</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: GABINETE =============
+
+function renderGabineteModule() {
+  return `
+    <div>
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+          <i class="fas fa-building text-indigo-600"></i>
+          Gestão do Gabinete
+        </h1>
+        <p class="text-gray-600">Gerencie equipe, assessores, prestadores de serviços e acessos</p>
+      </div>
+      
+      <!-- Cards de Estatísticas -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-indigo-100 text-sm font-medium">Assessores</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-user-tie text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-blue-100 text-sm font-medium">Prestadores</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-handshake text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-purple-100 text-sm font-medium">Estagiários</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-graduation-cap text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-green-100 text-sm font-medium">Acessos Ativos</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-key text-4xl opacity-20"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card Em Breve -->
+      <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-12 text-center">
+        <div class="max-w-2xl mx-auto">
+          <div class="inline-flex items-center justify-center w-24 h-24 bg-indigo-100 rounded-full mb-6">
+            <i class="fas fa-users-cog text-5xl text-indigo-600"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Módulo de Gabinete
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Sistema completo de gestão de equipe e prestadores de serviços
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mb-8">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-indigo-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Gestão de Equipe</h4>
+                <p class="text-sm text-gray-600">Assessores, auxiliares e estagiários</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-indigo-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Controle de Acessos</h4>
+                <p class="text-sm text-gray-600">Permissões e níveis de acesso</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-indigo-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Prestadores de Serviços</h4>
+                <p class="text-sm text-gray-600">Cadastro e gestão de contratos</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-indigo-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Documentação</h4>
+                <p class="text-sm text-gray-600">Contratos, documentos e comprovantes</p>
+              </div>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold">
+            <i class="fas fa-clock"></i>
+            <span>Em Breve</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: FINANÇAS =============
+
+function renderFinancasModule() {
+  return `
+    <div>
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+          <i class="fas fa-coins text-green-600"></i>
+          Gestão Financeira
+        </h1>
+        <p class="text-gray-600">Emendas, gastos, relatórios e prestação de contas</p>
+      </div>
+      
+      <!-- Cards de Estatísticas -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-green-100 text-sm font-medium">Orçamento Total</p>
+              <p class="text-3xl font-bold mt-1">R$ 0</p>
+            </div>
+            <i class="fas fa-wallet text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-blue-100 text-sm font-medium">Gastos do Mês</p>
+              <p class="text-3xl font-bold mt-1">R$ 0</p>
+            </div>
+            <i class="fas fa-chart-line text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-yellow-100 text-sm font-medium">Emendas Ativas</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-file-invoice-dollar text-4xl opacity-20"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-purple-100 text-sm font-medium">Prestações Pendentes</p>
+              <p class="text-3xl font-bold mt-1">0</p>
+            </div>
+            <i class="fas fa-clipboard-check text-4xl opacity-20"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card Em Breve -->
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-12 text-center">
+        <div class="max-w-2xl mx-auto">
+          <div class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6">
+            <i class="fas fa-chart-pie text-5xl text-green-600"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Módulo de Finanças
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Controle financeiro completo com transparência e prestação de contas
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mb-8">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Gestão de Emendas</h4>
+                <p class="text-sm text-gray-600">Acompanhamento de emendas parlamentares</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Controle de Gastos</h4>
+                <p class="text-sm text-gray-600">Categorização e relatórios de despesas</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Prestação de Contas</h4>
+                <p class="text-sm text-gray-600">Relatórios automáticos para TCU/TCE</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <div>
+                <h4 class="font-semibold text-gray-800">Dashboards Financeiros</h4>
+                <p class="text-sm text-gray-600">Visualização e análise de dados</p>
+              </div>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-semibold">
+            <i class="fas fa-clock"></i>
+            <span>Em Breve</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: PROJETOS =============
+
+function renderProjetosModule() {
+  return `
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold flex items-center">
+              <i class="fas fa-tasks mr-3"></i>
+              Gestão de Projetos
+            </h2>
+            <p class="text-blue-100 mt-2">Gerencie atividades e projetos em andamento</p>
+          </div>
+          <button 
+            onclick="openModalProjeto()"
+            class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
+          >
+            <i class="fas fa-plus mr-2"></i>Novo Projeto
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards de Resumo -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Em Planejamento</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-clipboard-list text-3xl text-blue-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-yellow-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Em Andamento</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-spinner text-3xl text-yellow-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Concluídos</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-check-circle text-3xl text-green-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-purple-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Total de Projetos</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-chart-pie text-3xl text-purple-500"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de Projetos -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+          <h3 class="text-lg font-bold text-gray-800 flex items-center">
+            <i class="fas fa-list mr-2 text-blue-600"></i>
+            Projetos em Andamento
+          </h3>
+        </div>
+        <div class="p-6">
+          <div class="text-center py-12 text-gray-500">
+            <i class="fas fa-folder-open text-6xl mb-4 text-gray-300"></i>
+            <p class="text-lg font-semibold">Em breve</p>
+            <p class="text-sm mt-2">Módulo de gestão de projetos em desenvolvimento</p>
+            <p class="text-xs mt-4 text-gray-400">Funcionalidades planejadas:</p>
+            <ul class="text-xs mt-2 text-gray-400 space-y-1">
+              <li>✓ Criação e acompanhamento de projetos</li>
+              <li>✓ Gestão de atividades e tarefas</li>
+              <li>✓ Cronograma e prazos</li>
+              <li>✓ Responsáveis e equipes</li>
+              <li>✓ Orçamento e custos</li>
+              <li>✓ Relatórios de progresso</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: GABINETE =============
+
+function renderGabineteModule() {
+  return `
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold flex items-center">
+              <i class="fas fa-building mr-3"></i>
+              Gestão de Gabinete
+            </h2>
+            <p class="text-indigo-100 mt-2">Gerencie equipe, acessos e prestadores de serviços</p>
+          </div>
+          <button 
+            onclick="openModalGabinete()"
+            class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-bold hover:bg-indigo-50 transition-all transform hover:scale-105 shadow-lg"
+          >
+            <i class="fas fa-plus mr-2"></i>Adicionar Membro
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards de Resumo -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-indigo-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Chefe de Gabinete</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-user-tie text-3xl text-indigo-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Assessores</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-user-friends text-3xl text-blue-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-purple-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Assistentes</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-user-clock text-3xl text-purple-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-pink-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Auxiliares</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-users text-3xl text-pink-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-orange-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Prestadores</p>
+              <p class="text-2xl font-bold text-gray-800">0</p>
+            </div>
+            <i class="fas fa-handshake text-3xl text-orange-500"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de Membros -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+          <h3 class="text-lg font-bold text-gray-800 flex items-center">
+            <i class="fas fa-users mr-2 text-indigo-600"></i>
+            Equipe do Gabinete
+          </h3>
+        </div>
+        <div class="p-6">
+          <div class="text-center py-12 text-gray-500">
+            <i class="fas fa-user-friends text-6xl mb-4 text-gray-300"></i>
+            <p class="text-lg font-semibold">Em breve</p>
+            <p class="text-sm mt-2">Módulo de gestão de gabinete em desenvolvimento</p>
+            <p class="text-xs mt-4 text-gray-400">Funcionalidades planejadas:</p>
+            <ul class="text-xs mt-2 text-gray-400 space-y-1">
+              <li>✓ Gestão de hierarquia do gabinete</li>
+              <li>✓ Controle de acessos e permissões</li>
+              <li>✓ Cadastro de prestadores de serviços</li>
+              <li>✓ Gestão de contratos e pagamentos</li>
+              <li>✓ Histórico de atividades</li>
+              <li>✓ Relatórios de produtividade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ============= MÓDULO: FINANÇAS =============
+
+function renderFinancasModule() {
+  return `
+    <div class="space-y-6">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-green-600 to-teal-600 rounded-xl shadow-lg p-6 text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold flex items-center">
+              <i class="fas fa-coins mr-3"></i>
+              Gestão Financeira
+            </h2>
+            <p class="text-green-100 mt-2">Emendas, gastos e prestação de contas</p>
+          </div>
+          <button 
+            onclick="openModalFinanca()"
+            class="bg-white text-green-600 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
+          >
+            <i class="fas fa-plus mr-2"></i>Nova Transação
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards de Resumo Financeiro -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Orçamento Total</p>
+              <p class="text-2xl font-bold text-gray-800">R$ 0,00</p>
+            </div>
+            <i class="fas fa-wallet text-3xl text-green-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Emendas</p>
+              <p class="text-2xl font-bold text-gray-800">R$ 0,00</p>
+            </div>
+            <i class="fas fa-file-invoice-dollar text-3xl text-blue-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-red-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Gastos Totais</p>
+              <p class="text-2xl font-bold text-gray-800">R$ 0,00</p>
+            </div>
+            <i class="fas fa-arrow-down text-3xl text-red-500"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-purple-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Saldo Disponível</p>
+              <p class="text-2xl font-bold text-gray-800">R$ 0,00</p>
+            </div>
+            <i class="fas fa-piggy-bank text-3xl text-purple-500"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs de Navegação -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="flex border-b border-gray-200">
+          <button class="flex-1 px-6 py-4 text-center font-semibold bg-green-50 text-green-600 border-b-2 border-green-600">
+            <i class="fas fa-chart-line mr-2"></i>
+            Visão Geral
+          </button>
+          <button class="flex-1 px-6 py-4 text-center font-semibold text-gray-600 hover:bg-gray-50">
+            <i class="fas fa-file-invoice mr-2"></i>
+            Emendas
+          </button>
+          <button class="flex-1 px-6 py-4 text-center font-semibold text-gray-600 hover:bg-gray-50">
+            <i class="fas fa-exchange-alt mr-2"></i>
+            Movimentações
+          </button>
+          <button class="flex-1 px-6 py-4 text-center font-semibold text-gray-600 hover:bg-gray-50">
+            <i class="fas fa-file-alt mr-2"></i>
+            Prestação de Contas
+          </button>
+        </div>
+        
+        <div class="p-6">
+          <div class="text-center py-12 text-gray-500">
+            <i class="fas fa-chart-bar text-6xl mb-4 text-gray-300"></i>
+            <p class="text-lg font-semibold">Em breve</p>
+            <p class="text-sm mt-2">Módulo de gestão financeira em desenvolvimento</p>
+            <p class="text-xs mt-4 text-gray-400">Funcionalidades planejadas:</p>
+            <ul class="text-xs mt-2 text-gray-400 space-y-1">
+              <li>✓ Controle de emendas parlamentares</li>
+              <li>✓ Gestão de gastos internos e externos</li>
+              <li>✓ Relatórios financeiros detalhados</li>
+              <li>✓ Prestação de contas automatizada</li>
+              <li>✓ Dashboard de indicadores financeiros</li>
+              <li>✓ Exportação para sistemas oficiais</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfico de Gastos (Placeholder) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-chart-pie mr-2 text-green-600"></i>
+            Distribuição de Gastos
+          </h3>
+          <div class="h-64 flex items-center justify-center text-gray-400">
+            <i class="fas fa-chart-pie text-6xl"></i>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-chart-line mr-2 text-blue-600"></i>
+            Evolução Mensal
+          </h3>
+          <div class="h-64 flex items-center justify-center text-gray-400">
+            <i class="fas fa-chart-line text-6xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 // ============= CADASTRO PÚBLICO DE ELEITOR =============
