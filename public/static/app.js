@@ -1466,7 +1466,7 @@ function renderDadosEleitoraisModule() {
           <i class="fas fa-chart-bar mr-3"></i>Dados Eleitorais
         </h1>
         <button 
-          onclick="abrirModal('eleitor')"
+          onclick="abrirModal('dados-eleitorais')"
           class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform transition-all"
         >
           <i class="fas fa-plus mr-2"></i>Adicionar Dados
@@ -4549,8 +4549,8 @@ function renderModal() {
     case 'agenda':
       conteudo = renderModalAgenda();
       break;
-    case 'eleitor':
-      conteudo = renderModalEleitor();
+    case 'dados-eleitorais':
+      conteudo = renderModalDadosEleitorais();
       break;
   }
   
@@ -5211,7 +5211,7 @@ function renderModalAgenda() {
   `;
 }
 
-function renderModalEleitor() {
+function renderModalDadosEleitorais() {
   const titulo = state.modalEditId ? 'Editar Dados Eleitorais' : 'Novos Dados Eleitorais';
   const botaoTexto = state.modalEditId ? 'Salvar Alterações' : 'Cadastrar Dados';
   
