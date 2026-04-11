@@ -7054,7 +7054,7 @@ function criarModalEleitor(data = null) {
                   id="modal-eleitor-status-apoio"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
-                  <option value="simpatizante" ${(data.status_apoio || 'simpatizante') === 'simpatizante' ? 'selected' : ''}>👋 Simpatizante</option>
+                  <option value="simpatizante" ${(d.status_apoio || 'simpatizante') === 'simpatizante' ? 'selected' : ''}>👋 Simpatizante</option>
                   <option value="apoiador" ${d.status_apoio === 'apoiador' ? 'selected' : ''}>🤝 Apoiador</option>
                   <option value="militante" ${d.status_apoio === 'militante' ? 'selected' : ''}>⭐ Militante</option>
                 </select>
@@ -7066,7 +7066,7 @@ function criarModalEleitor(data = null) {
                   id="modal-eleitor-nivel-engajamento"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
-                  <option value="baixo" ${(data.nivel_engajamento || 'baixo') === 'baixo' ? 'selected' : ''}>Baixo</option>
+                  <option value="baixo" ${(d.nivel_engajamento || 'baixo') === 'baixo' ? 'selected' : ''}>Baixo</option>
                   <option value="medio" ${d.nivel_engajamento === 'medio' ? 'selected' : ''}>Médio</option>
                   <option value="alto" ${d.nivel_engajamento === 'alto' ? 'selected' : ''}>Alto</option>
                 </select>
@@ -7140,40 +7140,6 @@ function criarModalEleitor(data = null) {
       </div>
     </div>
   `;
-  
-  // Inserir modal no DOM
-  let modalContainer = document.getElementById('modal-container');
-  if (!modalContainer) {
-    modalContainer = document.createElement('div');
-    modalContainer.id = 'modal-container';
-    document.body.appendChild(modalContainer);
-  }
-  modalContainer.innerHTML = modalHtml;
-  
-  // Aplicar máscaras após renderizar
-  setTimeout(() => {
-    const cpfInput = document.getElementById('modal-eleitor-cpf');
-    const telefoneInput = document.getElementById('modal-eleitor-telefone');
-    
-    if (cpfInput) {
-      cpfInput.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-        e.target.value = value;
-      });
-    }
-    
-    if (telefoneInput) {
-      telefoneInput.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-        value = value.replace(/(\d)(\d{4})$/, '$1-$2');
-        e.target.value = value;
-      });
-    }
-  }, 100);
 }
 
 async function salvarEleitor(event) {
