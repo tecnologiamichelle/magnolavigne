@@ -4850,6 +4850,9 @@ function renderModal() {
     case 'dados-eleitorais':
       conteudo = renderModalDadosEleitorais();
       break;
+    case 'eleitor':
+      conteudo = renderModalEleitor();
+      break;
   }
   
   modalContainer.innerHTML = `
@@ -6758,19 +6761,31 @@ async function deleteCoordenador(id) {
 // ============= FUNÇÕES: ELEITORES =============
 
 function abrirModalEleitor(eleitorId = null) {
-  state.modalAtivo = 'eleitor';
+  // NÃO usar o sistema genérico de modal
+  // Fechar qualquer modal existente primeiro
+  const existingModal = document.getElementById('modal-container');
+  if (existingModal) existingModal.remove();
+  
+  // Configurar state
   state.modalEditId = eleitorId;
   
   if (eleitorId) {
     // Buscar dados do eleitor para edição
     const eleitor = state.data.eleitores.find(e => e.id == eleitorId);
+    console.log('🔍 Abrindo modal para edição do eleitor ID:', eleitorId);
+    console.log('📊 Dados encontrados:', eleitor);
     if (eleitor) {
       state.modalData = {...eleitor};
+      console.log('✅ state.modalData atualizado:', state.modalData);
+    } else {
+      console.error('❌ Eleitor não encontrado no state!');
     }
   } else {
+    console.log('➕ Abrindo modal para novo eleitor');
     state.modalData = {};
   }
   
+  // Renderizar modal diretamente (não usar renderModal genérico)
   renderModalEleitor();
 }
 
@@ -6778,6 +6793,22 @@ function renderModalEleitor() {
   const isEdit = !!state.modalEditId;
   const data = state.modalData || {};
   const liderancas = state.data.liderancas || [];
+  
+  console.log('🎨 Renderizando modal de eleitor');
+  console.log('📝 Modo edição?', isEdit);
+  console.log('📊 Dados disponíveis:', data);
+  console.log('📋 Campos que deveriam aparecer:',{
+    nome: data.nome,
+    cpf: data.cpf,
+    telefone: data.telefone,
+    email: data.email,
+    municipio: data.municipio,
+    bairro: data.bairro,
+    zona: data.zona,
+    secao: data.secao,
+    titulo_eleitor: data.titulo_eleitor,
+    local_votacao: data.local_votacao
+  });
   
   const modalHtml = `
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="if(event.target === this) fecharModal()">
