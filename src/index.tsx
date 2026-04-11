@@ -1833,6 +1833,160 @@ app.get('/api/relatorios/hierarquia', async (c) => {
 })
 
 // ============================================
+// MÓDULO: PROJETOS
+// ============================================
+
+// GET - Listar todos os projetos
+app.get('/api/projetos/:candidatoId', async (c) => {
+  try {
+    const { candidatoId } = c.req.param()
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM projetos WHERE candidato_id = ? ORDER BY created_at DESC
+    `).bind(candidatoId).all()
+    return c.json(result.results || [])
+  } catch (error) {
+    return c.json({ error: 'Erro ao carregar projetos' }, 500)
+  }
+})
+
+// POST - Criar novo projeto
+app.post('/api/projetos', async (c) => {
+  try {
+    const data = await c.req.json()
+    const result = await c.env.DB.prepare(`
+      INSERT INTO projetos (candidato_id, nome, descricao, status, prioridade, data_inicio, data_fim, responsavel, orcamento, observacoes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(data.candidato_id, data.nome, data.descricao || '', data.status || 'planejamento', 
+           data.prioridade || 'media', data.data_inicio || null, data.data_fim || null, 
+           data.responsavel || '', data.orcamento || 0, data.observacoes || '').run()
+    return c.json({ success: true, id: result.meta.last_row_id })
+  } catch (error) {
+    return c.json({ error: 'Erro ao criar projeto' }, 500)
+  }
+})
+
+// ============================================
+// MÓDULO: GABINETE
+// ============================================
+
+// GET - Listar membros do gabinete
+app.get('/api/gabinete/:candidatoId', async (c) => {
+  try {
+    const { candidatoId } = c.req.param()
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM gabinete_membros WHERE candidato_id = ? ORDER BY 
+      CASE cargo
+        WHEN 'chefe' THEN 1
+        WHEN 'assessor' THEN 2
+        WHEN 'assistente' THEN 3
+        WHEN 'auxiliar' THEN 4
+        WHEN 'prestador' THEN 5
+      END, nome
+    `).bind(candidatoId).all()
+    return c.json(result.results || [])
+  } catch (error) {
+    return c.json({ error: 'Erro ao carregar membros' }, 500)
+  }
+})
+
+// POST - Adicionar membro ao gabinete
+app.post('/api/gabinete', async (c) => {
+  try {
+    const data = await c.req.json()
+    const result = await c.env.DB.prepare(`
+      INSERT INTO gabinete_membros (candidato_id, nome, cpf, cargo, area, telefone, email, data_admissao, salario, observacoes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(data.candidato_id, data.nome, data.cpf || null, data.cargo, data.area || '', 
+           data.telefone || '', data.email || '', data.data_admissao || null, 
+           data.salario || 0, data.observacoes || '').run()
+    return c.json({ success: true, id: result.meta.last_row_id })
+  } catch (error) {
+    return c.json({ error: 'Erro ao adicionar membro' }, 500)
+  }
+})
+
+// ============================================
+// MÓDULO: FINANÇAS
+// ============================================
+
+// GET - Listar emendas
+app.get('/api/financas/emendas/:candidatoId', async (c) => {
+  try {
+    const { candidatoId } = c.req.param()
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM financas_emendas WHERE candidato_id = ? ORDER BY data_apresentacao DESC
+    `).bind(candidatoId).all()
+    return c.json(result.results || [])
+  } catch (error) {
+    return c.json({ error: 'Erro ao carregar emendas' }, 500)
+  }
+})
+
+// POST - Criar emenda
+app.post('/api/financas/emendas', async (c) => {
+  try {
+    const data = await c.req.json()
+    const result = await c.env.DB.prepare(`
+      INSERT INTO financas_emendas (candidato_id, numero, descricao, valor, tipo, status, municipio, area, data_apresentacao, observacoes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(data.candidato_id, data.numero, data.descricao || '', data.valor || 0, 
+           data.tipo || 'individual', data.status || 'proposta', data.municipio || '', 
+           data.area || '', data.data_apresentacao || null, data.observacoes || '').run()
+    return c.json({ success: true, id: result.meta.last_row_id })
+  } catch (error) {
+    return c.json({ error: 'Erro ao criar emenda' }, 500)
+  }
+})
+
+// GET - Listar movimentações
+app.get('/api/financas/movimentacoes/:candidatoId', async (c) => {
+  try {
+    const { candidatoId } = c.req.param()
+    const result = await c.env.DB.prepare(`
+      SELECT * FROM financas_movimentacoes WHERE candidato_id = ? ORDER BY data DESC
+    `).bind(candidatoId).all()
+    return c.json(result.results || [])
+  } catch (error) {
+    return c.json({ error: 'Erro ao carregar movimentações' }, 500)
+  }
+})
+
+// POST - Criar movimentação
+app.post('/api/financas/movimentacoes', async (c) => {
+  try {
+    const data = await c.req.json()
+    const result = await c.env.DB.prepare(`
+      INSERT INTO financas_movimentacoes (candidato_id, tipo, categoria, descricao, valor, data, forma_pagamento, observacoes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(data.candidato_id, data.tipo, data.categoria, data.descricao, data.valor || 0, 
+           data.data, data.forma_pagamento || '', data.observacoes || '').run()
+    return c.json({ success: true, id: result.meta.last_row_id })
+  } catch (error) {
+    return c.json({ error: 'Erro ao criar movimentação' }, 500)
+  }
+})
+
+// GET - Dashboard financeiro
+app.get('/api/financas/dashboard/:candidatoId', async (c) => {
+  try {
+    const { candidatoId } = c.req.param()
+    
+    const resumo = await c.env.DB.prepare(`
+      SELECT 
+        (SELECT COALESCE(SUM(valor), 0) FROM financas_emendas WHERE candidato_id = ?) as total_emendas,
+        (SELECT COALESCE(SUM(valor), 0) FROM financas_movimentacoes WHERE candidato_id = ? AND tipo = 'receita') as total_receitas,
+        (SELECT COALESCE(SUM(valor), 0) FROM financas_movimentacoes WHERE candidato_id = ? AND tipo = 'despesa') as total_despesas,
+        (SELECT COUNT(*) FROM financas_emendas WHERE candidato_id = ?) as qtd_emendas,
+        (SELECT COUNT(*) FROM financas_movimentacoes WHERE candidato_id = ?) as qtd_movimentacoes
+    `).bind(candidatoId, candidatoId, candidatoId, candidatoId, candidatoId).first()
+    
+    return c.json(resumo || {})
+  } catch (error) {
+    return c.json({ error: 'Erro ao carregar dashboard' }, 500)
+  }
+})
+
+// ============================================
 // EXPORTAR APP
 // ============================================
 export default app
