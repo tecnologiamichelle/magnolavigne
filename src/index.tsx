@@ -932,6 +932,87 @@ app.delete('/api/usuarios/:id', async (c) => {
 // ROTAS PLACEHOLDER - RELATÓRIOS
 // ============================================
 
+// IMPORTANTE: Rotas específicas devem vir ANTES de rotas com parâmetros dinâmicos
+// Relatório de Hierarquia (ESPECÍFICO)
+app.get('/api/relatorios/hierarquia', async (c) => {
+  try {
+    const candidatoId = c.req.header('X-Candidato-Id') || '1'
+    console.log('📊 Carregando hierarquia para candidato:', candidatoId)
+    
+    // Resumo geral
+    const resumo = await c.env.DB.prepare(`
+      SELECT 
+        (SELECT COUNT(*) FROM coordenadores WHERE candidato_id = ?) as total_coordenadores,
+        (SELECT COUNT(*) FROM liderancas WHERE candidato_id = ?) as total_liderancas,
+        (SELECT COUNT(*) FROM eleitores WHERE candidato_id = ?) as total_eleitores,
+        (SELECT SUM(qtd_eleitores_captados) FROM coordenadores WHERE candidato_id = ?) as total_captacoes
+    `).bind(candidatoId, candidatoId, candidatoId, candidatoId).first()
+    
+    console.log('✅ Resumo:', resumo)
+    
+    // Performance por coordenador
+    const coordenadores = await c.env.DB.prepare(`
+      SELECT 
+        coord.id,
+        coord.nome,
+        coord.municipio,
+        coord.telefone,
+        coord.email,
+        coord.meta_liderancas,
+        coord.meta_eleitores,
+        coord.qtd_liderancas,
+        coord.qtd_eleitores_captados,
+        ROUND(CAST(coord.qtd_liderancas AS REAL) / CAST(NULLIF(coord.meta_liderancas, 0) AS REAL) * 100, 2) as percentual_meta_liderancas,
+        ROUND(CAST(coord.qtd_eleitores_captados AS REAL) / CAST(NULLIF(coord.meta_eleitores, 0) AS REAL) * 100, 2) as percentual_meta_eleitores,
+        (SELECT COUNT(*) FROM eleitores WHERE coordenador_id = coord.id AND confirmado = 1) as eleitores_confirmados
+      FROM coordenadores coord
+      WHERE coord.candidato_id = ?
+      ORDER BY coord.qtd_eleitores_captados DESC
+    `).bind(candidatoId).all()
+    
+    console.log('✅ Coordenadores:', coordenadores.results?.length || 0)
+    
+    // Top 10 lideranças
+    const topLiderancas = await c.env.DB.prepare(`
+      SELECT 
+        l.id,
+        l.nome,
+        l.municipio,
+        l.telefone,
+        l.qtd_eleitores,
+        l.qtd_eleitores_confirmados,
+        l.meta_eleitores,
+        coord.nome as coordenador_nome,
+        ROUND(CAST(l.qtd_eleitores AS REAL) / CAST(NULLIF(l.meta_eleitores, 0) AS REAL) * 100, 2) as percentual_meta
+      FROM liderancas l
+      LEFT JOIN coordenadores coord ON coord.id = l.coordenador_id
+      WHERE l.candidato_id = ?
+      ORDER BY l.qtd_eleitores DESC
+      LIMIT 10
+    `).bind(candidatoId).all()
+    
+    console.log('✅ Lideranças:', topLiderancas.results?.length || 0)
+    
+    const response = {
+      resumo: resumo || {},
+      coordenadores: coordenadores.results || [],
+      topLiderancas: topLiderancas.results || []
+    }
+    
+    console.log('📤 Enviando resposta hierarquia')
+    return c.json(response)
+  } catch (error) {
+    console.error('❌ Erro ao gerar relatório de hierarquia:', error)
+    return c.json({ 
+      resumo: {},
+      coordenadores: [],
+      topLiderancas: [],
+      error: 'Erro ao gerar relatório de hierarquia' 
+    }, 500)
+  }
+})
+
+// Relatórios genéricos (DINÂMICO - deve vir DEPOIS das rotas específicas)
 app.get('/api/relatorios/:candidatoId', async (c) => {
   return c.json([])
 })
@@ -1765,72 +1846,7 @@ app.get('/api/eleitores/coordenador/:coordenadorId', async (c) => {
   }
 })
 
-/**
- * GET /api/relatorios/hierarquia
- * Relatório completo da hierarquia organizacional
- */
-app.get('/api/relatorios/hierarquia', async (c) => {
-  try {
-    const candidatoId = c.req.header('X-Candidato-Id') || '1'
-    
-    // Resumo geral
-    const resumo = await c.env.DB.prepare(`
-      SELECT 
-        (SELECT COUNT(*) FROM coordenadores WHERE candidato_id = ?) as total_coordenadores,
-        (SELECT COUNT(*) FROM liderancas WHERE candidato_id = ?) as total_liderancas,
-        (SELECT COUNT(*) FROM eleitores WHERE candidato_id = ?) as total_eleitores,
-        (SELECT SUM(qtd_eleitores_captados) FROM coordenadores WHERE candidato_id = ?) as total_captacoes
-    `).bind(candidatoId, candidatoId, candidatoId, candidatoId).first()
-    
-    // Performance por coordenador
-    const coordenadores = await c.env.DB.prepare(`
-      SELECT 
-        coord.id,
-        coord.nome,
-        coord.municipio,
-        coord.telefone,
-        coord.email,
-        coord.meta_liderancas,
-        coord.meta_eleitores,
-        coord.qtd_liderancas,
-        coord.qtd_eleitores_captados,
-        ROUND(CAST(coord.qtd_liderancas AS REAL) / CAST(coord.meta_liderancas AS REAL) * 100, 2) as percentual_meta_liderancas,
-        ROUND(CAST(coord.qtd_eleitores_captados AS REAL) / CAST(coord.meta_eleitores AS REAL) * 100, 2) as percentual_meta_eleitores,
-        (SELECT COUNT(*) FROM eleitores WHERE coordenador_id = coord.id AND confirmado = 1) as eleitores_confirmados
-      FROM coordenadores coord
-      WHERE coord.candidato_id = ?
-      ORDER BY coord.qtd_eleitores_captados DESC
-    `).bind(candidatoId).all()
-    
-    // Top 10 lideranças
-    const topLiderancas = await c.env.DB.prepare(`
-      SELECT 
-        l.id,
-        l.nome,
-        l.municipio,
-        l.telefone,
-        l.qtd_eleitores,
-        l.qtd_eleitores_confirmados,
-        l.meta_eleitores,
-        coord.nome as coordenador_nome,
-        ROUND(CAST(l.qtd_eleitores AS REAL) / CAST(l.meta_eleitores AS REAL) * 100, 2) as percentual_meta
-      FROM liderancas l
-      LEFT JOIN coordenadores coord ON coord.id = l.coordenador_id
-      WHERE l.candidato_id = ?
-      ORDER BY l.qtd_eleitores DESC
-      LIMIT 10
-    `).bind(candidatoId).all()
-    
-    return c.json({
-      resumo: resumo || {},
-      coordenadores: coordenadores.results || [],
-      topLiderancas: topLiderancas.results || []
-    })
-  } catch (error) {
-    console.error('Erro ao gerar relatório de hierarquia:', error)
-    return c.json({ error: 'Erro ao gerar relatório de hierarquia' }, 500)
-  }
-})
+// MÓDULO: PROJETOS (endpoint duplicado /api/relatorios/hierarquia removido)
 
 // ============================================
 // MÓDULO: PROJETOS

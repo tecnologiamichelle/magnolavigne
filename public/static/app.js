@@ -472,7 +472,7 @@ function renderCoordList(data) {
   
   return `
     <div class="space-y-3">
-      ${data.map(item => `
+      ${d.map(item => `
         <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
           <span class="font-medium text-gray-700">${tipos[item.tipo] || item.tipo}</span>
           <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">${item.total}</span>
@@ -489,7 +489,7 @@ function renderProfList(data) {
   
   return `
     <div class="space-y-3">
-      ${data.map(item => `
+      ${d.map(item => `
         <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
           <span class="font-medium text-gray-700 capitalize">${item.profissao}</span>
           <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">${item.total}</span>
@@ -4530,7 +4530,7 @@ function renderRelatorioMunicipiosPrioritarios(data) {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
         <i class="fas fa-city text-4xl mb-3 opacity-80"></i>
-        <p class="text-3xl font-bold">${data.total_municipios || 0}</p>
+        <p class="text-3xl font-bold">${d.total_municipios || 0}</p>
         <p class="text-sm opacity-90">Municípios Analisados</p>
       </div>
       
@@ -4642,7 +4642,7 @@ function renderRelatorioPerfilVsCobertura(data) {
       
       <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
         <i class="fas fa-user-friends text-4xl mb-3 opacity-80"></i>
-        <p class="text-3xl font-bold">${data.total_liderancas || 0}</p>
+        <p class="text-3xl font-bold">${d.total_liderancas || 0}</p>
         <p class="text-sm opacity-90">Total de Lideranças</p>
       </div>
       
@@ -6761,56 +6761,101 @@ async function deleteCoordenador(id) {
 // ============= FUNÇÕES: ELEITORES =============
 
 function abrirModalEleitor(eleitorId = null) {
-  // NÃO usar o sistema genérico de modal
-  // Fechar qualquer modal existente primeiro
+  console.log('🔵 abrirModalEleitor chamada - ID:', eleitorId);
+  console.log('🔵 Total de eleitores no state:', state.data.eleitores?.length);
+  
+  // Fechar qualquer modal existente
   const existingModal = document.getElementById('modal-container');
-  if (existingModal) existingModal.remove();
-  
-  // Configurar state
-  state.modalEditId = eleitorId;
-  
-  if (eleitorId) {
-    // Buscar dados do eleitor para edição
-    const eleitor = state.data.eleitores.find(e => e.id == eleitorId);
-    console.log('🔍 Abrindo modal para edição do eleitor ID:', eleitorId);
-    console.log('📊 Dados encontrados:', eleitor);
-    if (eleitor) {
-      state.modalData = {...eleitor};
-      console.log('✅ state.modalData atualizado:', state.modalData);
-    } else {
-      console.error('❌ Eleitor não encontrado no state!');
-    }
-  } else {
-    console.log('➕ Abrindo modal para novo eleitor');
-    state.modalData = {};
+  if (existingModal) {
+    console.log('🔵 Removendo modal existente');
+    existingModal.remove();
   }
   
-  // Renderizar modal diretamente (não usar renderModal genérico)
-  renderModalEleitor();
+  // Buscar dados se for edição
+  let eleitor = null;
+  if (eleitorId) {
+    console.log('🔵 Buscando eleitor ID:', eleitorId);
+    eleitor = state.data.eleitores.find(e => e.id == eleitorId);
+    if (!eleitor) {
+      console.error('❌ Eleitor não encontrado no state!');
+      alert('Eleitor não encontrado!');
+      return;
+    }
+    console.log('✅ Eleitor encontrado:', eleitor);
+    console.log('📋 Dados do eleitor:', {
+      nome: eleitor.nome,
+      cpf: eleitor.cpf,
+      telefone: eleitor.telefone,
+      email: eleitor.email,
+      municipio: eleitor.municipio,
+      lideranca_id: eleitor.lideranca_id
+    });
+  } else {
+    console.log('🆕 Modo criação - sem ID');
+  }
+  
+  // Renderizar modal diretamente
+  console.log('🎨 Renderizando modal...');
+  const modalHtml = criarModalEleitor(eleitor);
+  
+  // Criar container
+  const modalContainer = document.createElement('div');
+  modalContainer.id = 'modal-container';
+  modalContainer.innerHTML = modalHtml;
+  document.body.appendChild(modalContainer);
+  
+  console.log('✅ Modal adicionado ao DOM');
+  
+  // Aplicar máscaras
+  setTimeout(() => {
+    const cpfInput = document.getElementById('modal-eleitor-cpf');
+    const telefoneInput = document.getElementById('modal-eleitor-telefone');
+    
+    if (cpfInput) {
+      cpfInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        e.target.value = value;
+      });
+    }
+    
+    if (telefoneInput) {
+      telefoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{2})(\d)/, '($1) $2');
+        value = value.replace(/(\d{5})(\d)/, '$1-$2');
+        e.target.value = value;
+      });
+    }
+  }, 100);
 }
 
-function renderModalEleitor() {
-  const isEdit = !!state.modalEditId;
-  const data = state.modalData || {};
+function criarModalEleitor(data = null) {
+  const isEdit = !!data;
+  const d = data || {};
   const liderancas = state.data.liderancas || [];
   
-  console.log('🎨 Renderizando modal de eleitor');
-  console.log('📝 Modo edição?', isEdit);
-  console.log('📊 Dados disponíveis:', data);
-  console.log('📋 Campos que deveriam aparecer:',{
-    nome: data.nome,
-    cpf: data.cpf,
-    telefone: data.telefone,
-    email: data.email,
-    municipio: data.municipio,
-    bairro: data.bairro,
-    zona: data.zona,
-    secao: data.secao,
-    titulo_eleitor: data.titulo_eleitor,
-    local_votacao: data.local_votacao
+  console.log('🎨 criarModalEleitor - isEdit:', isEdit);
+  console.log('🎨 Dados recebidos:', d);
+  console.log('🎨 Número de lideranças disponíveis:', liderancas.length);
+  console.log('🎨 Valores que serão preenchidos:', {
+    id: d.id,
+    nome: d.nome,
+    cpf: d.cpf,
+    telefone: d.telefone,
+    email: d.email,
+    municipio: d.municipio,
+    bairro: d.bairro,
+    zona: d.zona,
+    secao: d.secao,
+    lideranca_id: d.lideranca_id,
+    status_apoio: d.status_apoio,
+    nivel_engajamento: d.nivel_engajamento
   });
   
-  const modalHtml = `
+  return `
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="if(event.target === this) fecharModal()">
       <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <!-- Header -->
@@ -6828,6 +6873,7 @@ function renderModalEleitor() {
         
         <!-- Form -->
         <form onsubmit="salvarEleitor(event)" class="p-6 space-y-6">
+          <input type="hidden" id="modal-eleitor-id" value="${d.id || ''}" />
           <!-- Seção 1: Identificação -->
           <div class="bg-blue-50 rounded-xl p-6">
             <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
@@ -6842,7 +6888,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-nome"
-                  value="${data.nome || ''}"
+                  value="${d.nome || ''}"
                   placeholder="Nome completo do eleitor"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
@@ -6854,7 +6900,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-cpf"
-                  value="${data.cpf || ''}"
+                  value="${d.cpf || ''}"
                   placeholder="000.000.000-00"
                   maxlength="14"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -6866,7 +6912,7 @@ function renderModalEleitor() {
                 <input 
                   type="tel" 
                   id="modal-eleitor-telefone"
-                  value="${data.telefone || ''}"
+                  value="${d.telefone || ''}"
                   placeholder="(00) 00000-0000"
                   maxlength="15"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -6878,7 +6924,7 @@ function renderModalEleitor() {
                 <input 
                   type="email" 
                   id="modal-eleitor-email"
-                  value="${data.email || ''}"
+                  value="${d.email || ''}"
                   placeholder="exemplo@email.com"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
@@ -6904,7 +6950,7 @@ function renderModalEleitor() {
                 >
                   <option value="">Selecione uma liderança</option>
                   ${liderancas.map(l => `
-                    <option value="${l.id}" ${data.lideranca_id == l.id ? 'selected' : ''}>
+                    <option value="${l.id}" ${d.lideranca_id == l.id ? 'selected' : ''}>
                       ${l.nome} - ${l.municipio}
                     </option>
                   `).join('')}
@@ -6931,7 +6977,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-municipio"
-                  value="${data.municipio || ''}"
+                  value="${d.municipio || ''}"
                   placeholder="Nome do município"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
@@ -6943,7 +6989,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-bairro"
-                  value="${data.bairro || ''}"
+                  value="${d.bairro || ''}"
                   placeholder="Bairro"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
@@ -6954,7 +7000,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-zona"
-                  value="${data.zona || ''}"
+                  value="${d.zona || ''}"
                   placeholder="Ex: 001"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
@@ -6965,7 +7011,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-secao"
-                  value="${data.secao || ''}"
+                  value="${d.secao || ''}"
                   placeholder="Ex: 0123"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
@@ -6976,7 +7022,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-titulo"
-                  value="${data.titulo_eleitor || ''}"
+                  value="${d.titulo_eleitor || ''}"
                   placeholder="Número do título"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
@@ -6987,7 +7033,7 @@ function renderModalEleitor() {
                 <input 
                   type="text" 
                   id="modal-eleitor-local-votacao"
-                  value="${data.local_votacao || ''}"
+                  value="${d.local_votacao || ''}"
                   placeholder="Escola, clube, etc"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
@@ -7009,8 +7055,8 @@ function renderModalEleitor() {
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
                   <option value="simpatizante" ${(data.status_apoio || 'simpatizante') === 'simpatizante' ? 'selected' : ''}>👋 Simpatizante</option>
-                  <option value="apoiador" ${data.status_apoio === 'apoiador' ? 'selected' : ''}>🤝 Apoiador</option>
-                  <option value="militante" ${data.status_apoio === 'militante' ? 'selected' : ''}>⭐ Militante</option>
+                  <option value="apoiador" ${d.status_apoio === 'apoiador' ? 'selected' : ''}>🤝 Apoiador</option>
+                  <option value="militante" ${d.status_apoio === 'militante' ? 'selected' : ''}>⭐ Militante</option>
                 </select>
               </div>
               
@@ -7021,8 +7067,8 @@ function renderModalEleitor() {
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
                   <option value="baixo" ${(data.nivel_engajamento || 'baixo') === 'baixo' ? 'selected' : ''}>Baixo</option>
-                  <option value="medio" ${data.nivel_engajamento === 'medio' ? 'selected' : ''}>Médio</option>
-                  <option value="alto" ${data.nivel_engajamento === 'alto' ? 'selected' : ''}>Alto</option>
+                  <option value="medio" ${d.nivel_engajamento === 'medio' ? 'selected' : ''}>Médio</option>
+                  <option value="alto" ${d.nivel_engajamento === 'alto' ? 'selected' : ''}>Alto</option>
                 </select>
               </div>
               
@@ -7031,7 +7077,7 @@ function renderModalEleitor() {
                   <input 
                     type="checkbox" 
                     id="modal-eleitor-confirmado"
-                    ${data.confirmado === 1 ? 'checked' : ''}
+                    ${d.confirmado === 1 ? 'checked' : ''}
                     class="w-5 h-5 text-orange-600 border-gray-300 rounded focus:ring-2 focus:ring-orange-500"
                   />
                   <span class="text-sm font-medium text-gray-700">Eleitor confirmado</span>
@@ -7043,7 +7089,7 @@ function renderModalEleitor() {
                   <input 
                     type="checkbox" 
                     id="modal-eleitor-compareceu"
-                    ${data.compareceu_evento === 1 ? 'checked' : ''}
+                    ${d.compareceu_evento === 1 ? 'checked' : ''}
                     class="w-5 h-5 text-orange-600 border-gray-300 rounded focus:ring-2 focus:ring-orange-500"
                   />
                   <span class="text-sm font-medium text-gray-700">Compareceu a evento</span>
@@ -7060,7 +7106,7 @@ function renderModalEleitor() {
               rows="3"
               placeholder="Informações adicionais sobre o eleitor..."
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >${data.observacoes || ''}</textarea>
+            >${d.observacoes || ''}</textarea>
           </div>
           
           <div>
@@ -7068,7 +7114,7 @@ function renderModalEleitor() {
             <input 
               type="text" 
               id="modal-eleitor-tags"
-              value="${data.tags || ''}"
+              value="${d.tags || ''}"
               placeholder="whatsapp, facebook, lider-comunitario"
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
