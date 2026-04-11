@@ -2757,11 +2757,24 @@ function renderTerritoriosModule() {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         ${territorios.map(territorio => {
           const municipios = territoriosData[territorio.id] || [];
+          const stats = state.data.territoriosEstatisticas || {};
+          
+          // Calcular total de eleitores neste território
+          let totalEleitores = 0;
+          let totalConfirmados = 0;
+          municipios.forEach(m => {
+            const municipioNome = m.nome_municipio || m;
+            if (stats[municipioNome]) {
+              totalEleitores += stats[municipioNome].total_eleitores || 0;
+              totalConfirmados += stats[municipioNome].eleitores_confirmados || 0;
+            }
+          });
+          
           return `
             <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
               <div class="bg-gradient-to-r from-teal-500 to-teal-600 p-6 text-white">
                 <h3 class="text-xl font-bold mb-2">${territorio.nome}</h3>
-                <p class="text-sm opacity-90">ID: ${territorio.id}</p>
+                <p class="text-sm opacity-90">Código: ${territorio.codigo}</p>
               </div>
               
               <div class="p-6">
@@ -2772,6 +2785,21 @@ function renderTerritoriosModule() {
                       <span class="text-sm font-medium text-gray-700">Municípios</span>
                     </div>
                     <span class="text-lg font-bold text-blue-600">${municipios.length}</span>
+                  </div>
+                  
+                  <div class="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
+                    <div class="flex items-center gap-2">
+                      <i class="fas fa-users text-orange-600"></i>
+                      <span class="text-sm font-medium text-gray-700">Eleitores</span>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-lg font-bold text-orange-600">${totalEleitores}</span>
+                      ${totalConfirmados > 0 ? `
+                        <p class="text-xs text-gray-500 mt-1">
+                          <i class="fas fa-check-circle text-green-600"></i> ${totalConfirmados} confirmados
+                        </p>
+                      ` : ''}
+                    </div>
                   </div>
                   
                   <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
@@ -2796,18 +2824,21 @@ function renderTerritoriosModule() {
                   
                   ${municipios.length > 0 ? `
                     <div class="pt-4 border-t border-gray-200">
-                      <p class="text-xs text-gray-500 mb-2">Principais municípios:</p>
-                      <div class="flex flex-wrap gap-2">
-                        ${municipios.slice(0, 5).map(m => `
-                          <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-700">
-                            ${m}
-                          </span>
-                        `).join('')}
-                        ${municipios.length > 5 ? `
-                          <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-600">
-                            +${municipios.length - 5} mais
-                          </span>
-                        ` : ''}
+                      <p class="text-xs text-gray-500 mb-2 font-semibold">Municípios com eleitores:</p>
+                      <div class="space-y-1 max-h-32 overflow-y-auto">
+                        ${municipios.map(m => {
+                          const municipioNome = m.nome_municipio || m;
+                          const municipioStats = stats[municipioNome];
+                          return municipioStats ? `
+                            <div class="flex items-center justify-between text-xs px-2 py-1 bg-gray-50 rounded">
+                              <span class="text-gray-700">${municipioNome}</span>
+                              <span class="font-semibold text-orange-600">
+                                ${municipioStats.total_eleitores} 
+                                ${municipioStats.eleitores_confirmados > 0 ? `<i class="fas fa-check text-green-500 ml-1"></i>` : ''}
+                              </span>
+                            </div>
+                          ` : '';
+                        }).join('')}
                       </div>
                     </div>
                   ` : ''}
@@ -6079,8 +6110,21 @@ function filterSolicitacoes(status) {
 async function carregarTerritorios() {
   try {
     console.log('📍 Carregando territórios...');
+    const candidatoId = state.candidato.id;
     const response = await axios.get('/api/territorios');
     state.data.territorios = response.data || [];
+    
+    // Carregar estatísticas de eleitores por município
+    console.log('📊 Carregando estatísticas de eleitores...');
+    const statsResponse = await axios.get(`/api/territorios/estatisticas/${candidatoId}`);
+    state.data.territoriosEstatisticas = {};
+    
+    // Indexar por município para acesso rápido
+    (statsResponse.data || []).forEach(stat => {
+      state.data.territoriosEstatisticas[stat.municipio] = stat;
+    });
+    
+    console.log('✅ Estatísticas carregadas:', Object.keys(state.data.territoriosEstatisticas).length, 'municípios com eleitores');
     
     // Carregar municípios de cada território
     state.data.territoriosMunicipios = {};
@@ -6100,6 +6144,7 @@ async function carregarTerritorios() {
     console.error('❌ Erro ao carregar territórios:', error);
     state.data.territorios = [];
     state.data.territoriosMunicipios = {};
+    state.data.territoriosEstatisticas = {};
   }
 }
 

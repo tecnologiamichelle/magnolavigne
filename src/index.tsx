@@ -1154,6 +1154,36 @@ app.get('/api/territorios/:id/metas/:candidatoId', async (c) => {
   }
 })
 
+// Estatísticas de eleitores por município (para Territórios)
+app.get('/api/territorios/estatisticas/:candidatoId', async (c) => {
+  try {
+    const candidatoId = c.req.param('candidatoId')
+    console.log('📊 Carregando estatísticas de eleitores por município para candidato:', candidatoId)
+    
+    // Contar eleitores por município
+    const result = await c.env.DB.prepare(`
+      SELECT 
+        municipio,
+        COUNT(*) as total_eleitores,
+        SUM(CASE WHEN confirmado = 1 THEN 1 ELSE 0 END) as eleitores_confirmados,
+        SUM(CASE WHEN status_apoio = 'militante' THEN 1 ELSE 0 END) as militantes,
+        SUM(CASE WHEN status_apoio = 'apoiador' THEN 1 ELSE 0 END) as apoiadores,
+        SUM(CASE WHEN compareceu_evento = 1 THEN 1 ELSE 0 END) as compareceram_eventos
+      FROM eleitores
+      WHERE candidato_id = ?
+      GROUP BY municipio
+      ORDER BY total_eleitores DESC
+    `).bind(candidatoId).all()
+    
+    console.log('✅ Estatísticas carregadas:', result.results?.length || 0, 'municípios')
+    
+    return c.json(result.results || [])
+  } catch (error) {
+    console.error('❌ Erro ao carregar estatísticas:', error)
+    return c.json({ error: 'Erro ao carregar estatísticas' }, 500)
+  }
+})
+
 // Criar meta para um território
 app.post('/api/territorios/:id/metas', async (c) => {
   try {
