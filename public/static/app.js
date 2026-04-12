@@ -526,9 +526,14 @@ function renderProximosCompromissos(eventos) {
     <div class="space-y-3 max-h-80 overflow-y-auto">
       ${agenda.map(item => {
         const tipo = tipoIcons[item.tipo] || tipoIcons.tarefa;
-        const data = new Date(item.data_inicio);
-        const dataFormatada = data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-        const horaFormatada = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        let dataFormatada = 'Sem data';
+        let horaFormatada = '';
+        
+        if (item.data_hora) {
+          const data = new Date(item.data_hora);
+          dataFormatada = data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+          horaFormatada = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        }
         
         return `
           <div class="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer" onclick="changeModule('agenda')">
@@ -2929,15 +2934,22 @@ function filtrarTerritoriosPorMunicipio(busca) {
   let encontrados = 0;
   let territoriosEncontrados = [];
   
+  console.log('🔍 Buscando por:', busca, '→ normalizado:', buscaNormalizada);
+  
   // Procurar em todos os territórios
   Object.entries(territoriosData).forEach(([territorioId, municipios]) => {
     let encontrouNoTerritorio = false;
     
     municipios.forEach(m => {
       const municipioNome = m.nome_municipio || m;
-      if (normalizarMunicipio(municipioNome).includes(buscaNormalizada)) {
+      const municipioNormalizado = normalizarMunicipio(municipioNome);
+      
+      if (municipioNormalizado.includes(buscaNormalizada)) {
         encontrouNoTerritorio = true;
         const municipioStats = getMunicipioStats(municipioNome, stats);
+        
+        console.log('✅ Encontrado:', municipioNome, 'no território', territorioId, '→ eleitores:', municipioStats?.total_eleitores || 0);
+        
         territoriosEncontrados.push({
           territorioId,
           municipio: municipioNome,
@@ -2954,16 +2966,20 @@ function filtrarTerritoriosPorMunicipio(busca) {
     }
   });
   
+  console.log('📊 Total encontrados:', encontrados, 'territórios');
+  
   // Atualizar mensagem de resultado
   if (resultadoEl) {
     if (encontrados === 0) {
       resultadoEl.innerHTML = `<i class="fas fa-info-circle mr-1"></i> Nenhum município encontrado com "${busca}"`;
       resultadoEl.className = 'text-xs text-orange-600 mt-2';
     } else {
-      const municipiosTexto = territoriosEncontrados.map(t => 
-        `${t.municipio} (${t.eleitores} eleitores)`
+      // Mostrar até 5 municípios encontrados
+      const municipiosTexto = territoriosEncontrados.slice(0, 5).map(t => 
+        `${t.municipio} (${t.eleitores} ${t.eleitores === 1 ? 'eleitor' : 'eleitores'})`
       ).join(', ');
-      resultadoEl.innerHTML = `<i class="fas fa-check-circle mr-1 text-green-600"></i> ${encontrados} território(s) encontrado(s): ${municipiosTexto}`;
+      const maisTexto = territoriosEncontrados.length > 5 ? ` e mais ${territoriosEncontrados.length - 5}` : '';
+      resultadoEl.innerHTML = `<i class="fas fa-check-circle mr-1 text-green-600"></i> ${encontrados} território(s) • ${territoriosEncontrados.length} município(s): ${municipiosTexto}${maisTexto}`;
       resultadoEl.className = 'text-xs text-gray-600 mt-2';
     }
   }

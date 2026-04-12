@@ -141,11 +141,15 @@ app.get('/api/dashboard/:candidatoId', async (c) => {
       WHERE status = 'pendente'
     `).bind().first()
 
-    // Próximos eventos (5)
+    // Próximos eventos (5) - incluir eventos sem data
     const eventos = await c.env.DB.prepare(`
       SELECT * FROM agenda 
-      WHERE candidato_id = ? AND status != 'cancelado' AND data_hora >= datetime('now')
-      ORDER BY data_hora ASC LIMIT 5
+      WHERE candidato_id = ? AND status != 'cancelado' 
+      AND (data_hora >= datetime('now') OR data_hora IS NULL)
+      ORDER BY 
+        CASE WHEN data_hora IS NULL THEN 1 ELSE 0 END,
+        data_hora ASC 
+      LIMIT 5
     `).bind(candidatoId).all()
 
     return c.json({
