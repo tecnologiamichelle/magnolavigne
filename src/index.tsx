@@ -575,8 +575,8 @@ app.post('/api/agenda', async (c) => {
     
     const result = await c.env.DB.prepare(`
       INSERT INTO agenda (
-        candidato_id, titulo, descricao, data_hora, local, municipio, tipo, prioridade, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        candidato_id, titulo, descricao, data_hora, local, municipio, tipo, prioridade, status, progresso
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       data.candidato_id,
       data.titulo,
@@ -586,7 +586,8 @@ app.post('/api/agenda', async (c) => {
       data.municipio || null,
       data.tipo || 'reuniao',
       data.prioridade || 'media',
-      data.status || 'pendente'
+      data.status || 'pendente',
+      data.progresso || 0
     ).run()
 
     return c.json({ id: result.meta.last_row_id, ...data })
@@ -607,7 +608,7 @@ app.put('/api/agenda/:id', async (c) => {
     await c.env.DB.prepare(`
       UPDATE agenda SET
         titulo = ?, descricao = ?, data_hora = ?, local = ?, municipio = ?,
-        tipo = ?, prioridade = ?, status = ?, updated_at = datetime('now')
+        tipo = ?, prioridade = ?, status = ?, progresso = ?, updated_at = datetime('now')
       WHERE id = ?
     `).bind(
       data.titulo,
@@ -618,6 +619,7 @@ app.put('/api/agenda/:id', async (c) => {
       data.tipo,
       data.prioridade,
       data.status,
+      data.progresso || 0,
       id
     ).run()
 

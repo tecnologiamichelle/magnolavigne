@@ -3227,16 +3227,68 @@ function renderProfissionalCard(prof) {
 function renderAgendaModule() {
   const eventos = state.data.agenda || [];
   const filtro = state.agendaFiltro || 'todos';
+  const visualizacao = state.agendaVisualizacao || 'lista'; // lista, semana, mes
+  const filtroTipo = state.agendaFiltroTipo || 'todos';
+  const filtroPrioridade = state.agendaFiltroPrioridade || 'todos';
+  const filtroPeriodo = state.agendaFiltroPeriodo || 'todos'; // hoje, semana, mes, todos
   
   // Agrupar por status
   const pendentes = eventos.filter(e => e.status === 'pendente');
   const concluidos = eventos.filter(e => e.status === 'concluido');
   const cancelados = eventos.filter(e => e.status === 'cancelado');
+  const emAndamento = eventos.filter(e => e.progresso > 0 && e.progresso < 100 && e.status === 'pendente');
   
-  // Filtrar eventos
+  // Aplicar filtros
   let eventosFiltrados = eventos;
+  
+  // Filtro de status
   if (filtro !== 'todos') {
-    eventosFiltrados = eventos.filter(e => e.status === filtro);
+    eventosFiltrados = eventosFiltrados.filter(e => e.status === filtro);
+  }
+  
+  // Filtro de tipo
+  if (filtroTipo !== 'todos') {
+    eventosFiltrados = eventosFiltrados.filter(e => e.tipo === filtroTipo);
+  }
+  
+  // Filtro de prioridade
+  if (filtroPrioridade !== 'todos') {
+    eventosFiltrados = eventosFiltrados.filter(e => e.prioridade === filtroPrioridade);
+  }
+  
+  // Filtro de período
+  if (filtroPeriodo !== 'todos' && filtroPeriodo) {
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    
+    eventosFiltrados = eventosFiltrados.filter(e => {
+      if (!e.data_hora) return false;
+      const dataEvento = new Date(e.data_hora);
+      
+      switch(filtroPeriodo) {
+        case 'hoje':
+          const inicioHoje = new Date(hoje);
+          const fimHoje = new Date(hoje);
+          fimHoje.setDate(fimHoje.getDate() + 1);
+          return dataEvento >= inicioHoje && dataEvento < fimHoje;
+          
+        case 'semana':
+          const inicioSemana = new Date(hoje);
+          const diaSemana = hoje.getDay();
+          inicioSemana.setDate(hoje.getDate() - diaSemana);
+          const fimSemana = new Date(inicioSemana);
+          fimSemana.setDate(inicioSemana.getDate() + 7);
+          return dataEvento >= inicioSemana && dataEvento < fimSemana;
+          
+        case 'mes':
+          const inicioMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+          const fimMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 1);
+          return dataEvento >= inicioMes && dataEvento < fimMes;
+          
+        default:
+          return true;
+      }
+    });
   }
   
   // Ordenar por data (mais recentes primeiro)
@@ -3267,8 +3319,8 @@ function renderAgendaModule() {
         </button>
       </div>
       
-      <!-- Estatísticas Rápidas -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <!-- Estatísticas Rápidas com Progresso -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
         <div class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-4 rounded-xl cursor-pointer hover:shadow-lg transition-shadow" onclick="filterAgenda('todos')">
           <div class="flex items-center justify-between">
             <div>
@@ -3276,6 +3328,16 @@ function renderAgendaModule() {
               <p class="text-3xl font-bold">${eventos.length}</p>
             </div>
             <i class="fas fa-calendar text-3xl opacity-50"></i>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-4 rounded-xl cursor-pointer hover:shadow-lg transition-shadow" onclick="filterAgenda('pendente')">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-90">Em Andamento</p>
+              <p class="text-3xl font-bold">${emAndamento.length}</p>
+            </div>
+            <i class="fas fa-tasks text-3xl opacity-50"></i>
           </div>
         </div>
         
@@ -3310,10 +3372,90 @@ function renderAgendaModule() {
         </div>
       </div>
       
-      <!-- Tabela de Eventos (Para muitos registros) -->
+      <!-- Filtros Avançados -->
+      <div class="bg-white rounded-xl shadow-md p-4 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-calendar-day mr-1"></i> Período
+            </label>
+            <select 
+              onchange="filterAgendaPeriodo(this.value)" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            >
+              <option value="todos" ${filtroPeriodo === 'todos' ? 'selected' : ''}>Todos</option>
+              <option value="hoje" ${filtroPeriodo === 'hoje' ? 'selected' : ''}>Hoje</option>
+              <option value="semana" ${filtroPeriodo === 'semana' ? 'selected' : ''}>Esta Semana</option>
+              <option value="mes" ${filtroPeriodo === 'mes' ? 'selected' : ''}>Este Mês</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-tag mr-1"></i> Tipo
+            </label>
+            <select 
+              onchange="filterAgendaTipo(this.value)" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            >
+              <option value="todos" ${filtroTipo === 'todos' ? 'selected' : ''}>Todos</option>
+              <option value="reuniao" ${filtroTipo === 'reuniao' ? 'selected' : ''}>Reunião</option>
+              <option value="visita" ${filtroTipo === 'visita' ? 'selected' : ''}>Visita</option>
+              <option value="evento" ${filtroTipo === 'evento' ? 'selected' : ''}>Evento</option>
+              <option value="tarefa" ${filtroTipo === 'tarefa' ? 'selected' : ''}>Tarefa</option>
+              <option value="ligacao" ${filtroTipo === 'ligacao' ? 'selected' : ''}>Ligação</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-exclamation-circle mr-1"></i> Prioridade
+            </label>
+            <select 
+              onchange="filterAgendaPrioridade(this.value)" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            >
+              <option value="todos" ${filtroPrioridade === 'todos' ? 'selected' : ''}>Todas</option>
+              <option value="alta" ${filtroPrioridade === 'alta' ? 'selected' : ''}>Alta</option>
+              <option value="media" ${filtroPrioridade === 'media' ? 'selected' : ''}>Média</option>
+              <option value="baixa" ${filtroPrioridade === 'baixa' ? 'selected' : ''}>Baixa</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-eye mr-1"></i> Visualização
+            </label>
+            <select 
+              onchange="changeAgendaVisualizacao(this.value)" 
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            >
+              <option value="lista" ${visualizacao === 'lista' ? 'selected' : ''}>Lista</option>
+              <option value="semana" ${visualizacao === 'semana' ? 'selected' : ''}>Semana</option>
+              <option value="mes" ${visualizacao === 'mes' ? 'selected' : ''}>Mês</option>
+            </select>
+          </div>
+        </div>
+        
+        ${(filtroTipo !== 'todos' || filtroPrioridade !== 'todos' || filtroPeriodo !== 'todos') ? `
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <button 
+              onclick="limparFiltrosAgenda()" 
+              class="text-sm text-gray-600 hover:text-gray-800 flex items-center gap-2"
+            >
+              <i class="fas fa-times-circle"></i>
+              Limpar todos os filtros
+            </button>
+          </div>
+        ` : ''}
+      </div>
+      
+      <!-- Tabela de Eventos -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
         ${eventos.length === 0 ? 
           '<div class="p-8 text-center"><p class="text-gray-500"><i class="fas fa-calendar-times text-4xl mb-3 block"></i>Nenhum evento cadastrado</p></div>' :
+          eventosFiltrados.length === 0 ?
+          '<div class="p-8 text-center"><p class="text-gray-500"><i class="fas fa-filter text-4xl mb-3 block"></i>Nenhum evento encontrado com os filtros aplicados</p></div>' :
           `<div class="overflow-x-auto">
             <table class="w-full">
               <thead class="bg-green-600 text-white">
@@ -3321,6 +3463,7 @@ function renderAgendaModule() {
                   <th class="text-left p-4 font-semibold">Data/Hora</th>
                   <th class="text-left p-4 font-semibold">Título</th>
                   <th class="text-left p-4 font-semibold">Tipo</th>
+                  <th class="text-left p-4 font-semibold">Progresso</th>
                   <th class="text-left p-4 font-semibold">Status</th>
                   <th class="text-left p-4 font-semibold">Prioridade</th>
                   <th class="text-center p-4 font-semibold">Ações</th>
@@ -3407,6 +3550,14 @@ function renderAgendaRow(evento) {
           <i class="fas ${tipoIcons[evento.tipo]} text-green-600"></i>
           ${tipoLabels[evento.tipo] || evento.tipo}
         </span>
+      </td>
+      <td class="p-4">
+        <div class="flex items-center gap-2">
+          <div class="flex-1 bg-gray-200 rounded-full h-2.5 min-w-[100px]">
+            <div class="bg-gradient-to-r from-green-500 to-green-600 h-2.5 rounded-full transition-all duration-300" style="width: ${evento.progresso || 0}%"></div>
+          </div>
+          <span class="text-xs font-semibold text-gray-700 min-w-[40px]">${evento.progresso || 0}%</span>
+        </div>
       </td>
       <td class="p-4">
         <span class="${statusColors[evento.status]} px-3 py-1 rounded-full text-xs font-semibold uppercase">
@@ -5650,6 +5801,28 @@ function renderModalAgenda() {
                 <option value="concluido">Concluído</option>
               </select>
             </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Progresso (%)
+                <span class="text-xs text-gray-500 ml-1">0-100</span>
+              </label>
+              <div class="flex items-center gap-3">
+                <input 
+                  type="range" 
+                  id="modal-progresso"
+                  min="0"
+                  max="100"
+                  value="0"
+                  class="flex-1"
+                  oninput="document.getElementById('progresso-valor').textContent = this.value + '%'"
+                >
+                <span id="progresso-valor" class="text-sm font-semibold text-purple-700 min-w-[45px]">0%</span>
+              </div>
+              <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div id="progresso-barra" class="h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
           </div>
           
           <div>
@@ -5879,6 +6052,18 @@ function anexarEventosModal() {
       }
     });
   }
+  
+  // Atualizar barra de progresso visual
+  const progressoInput = document.getElementById('modal-progresso');
+  const progressoBarra = document.getElementById('progresso-barra');
+  
+  if (progressoInput && progressoBarra) {
+    progressoInput.addEventListener('input', (e) => {
+      const valor = e.target.value;
+      progressoBarra.style.width = `${valor}%`;
+      document.getElementById('progresso-valor').textContent = `${valor}%`;
+    });
+  }
 }
 
 function carregarDadosModal(data) {
@@ -5887,6 +6072,25 @@ function carregarDadosModal(data) {
     const input = document.getElementById(`modal-${key.replace(/_/g, '-')}`);
     if (input) {
       if (input.type === 'checkbox') {
+        input.checked = !!data[key];
+      } else {
+        input.value = data[key] || '';
+      }
+    }
+  });
+  
+  // Atualizar barra de progresso se existir
+  const progressoInput = document.getElementById('modal-progresso');
+  if (progressoInput && data.progresso !== undefined) {
+    const valor = data.progresso || 0;
+    progressoInput.value = valor;
+    
+    const progressoBarra = document.getElementById('progresso-barra');
+    const progressoValor = document.getElementById('progresso-valor');
+    if (progressoBarra) progressoBarra.style.width = `${valor}%`;
+    if (progressoValor) progressoValor.textContent = `${valor}%`;
+  }
+}
         input.checked = !!data[key];
       } else {
         input.value = data[key] || '';
@@ -5948,7 +6152,8 @@ async function salvarModal(e) {
           local: document.getElementById('modal-local')?.value || '',
           municipio: document.getElementById('modal-municipio')?.value || '',
           prioridade: document.getElementById('modal-prioridade')?.value || 'media',
-          status: document.getElementById('modal-status')?.value || 'pendente'
+          status: document.getElementById('modal-status')?.value || 'pendente',
+          progresso: parseInt(document.getElementById('modal-progresso')?.value || '0')
         };
         break;
         
@@ -7911,14 +8116,36 @@ async function updateAgendaStatus(id, novoStatus) {
 }
 
 function filterAgenda(status) {
-  const cards = document.querySelectorAll('#agenda-list .card');
-  cards.forEach(card => {
-    if (status === 'todos' || card.dataset.status === status) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+  state.agendaFiltro = status;
+  render();
+}
+
+function filterAgendaPeriodo(periodo) {
+  state.agendaFiltroPeriodo = periodo;
+  render();
+}
+
+function filterAgendaTipo(tipo) {
+  state.agendaFiltroTipo = tipo;
+  render();
+}
+
+function filterAgendaPrioridade(prioridade) {
+  state.agendaFiltroPrioridade = prioridade;
+  render();
+}
+
+function changeAgendaVisualizacao(visualizacao) {
+  state.agendaVisualizacao = visualizacao;
+  render();
+}
+
+function limparFiltrosAgenda() {
+  state.agendaFiltro = 'todos';
+  state.agendaFiltroPeriodo = 'todos';
+  state.agendaFiltroTipo = 'todos';
+  state.agendaFiltroPrioridade = 'todos';
+  render();
 }
 
 // ============= FUNÇÕES DE RELATÓRIOS =============
