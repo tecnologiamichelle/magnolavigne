@@ -3240,7 +3240,11 @@ function renderAgendaModule() {
   }
   
   // Ordenar por data (mais recentes primeiro)
-  eventosFiltrados.sort((a, b) => new Date(b.data_inicio) - new Date(a.data_inicio));
+  eventosFiltrados.sort((a, b) => {
+    const dateA = a.data_hora ? new Date(a.data_hora) : new Date(0);
+    const dateB = b.data_hora ? new Date(b.data_hora) : new Date(0);
+    return dateB - dateA;
+  });
   
   return `
     <div>
@@ -3368,24 +3372,28 @@ function renderAgendaRow(evento) {
     ligacao: 'fa-phone'
   };
   
-  const dataInicio = new Date(evento.data_inicio);
-  const dataFormatada = dataInicio.toLocaleDateString('pt-BR', { 
-    day: '2-digit', 
-    month: 'short', 
-    year: 'numeric'
-  });
+  let dataFormatada = 'Sem data';
+  let horaFormatada = '';
   
-  const horaFormatada = dataInicio.toLocaleTimeString('pt-BR', { 
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+  if (evento.data_hora) {
+    const dataInicio = new Date(evento.data_hora);
+    dataFormatada = dataInicio.toLocaleDateString('pt-BR', { 
+      day: '2-digit', 
+      month: 'short', 
+      year: 'numeric'
+    });
+    horaFormatada = dataInicio.toLocaleTimeString('pt-BR', { 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+  }
   
   return `
     <tr class="hover:bg-gray-50 transition-colors cursor-pointer" onclick='abrirModal("agenda", ${JSON.stringify(evento)})'>
       <td class="p-4">
         <div class="text-sm">
           <div class="font-semibold text-gray-900">${dataFormatada}</div>
-          <div class="text-gray-600">${horaFormatada}</div>
+          <div class="text-gray-600">${horaFormatada || '-'}</div>
         </div>
       </td>
       <td class="p-4">
