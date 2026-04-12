@@ -6091,13 +6091,6 @@ function carregarDadosModal(data) {
     if (progressoValor) progressoValor.textContent = `${valor}%`;
   }
 }
-        input.checked = !!data[key];
-      } else {
-        input.value = data[key] || '';
-      }
-    }
-  });
-}
 
 async function salvarModal(e) {
   e.preventDefault();
