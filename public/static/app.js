@@ -62,11 +62,11 @@ function renderLogin() {
   return `
     <div class="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
       <!-- Background animado com gradiente -->
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
+      <div class="absolute inset-0 bg-gradient-to-br from-green-800 via-green-700 to-blue-800">
         <div class="absolute inset-0 opacity-30">
-          <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-          <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-          <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+          <div class="absolute top-0 -left-4 w-72 h-72 d-none mix-blend-multiply filter blur-xl animate-blob"></div>
+          <div class="absolute top-0 -right-4 w-72 h-72 d-none mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+          <div class="absolute -bottom-8 left-20 w-72 h-72 d-none mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
       </div>
       
@@ -76,14 +76,14 @@ function renderLogin() {
         <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
           <!-- Header -->
           <div class="text-center mb-8 animate-fadeIn">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg transform hover:rotate-6 transition-transform duration-300">
-              <i class="fas fa-chart-network text-4xl text-white"></i>
+            <div class="inline-flex items-center justify-center mb-4 transition-transform duration-300">
+              <i class="fas fa-leaf text-6xl text-green-700"></i>
             </div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-green-700 to-blue-700 bg-clip-text text-transparent mb-2">
               Magno Lavigne
             </h1>
             <p class="text-gray-600 font-medium">Deputado Federal</p>
-            <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 rounded-full">
+            <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 rounded-full">
             </div>
           </div>
           
@@ -106,14 +106,14 @@ function renderLogin() {
           <form id="login-form" class="space-y-5">
             <div class="space-y-2 animate-fadeIn animation-delay-200">
               <label class="block text-sm font-bold text-gray-700">
-                <i class="fas fa-envelope text-green-600 mr-2"></i>E-mail
+                <i class="fas fa-envelope text-green-700 mr-2"></i>E-mail
               </label>
               <div class="relative">
                 <input 
                   type="email" 
                   id="email" 
                   required
-                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                   placeholder="seu@email.com"
                 />
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -125,9 +125,9 @@ function renderLogin() {
             <div class="space-y-2 animate-fadeIn animation-delay-400">
               <div class="flex justify-between items-center">
                 <label class="block text-sm font-bold text-gray-700">
-                  <i class="fas fa-lock text-green-600 mr-2"></i>Senha
+                  <i class="fas fa-lock text-green-700 mr-2"></i>Senha
                 </label>
-                <a href="#" class="text-xs text-green-600 hover:text-green-700 font-semibold transition-colors" onclick="showForgotPassword(); return false;">
+                <a href="#" class="text-xs text-green-700 hover:text-green-700 font-semibold transition-colors" onclick="showForgotPassword(); return false;">
                   Esqueceu?
                 </a>
               </div>
@@ -136,7 +136,7 @@ function renderLogin() {
                   type="password" 
                   id="senha" 
                   required
-                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                  class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                   placeholder="••••••••"
                 />
                 <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors">
@@ -147,7 +147,7 @@ function renderLogin() {
             
             <button 
               type="submit"
-              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 animate-fadeIn animation-delay-600"
+              class="w-full bg-gradient-to-r from-green-700 to-blue-700 text-white py-4 rounded-xl font-bold hover:from-green-800 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 animate-fadeIn animation-delay-600"
             >
               <i class="fas fa-sign-in-alt"></i>
               <span>Entrar no Sistema</span>
@@ -167,7 +167,7 @@ function renderLogin() {
           <!-- Botão Criar Conta -->
           <button 
             onclick="showRegisterForm(); return false;"
-            class="w-full bg-white border-2 border-blue-200 text-blue-700 py-4 rounded-xl font-bold hover:bg-blue-50 hover:border-blue-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center justify-center gap-2"
+            class="w-full bg-white border-2 border-blue-200 text-blue-700 py-4 rounded-xl font-bold hover:bg-green-50 hover:border-blue-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center justify-center gap-2"
           >
             <i class="fas fa-user-plus"></i>
             <span>Criar Nova Conta</span>
@@ -260,22 +260,22 @@ function renderDashboard() {
   return `
     <div class="flex flex-col md:flex-row min-h-screen">
       <!-- Sidebar - Sistema Profissional de Gestão -->
-      <div class="sidebar bg-gradient-to-b from-blue-700 to-indigo-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
+      <div class="sidebar bg-gradient-to-b from-green-800 to-blue-900 text-white w-full md:w-64 p-6 shadow-2xl flex flex-col min-h-screen">
         <div class="mb-8">
           <h2 class="text-2xl font-bold flex items-center">
-            <i class="fas fa-chart-network text-blue-300 mr-3 text-3xl"></i>
+            <i class="fas fa-chart-network text-green-300 mr-3 text-3xl"></i>
             <div>
               <span class="text-2xl font-bold">Magno Lavigne</span>
-              <span class="text-xs block text-blue-300 -mt-1">Deputado Federal</span>
+              <span class="text-xs block text-green-300 -mt-1">Deputado Federal</span>
             </div>
           </h2>
-          <p class="text-blue-200 text-sm mt-2 flex items-center gap-2 px-3 py-2 bg-blue-800 bg-opacity-30 rounded-lg border border-blue-500">
+          <p class="text-blue-200 text-sm mt-2 flex items-center gap-2 px-3 py-2 bg-blue-800 bg-opacity-30 rounded-lg border border-green-700">
             <i class="fas fa-flag text-xs"></i>
             <span class="font-medium">${state.candidato.partido || 'Seu Partido'}</span>
           </p>
         </div>
         
-        <div class="mb-6 p-4 bg-blue-800 bg-opacity-40 rounded-lg border border-blue-500">
+        <div class="mb-6 p-4 bg-blue-800 bg-opacity-40 rounded-lg border border-green-700">
           <p class="text-sm text-blue-200">Conectado como:</p>
           <p class="font-semibold truncate">${state.candidato.nome}</p>
           <p class="text-xs text-blue-200 truncate">${state.candidato.email}</p>
@@ -308,7 +308,7 @@ function renderDashboard() {
         <div class="mt-auto pt-4">
           <button 
             onclick="logout()"
-            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+            class="w-full bg-green-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
           >
             <i class="fas fa-sign-out-alt mr-2"></i>Sair
           </button>
@@ -384,7 +384,7 @@ function renderDashboardModule() {
   if (!stats) {
     return `
       <div class="text-center py-12">
-        <i class="fas fa-spinner fa-spin text-4xl text-green-600 mb-4"></i>
+        <i class="fas fa-spinner fa-spin text-4xl text-green-700 mb-4"></i>
         <p class="text-gray-600 text-lg">Carregando dashboard...</p>
       </div>
     `;
@@ -393,7 +393,7 @@ function renderDashboardModule() {
   return `
     <div>
       <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-        <i class="fas fa-seedling text-green-600 animate-grow-pv"></i>
+        <i class="fas fa-seedling text-green-700 animate-grow-pv"></i>
         <span>Dashboard - Crescimento Sustentável</span>
       </h1>
       
@@ -409,9 +409,9 @@ function renderDashboardModule() {
       <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-lg font-semibold text-gray-800">
-            <i class="fas fa-calendar-check mr-2 text-green-600"></i>Próximos Compromissos
+            <i class="fas fa-calendar-check mr-2 text-green-700"></i>Próximos Compromissos
           </h3>
-          <button onclick="changeModule('agenda')" class="text-green-600 hover:text-purple-800 text-sm font-semibold">
+          <button onclick="changeModule('agenda')" class="text-green-700 hover:text-purple-800 text-sm font-semibold">
             Ver todos <i class="fas fa-arrow-right ml-1"></i>
           </button>
         </div>
@@ -498,7 +498,7 @@ function renderProximosCompromissos(eventos) {
       <div class="text-center py-8">
         <i class="fas fa-calendar-times text-4xl text-gray-300 mb-3"></i>
         <p class="text-gray-500 text-sm">Nenhum compromisso pendente</p>
-        <button onclick="changeModule('agenda')" class="mt-3 text-green-600 hover:text-purple-800 text-sm font-semibold">
+        <button onclick="changeModule('agenda')" class="mt-3 text-green-700 hover:text-purple-800 text-sm font-semibold">
           + Adicionar compromisso
         </button>
       </div>
@@ -507,10 +507,10 @@ function renderProximosCompromissos(eventos) {
   
   const tipoIcons = {
     reuniao: { icon: 'fa-users', color: 'text-blue-600 bg-blue-100' },
-    visita: { icon: 'fa-map-marker-alt', color: 'text-green-600 bg-green-100' },
-    evento: { icon: 'fa-calendar-star', color: 'text-green-600 bg-purple-100' },
+    visita: { icon: 'fa-map-marker-alt', color: 'text-green-700 bg-green-100' },
+    evento: { icon: 'fa-calendar-star', color: 'text-green-700 bg-purple-100' },
     tarefa: { icon: 'fa-tasks', color: 'text-orange-600 bg-orange-100' },
-    ligacao: { icon: 'fa-phone', color: 'text-green-600 bg-indigo-100' }
+    ligacao: { icon: 'fa-phone', color: 'text-green-700 bg-indigo-100' }
   };
   
   return `
@@ -598,7 +598,7 @@ function renderAprovacoesModule() {
                 <div class="flex items-center gap-3">
                   <div class="w-12 h-12 rounded-full flex items-center justify-center ${
                     sol.tipo === 'admin' ? 'bg-pink-100 text-pink-600' :
-                    sol.tipo === 'coordenador' ? 'bg-purple-100 text-green-600' :
+                    sol.tipo === 'coordenador' ? 'bg-purple-100 text-green-700' :
                     'bg-blue-100 text-blue-600'
                   }">
                     <i class="fas ${
@@ -670,7 +670,7 @@ function renderAprovacoesModule() {
                   </p>
                 </div>
               ` : `
-                <div class="flex items-center justify-center text-green-600 py-2">
+                <div class="flex items-center justify-center text-green-700 py-2">
                   <i class="fas fa-check-circle mr-2"></i>
                   <span class="font-semibold">Aprovado</span>
                 </div>
@@ -692,7 +692,7 @@ function renderDadosTSEModule() {
     <div>
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">
-          <i class="fas fa-vote-yea mr-3 text-green-600"></i>Dados do TSE
+          <i class="fas fa-vote-yea mr-3 text-green-700"></i>Dados do TSE
         </h1>
         <p class="text-gray-600">Importação e análise de dados eleitorais oficiais</p>
       </div>
@@ -738,19 +738,19 @@ function renderDadosTSEModule() {
           <nav class="flex">
             <button 
               onclick="changeTSETab('importar')"
-              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'importar' || !state.tseTab ? 'text-green-600 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
+              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'importar' || !state.tseTab ? 'text-green-700 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
             >
               <i class="fas fa-upload mr-2"></i>Importar Dados
             </button>
             <button 
               onclick="changeTSETab('candidatos')"
-              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'candidatos' ? 'text-green-600 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
+              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'candidatos' ? 'text-green-700 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
             >
               <i class="fas fa-users mr-2"></i>Candidatos
             </button>
             <button 
               onclick="changeTSETab('analise')"
-              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'analise' ? 'text-green-600 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
+              class="flex-1 px-6 py-4 text-center font-semibold transition-all ${state.tseTab === 'analise' ? 'text-green-700 border-b-2 border-green-600 bg-purple-50' : 'text-gray-600 hover:bg-gray-50'}"
             >
               <i class="fas fa-chart-pie mr-2"></i>Análise
             </button>
@@ -780,7 +780,7 @@ function renderTSEImportarTab() {
   return `
     <div class="space-y-6">
       <!-- Instruções -->
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+      <div class="bg-green-50 border-l-4 border-green-700 p-4 rounded-lg">
         <div class="flex items-start gap-3">
           <i class="fas fa-info-circle text-blue-500 text-xl mt-1"></i>
           <div>
@@ -798,7 +798,7 @@ function renderTSEImportarTab() {
       <!-- Links para Download TSE -->
       <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
         <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-download text-green-600"></i>
+          <i class="fas fa-download text-green-700"></i>
           Download de Dados do TSE (Eleições 2022)
         </h3>
         
@@ -885,7 +885,7 @@ function renderTSEImportarTab() {
       <!-- Upload de Arquivos -->
       <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
         <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-cloud-upload-alt text-green-600"></i>
+          <i class="fas fa-cloud-upload-alt text-green-700"></i>
           Upload de Arquivos CSV
         </h3>
         
@@ -898,7 +898,7 @@ function renderTSEImportarTab() {
       </div>
       
       <!-- Progresso -->
-      <div id="upload-progress" class="hidden bg-white border-2 border-blue-500 rounded-xl p-6">
+      <div id="upload-progress" class="hidden bg-white border-2 border-green-700 rounded-xl p-6">
         <div class="flex items-center gap-4">
           <i class="fas fa-spinner fa-spin text-3xl text-blue-600"></i>
           <div class="flex-1">
@@ -986,7 +986,7 @@ function renderTSECandidatosTab() {
         ${candidatos.slice(0, 50).map(c => `
           <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all">
             <div class="flex items-start gap-3 mb-3">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-green-600 font-bold text-lg">
+              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-green-700 font-bold text-lg">
                 ${c.numero_candidato}
               </div>
               <div class="flex-1">
@@ -997,7 +997,7 @@ function renderTSECandidatosTab() {
             <div class="text-xs text-gray-600 space-y-1">
               <p><i class="fas fa-map-marker-alt w-4"></i> ${c.municipio_nascimento || 'N/A'}</p>
               <p><i class="fas fa-briefcase w-4"></i> ${c.ocupacao || 'N/A'}</p>
-              <p><i class="fas fa-check-circle w-4 ${c.situacao_eleicao === 'ELEITO' ? 'text-green-600' : 'text-gray-400'}"></i> ${c.situacao_eleicao}</p>
+              <p><i class="fas fa-check-circle w-4 ${c.situacao_eleicao === 'ELEITO' ? 'text-green-700' : 'text-gray-400'}"></i> ${c.situacao_eleicao}</p>
             </div>
           </div>
         `).join('')}
@@ -1029,14 +1029,14 @@ function renderGerenciarTSEModule() {
     <div>
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-          <i class="fas fa-database text-green-600"></i>
+          <i class="fas fa-database text-green-700"></i>
           Gerenciar Dados TSE
         </h1>
         <p class="text-gray-600">Importe e gerencie dados eleitorais por Estado</p>
       </div>
       
       <!-- Alert Info -->
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-lg">
+      <div class="bg-green-50 border-l-4 border-green-700 p-6 mb-6 rounded-lg">
         <div class="flex items-start gap-3">
           <i class="fas fa-info-circle text-blue-500 text-2xl"></i>
           <div>
@@ -1054,7 +1054,7 @@ function renderGerenciarTSEModule() {
       <!-- Estado Atual -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-map-marker-alt text-green-600"></i>
+          <i class="fas fa-map-marker-alt text-green-700"></i>
           Estado Atual Carregado
         </h2>
         
@@ -1087,7 +1087,7 @@ function renderGerenciarTSEModule() {
       <!-- Instruções de Importação -->
       <div class="bg-white rounded-xl shadow-lg p-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-terminal text-green-600"></i>
+          <i class="fas fa-terminal text-green-700"></i>
           Como Importar Dados
         </h2>
         
@@ -1144,7 +1144,7 @@ function renderGerenciarTSEModule() {
             <a 
               href="/scripts/README_IMPORTACAO.md" 
               target="_blank"
-              class="flex items-center gap-2 p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
+              class="flex items-center gap-2 p-3 bg-green-50 hover:bg-blue-100 rounded-lg transition-colors"
             >
               <i class="fas fa-book text-blue-600"></i>
               <span class="text-blue-800 font-semibold">Guia Completo de Importação</span>
@@ -1155,7 +1155,7 @@ function renderGerenciarTSEModule() {
               target="_blank"
               class="flex items-center gap-2 p-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors"
             >
-              <i class="fas fa-external-link-alt text-green-600"></i>
+              <i class="fas fa-external-link-alt text-green-700"></i>
               <span class="text-purple-800 font-semibold">Portal de Dados TSE</span>
             </a>
           </div>
@@ -1174,7 +1174,7 @@ function renderAnaliseEleitoralModule() {
     <div>
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-          <i class="fas fa-chart-pie text-green-600"></i>
+          <i class="fas fa-chart-pie text-green-700"></i>
           Análise Eleitoral - Mapeamento do Estado
         </h1>
         <p class="text-gray-600">Perfil completo do eleitorado com filtros e visualizações</p>
@@ -1329,7 +1329,7 @@ function renderAnaliseMunicipios(dados) {
                 <td class="px-4 py-3 font-semibold text-gray-800">${m.municipio}</td>
                 <td class="px-4 py-3 text-right font-semibold text-blue-600">${(m.total_eleitores || 0).toLocaleString('pt-BR')}</td>
                 <td class="px-4 py-3 text-right text-gray-600">${m.zonas || 0}</td>
-                <td class="px-4 py-3 text-right font-semibold text-green-600">${m.percentual}%</td>
+                <td class="px-4 py-3 text-right font-semibold text-green-700">${m.percentual}%</td>
                 <td class="px-4 py-3">
                   <div class="w-full bg-gray-200 rounded-full h-2">
                     <div class="bg-green-600 h-2 rounded-full" style="width: ${m.percentual}%"></div>
@@ -1376,7 +1376,7 @@ function renderAnaliseDemografico(dados) {
         <!-- Faixa Etária -->
         <div class="bg-gray-50 rounded-lg p-6">
           <h4 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <i class="fas fa-birthday-cake text-green-600"></i>
+            <i class="fas fa-birthday-cake text-green-700"></i>
             Por Faixa Etária
           </h4>
           <div id="chart-idade" class="h-64"></div>
@@ -1393,7 +1393,7 @@ function renderAnaliseDemografico(dados) {
         <!-- Escolaridade -->
         <div class="bg-gray-50 rounded-lg p-6">
           <h4 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <i class="fas fa-graduation-cap text-green-600"></i>
+            <i class="fas fa-graduation-cap text-green-700"></i>
             Por Escolaridade
           </h4>
           <div id="chart-escolaridade" class="h-64"></div>
@@ -1440,7 +1440,7 @@ function renderAnaliseZonas(dados) {
           <tbody class="divide-y divide-gray-200">
             ${zonas.map(z => `
               <tr class="hover:bg-gray-50 transition-colors">
-                <td class="px-4 py-3 font-semibold text-green-600">${z.zona_eleitoral}ª Zona</td>
+                <td class="px-4 py-3 font-semibold text-green-700">${z.zona_eleitoral}ª Zona</td>
                 <td class="px-4 py-3 text-gray-800">${z.municipio}</td>
                 <td class="px-4 py-3 text-right font-semibold text-blue-600">${(z.total_eleitores || 0).toLocaleString('pt-BR')}</td>
               </tr>
@@ -1492,7 +1492,7 @@ function renderDadosEleitoraisCard(dado) {
             <div><span class="text-gray-600">Base:</span> <span class="font-medium">${dado.base_eleitoral || '-'}</span></div>
             <div class="md:col-span-2">
               <span class="text-gray-600">Total de Eleitores:</span> 
-              <span class="font-bold text-lg text-green-600">${dado.total_eleitores || 0}</span>
+              <span class="font-bold text-lg text-green-700">${dado.total_eleitores || 0}</span>
             </div>
           </div>
           ${dado.observacoes ? `<p class="mt-3 text-sm text-gray-600"><i class="fas fa-comment mr-2"></i>${dado.observacoes}</p>` : ''}
@@ -1500,7 +1500,7 @@ function renderDadosEleitoraisCard(dado) {
         <div class="flex md:flex-col gap-2 mt-4 md:mt-0 md:ml-4">
           <button 
             onclick='abrirModal("eleitor", ${JSON.stringify(dado)})'
-            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+            class="bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
             title="Editar"
           >
             <i class="fas fa-edit"></i>
@@ -1601,13 +1601,13 @@ function renderLiderancaFormPage() {
         </button>
         
         <h1 class="text-3xl font-bold text-gray-800 mb-2">
-          <i class="fas fa-user-plus mr-3 text-green-600"></i>Cadastrar Nova Liderança
+          <i class="fas fa-user-plus mr-3 text-green-700"></i>Cadastrar Nova Liderança
         </h1>
         <p class="text-gray-600">Preencha as informações abaixo. Os campos com * são obrigatórios.</p>
       </div>
       
       <!-- Informações -->
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-xl mb-6">
+      <div class="bg-green-50 border-l-4 border-green-700 p-5 rounded-xl mb-6">
         <div class="flex items-start gap-3">
           <i class="fas fa-info-circle text-blue-500 text-2xl mt-0.5"></i>
           <div>
@@ -1636,7 +1636,7 @@ function renderLiderancaFormPage() {
         <!-- Seção: Dados Pessoais -->
         <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
           <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <i class="fas fa-user text-green-600"></i>
+            <i class="fas fa-user text-green-700"></i>
             Seus Dados
           </h2>
           
@@ -1644,7 +1644,7 @@ function renderLiderancaFormPage() {
             <!-- Nome -->
             <div class="md:col-span-2">
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fas fa-signature text-green-600 mr-2"></i>Nome Completo *
+                <i class="fas fa-signature text-green-700 mr-2"></i>Nome Completo *
               </label>
               <input 
                 type="text" 
@@ -1663,7 +1663,7 @@ function renderLiderancaFormPage() {
             <!-- CPF -->
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fas fa-id-card text-green-600 mr-2"></i>CPF *
+                <i class="fas fa-id-card text-green-700 mr-2"></i>CPF *
               </label>
               <input 
                 type="text" 
@@ -1693,7 +1693,7 @@ function renderLiderancaFormPage() {
             <!-- Data Nascimento -->
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fas fa-calendar text-green-600 mr-2"></i>Data de Nascimento *
+                <i class="fas fa-calendar text-green-700 mr-2"></i>Data de Nascimento *
               </label>
               <input 
                 type="date" 
@@ -1707,7 +1707,7 @@ function renderLiderancaFormPage() {
             <!-- Gênero -->
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fas fa-venus-mars text-green-600 mr-2"></i>Gênero *
+                <i class="fas fa-venus-mars text-green-700 mr-2"></i>Gênero *
               </label>
               <select 
                 id="form-genero" 
@@ -1727,7 +1727,7 @@ function renderLiderancaFormPage() {
         <!-- Seção: Contato -->
         <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
           <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <i class="fas fa-phone text-green-600"></i>
+            <i class="fas fa-phone text-green-700"></i>
             Como te Encontrar
           </h2>
           
@@ -1735,7 +1735,7 @@ function renderLiderancaFormPage() {
             <!-- Celular -->
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-2">
-                <i class="fas fa-mobile-alt text-green-600 mr-2"></i>Celular com WhatsApp *
+                <i class="fas fa-mobile-alt text-green-700 mr-2"></i>Celular com WhatsApp *
               </label>
               <input 
                 type="tel" 
@@ -1784,7 +1784,7 @@ function renderLiderancaFormPage() {
         </div>
         
         <!-- Seção: Endereço -->
-        <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+        <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-700">
           <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
             <i class="fas fa-home text-blue-600"></i>
             Onde Você Mora
@@ -1801,7 +1801,7 @@ function renderLiderancaFormPage() {
                 id="form-cep" 
                 required
                 maxlength="9"
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="00000-000"
                 onblur="buscarCEP()"
                 onchange="autoSaveLideranca()"
@@ -1821,7 +1821,7 @@ function renderLiderancaFormPage() {
                 type="text" 
                 id="form-logradouro" 
                 required
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="Nome da rua"
                 onchange="autoSaveLideranca()"
               />
@@ -1836,7 +1836,7 @@ function renderLiderancaFormPage() {
                 type="text" 
                 id="form-numero" 
                 required
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="123"
                 onchange="autoSaveLideranca()"
               />
@@ -1850,7 +1850,7 @@ function renderLiderancaFormPage() {
               <input 
                 type="text" 
                 id="form-complemento"
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="Apto, bloco, etc"
                 onchange="autoSaveLideranca()"
               />
@@ -1865,7 +1865,7 @@ function renderLiderancaFormPage() {
                 type="text" 
                 id="form-bairro" 
                 required
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="Nome do bairro"
                 onchange="autoSaveLideranca()"
               />
@@ -1880,7 +1880,7 @@ function renderLiderancaFormPage() {
                 type="text" 
                 id="form-cidade" 
                 required
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 placeholder="Nome da cidade"
                 onchange="autoSaveLideranca()"
               />
@@ -1894,7 +1894,7 @@ function renderLiderancaFormPage() {
               <select 
                 id="form-estado" 
                 required
-                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+                class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
                 onchange="autoSaveLideranca()"
               >
                 <option value="">Selecione...</option>
@@ -1977,7 +1977,7 @@ function renderLiderancaFormPage() {
         <!-- Seção: Influência -->
         <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-red-500">
           <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <i class="fas fa-chart-line text-green-600"></i>
+            <i class="fas fa-chart-line text-green-700"></i>
             Sua Influência
           </h2>
           
@@ -1997,7 +1997,7 @@ function renderLiderancaFormPage() {
           
           <div>
             <label class="block text-sm font-bold text-gray-700 mb-3">
-              <i class="fas fa-users text-green-600 mr-2"></i>Quantidade de pessoas que você pode influenciar
+              <i class="fas fa-users text-green-700 mr-2"></i>Quantidade de pessoas que você pode influenciar
             </label>
             <input 
               type="range" 
@@ -2012,7 +2012,7 @@ function renderLiderancaFormPage() {
             />
             <div class="flex justify-between text-sm text-gray-600 mt-2">
               <span>10</span>
-              <span id="influencia-value" class="font-bold text-2xl text-green-600">50</span>
+              <span id="influencia-value" class="font-bold text-2xl text-green-700">50</span>
               <span>500+</span>
             </div>
             <p class="text-center text-sm text-gray-500 mt-2">
@@ -2034,7 +2034,7 @@ function renderLiderancaFormPage() {
               min="0" 
               step="100"
               placeholder="Ex: 2000"
-              class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none"
+              class="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-green-700/20 focus:border-green-700 transition-all outline-none"
               onchange="autoSaveLideranca()"
             />
             <p class="text-sm text-blue-600 mt-2 flex items-center gap-2">
@@ -2166,7 +2166,7 @@ function renderCoordenadorCard(coord) {
       <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
         <button 
           onclick='abrirModal("coordenador", ${JSON.stringify(coord)})'
-          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+          class="flex-1 bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
         >
           <i class="fas fa-edit mr-2"></i>Editar
         </button>
@@ -2290,7 +2290,7 @@ function renderEleitoresModule() {
             <select 
               id="filtro-eleitor-lideranca"
               onchange="aplicarFiltrosEleitores()"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
             >
               <option value="todos">Todas as lideranças</option>
               ${liderancas.map(l => `
@@ -2306,7 +2306,7 @@ function renderEleitoresModule() {
             <select 
               id="filtro-eleitor-status"
               onchange="aplicarFiltrosEleitores()"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
             >
               <option value="todos">Todos os status</option>
               <option value="simpatizante" ${filtroStatus === 'simpatizante' ? 'selected' : ''}>Simpatizante</option>
@@ -2320,7 +2320,7 @@ function renderEleitoresModule() {
             <select 
               id="filtro-eleitor-municipio"
               onchange="aplicarFiltrosEleitores()"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
             >
               <option value="todos">Todos os municípios</option>
               ${municipios.map(m => `
@@ -2416,14 +2416,14 @@ function renderEleitoresModule() {
                       <div class="flex items-center justify-center gap-2">
                         <button 
                           onclick="visualizarEleitor(${eleitor.id})"
-                          class="text-blue-600 hover:text-blue-800 p-2 hover:bg-blue-50 rounded-lg transition-colors"
+                          class="text-blue-600 hover:text-blue-800 p-2 hover:bg-green-50 rounded-lg transition-colors"
                           title="Visualizar"
                         >
                           <i class="fas fa-eye"></i>
                         </button>
                         <button 
                           onclick="editarEleitor(${eleitor.id})"
-                          class="text-green-600 hover:text-green-800 p-2 hover:bg-green-50 rounded-lg transition-colors"
+                          class="text-green-700 hover:text-green-800 p-2 hover:bg-green-50 rounded-lg transition-colors"
                           title="Editar"
                         >
                           <i class="fas fa-edit"></i>
@@ -2664,7 +2664,7 @@ function renderHierarquiaModule() {
                             <div class="h-3 rounded-full ${percMeta >= 100 ? 'bg-green-600' : percMeta >= 75 ? 'bg-blue-600' : percMeta >= 50 ? 'bg-yellow-500' : 'bg-red-500'}" 
                                  style="width: ${Math.min(percMeta, 100)}%"></div>
                           </div>
-                          <p class="text-sm font-bold ${percMeta >= 100 ? 'text-green-600' : percMeta >= 75 ? 'text-blue-600' : percMeta >= 50 ? 'text-yellow-600' : 'text-red-600'}">
+                          <p class="text-sm font-bold ${percMeta >= 100 ? 'text-green-700' : percMeta >= 75 ? 'text-blue-600' : percMeta >= 50 ? 'text-yellow-600' : 'text-red-600'}">
                             ${percMeta.toFixed(0)}%
                           </p>
                         </div>
@@ -2844,7 +2844,7 @@ function renderTerritoriosModule() {
                       <span class="text-lg font-bold text-orange-600">${totalEleitores}</span>
                       ${totalConfirmados > 0 ? `
                         <p class="text-xs text-gray-500 mt-1">
-                          <i class="fas fa-check-circle text-green-600"></i> ${totalConfirmados} confirmados
+                          <i class="fas fa-check-circle text-green-700"></i> ${totalConfirmados} confirmados
                         </p>
                       ` : ''}
                     </div>
@@ -2862,10 +2862,10 @@ function renderTerritoriosModule() {
                   
                   <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                     <div class="flex items-center gap-2">
-                      <i class="fas fa-star text-green-600"></i>
+                      <i class="fas fa-star text-green-700"></i>
                       <span class="text-sm font-medium text-gray-700">Lideranças</span>
                     </div>
-                    <span class="text-lg font-bold text-green-600">
+                    <span class="text-lg font-bold text-green-700">
                       ${(state.data.liderancas?.filter(l => l.territorio_id === territorio.id).length || 0)}
                     </span>
                   </div>
@@ -2970,7 +2970,7 @@ function filtrarTerritoriosPorMunicipio(busca) {
         `${t.municipio} (${t.eleitores} ${t.eleitores === 1 ? 'eleitor' : 'eleitores'})`
       ).join(', ');
       const maisTexto = territoriosEncontrados.length > 5 ? ` e mais ${territoriosEncontrados.length - 5}` : '';
-      resultadoEl.innerHTML = `<i class="fas fa-check-circle mr-1 text-green-600"></i> ${encontrados} território(s) • ${territoriosEncontrados.length} município(s): ${municipiosTexto}${maisTexto}`;
+      resultadoEl.innerHTML = `<i class="fas fa-check-circle mr-1 text-green-700"></i> ${encontrados} território(s) • ${territoriosEncontrados.length} município(s): ${municipiosTexto}${maisTexto}`;
       resultadoEl.className = 'text-xs text-gray-600 mt-2';
     }
   }
@@ -3079,7 +3079,7 @@ function renderBIInvestimentoModule() {
                         </div>
                       </td>
                       <td class="px-6 py-4 text-center">
-                        <p class="text-lg font-bold text-green-600">R$ ${(t.investimento || 0).toLocaleString('pt-BR')}</p>
+                        <p class="text-lg font-bold text-green-700">R$ ${(t.investimento || 0).toLocaleString('pt-BR')}</p>
                       </td>
                       <td class="px-6 py-4 text-center">
                         <p class="text-lg font-bold text-blue-600">${(t.eleitores || 0).toLocaleString('pt-BR')}</p>
@@ -3179,11 +3179,11 @@ function renderProfissionalCard(prof) {
       <div class="flex items-start justify-between mb-4">
         <div class="flex items-center">
           <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mr-3">
-            <i class="fas ${profIcons[prof.profissao.toLowerCase()] || 'fa-briefcase'} text-green-600 text-xl"></i>
+            <i class="fas ${profIcons[prof.profissao.toLowerCase()] || 'fa-briefcase'} text-green-700 text-xl"></i>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-gray-800">${prof.nome}</h3>
-            <p class="text-sm text-green-600 font-medium capitalize">${prof.profissao}</p>
+            <p class="text-sm text-green-700 font-medium capitalize">${prof.profissao}</p>
           </div>
         </div>
       </div>
@@ -3198,7 +3198,7 @@ function renderProfissionalCard(prof) {
       <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
         <button 
           onclick='abrirModal("profissional", ${JSON.stringify(prof)})'
-          class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+          class="flex-1 bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
         >
           <i class="fas fa-edit mr-2"></i>Editar
         </button>
@@ -3294,7 +3294,7 @@ function renderAgendaModule() {
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div>
           <h1 class="text-3xl font-bold text-gray-800 mb-2">
-            <i class="fas fa-calendar-alt text-green-600 mr-3"></i>Agenda e Atividades
+            <i class="fas fa-calendar-alt text-green-700 mr-3"></i>Agenda e Atividades
           </h1>
           <p class="text-gray-600 flex items-center gap-2">
             <i class="fas fa-clock text-sm"></i>
@@ -3538,7 +3538,7 @@ function renderAgendaRow(evento) {
       </td>
       <td class="p-4">
         <span class="inline-flex items-center gap-2 text-sm text-gray-700">
-          <i class="fas ${tipoIcons[evento.tipo]} text-green-600"></i>
+          <i class="fas ${tipoIcons[evento.tipo]} text-green-700"></i>
           ${tipoLabels[evento.tipo] || evento.tipo}
         </span>
       </td>
@@ -3574,7 +3574,7 @@ function renderAgendaRow(evento) {
           ` : ''}
           <button 
             onclick='abrirModal("agenda", ${JSON.stringify(evento)})'
-            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-xs transition-colors"
+            class="bg-green-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-xs transition-colors"
             title="Editar"
           >
             <i class="fas fa-edit"></i>
@@ -3629,7 +3629,7 @@ function renderAgendaCard(evento) {
           <div class="${prioridadeColors[evento.prioridade]} w-1 h-full absolute left-0 top-0 bottom-0 rounded-l-xl"></div>
           <div class="ml-4">
             <div class="flex items-center gap-3 mb-2">
-              <i class="fas ${tipoIcons[evento.tipo] || 'fa-calendar'} text-green-600 text-xl"></i>
+              <i class="fas ${tipoIcons[evento.tipo] || 'fa-calendar'} text-green-700 text-xl"></i>
               <h3 class="text-xl font-semibold text-gray-800">${evento.titulo}</h3>
             </div>
             <span class="${statusColors[evento.status]} px-3 py-1 rounded-full text-xs font-semibold uppercase">
@@ -3640,7 +3640,7 @@ function renderAgendaCard(evento) {
         <div class="flex gap-2">
           <button 
             onclick='abrirModal("agenda", ${JSON.stringify(evento)})'
-            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors"
+            class="bg-green-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors"
           >
             <i class="fas fa-edit"></i>
           </button>
@@ -3696,7 +3696,7 @@ function renderUsuariosModule() {
     <div>
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-800 flex items-center gap-3">
-          <i class="fas fa-users-cog text-green-600"></i>
+          <i class="fas fa-users-cog text-green-700"></i>
           Gerenciamento de Usuários
         </h1>
         <button 
@@ -3778,7 +3778,7 @@ function renderUsuariosModule() {
                   <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                        <i class="fas fa-user text-green-600"></i>
+                        <i class="fas fa-user text-green-700"></i>
                       </div>
                       <div>
                         <p class="font-semibold text-gray-800">${usuario.nome}</p>
@@ -3828,14 +3828,14 @@ function renderUsuariosModule() {
                       </button>
                       <button 
                         onclick="resetarSenhaUsuario(${usuario.id})"
-                        class="text-green-600 hover:text-purple-800 transition-colors"
+                        class="text-green-700 hover:text-purple-800 transition-colors"
                         title="Resetar Senha"
                       >
                         <i class="fas fa-key"></i>
                       </button>
                       <button 
                         onclick="deleteUsuario(${usuario.id})"
-                        class="text-green-600 hover:text-green-800 transition-colors"
+                        class="text-green-700 hover:text-green-800 transition-colors"
                         title="Deletar"
                       >
                         <i class="fas fa-trash"></i>
@@ -3859,7 +3859,7 @@ function renderConfiguracoesModule() {
     <div>
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-          <i class="fas fa-cog text-green-600"></i>
+          <i class="fas fa-cog text-green-700"></i>
           Configurações do Sistema
         </h1>
         <p class="text-gray-600 flex items-center gap-2">
@@ -3871,7 +3871,7 @@ function renderConfiguracoesModule() {
       <!-- Informações da Campanha -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-user-tie text-green-600"></i>
+          <i class="fas fa-user-tie text-green-700"></i>
           Informações da Campanha
         </h2>
         
@@ -3929,17 +3929,17 @@ function renderConfiguracoesModule() {
       <!-- Estatísticas do Sistema -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-chart-bar text-green-600"></i>
+          <i class="fas fa-chart-bar text-green-700"></i>
           Estatísticas do Sistema
         </h2>
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="text-center p-4 bg-green-50 rounded-lg">
-            <p class="text-3xl font-bold text-green-600">${state.data.liderancas?.length || 0}</p>
+            <p class="text-3xl font-bold text-green-700">${state.data.liderancas?.length || 0}</p>
             <p class="text-sm text-gray-600 mt-1">Lideranças</p>
           </div>
           
-          <div class="text-center p-4 bg-blue-50 rounded-lg">
+          <div class="text-center p-4 bg-green-50 rounded-lg">
             <p class="text-3xl font-bold text-blue-600">${state.data.coordenadores?.length || 0}</p>
             <p class="text-sm text-gray-600 mt-1">Coordenadores</p>
           </div>
@@ -3959,7 +3959,7 @@ function renderConfiguracoesModule() {
       <!-- Preferências do Sistema -->
       <div class="bg-white rounded-xl shadow-lg p-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-sliders-h text-green-600"></i>
+          <i class="fas fa-sliders-h text-green-700"></i>
           Preferências
         </h2>
         
@@ -3991,7 +3991,7 @@ function renderConfiguracoesModule() {
       <!-- Informações do Sistema -->
       <div class="bg-white rounded-xl shadow-lg p-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-info-circle text-green-600"></i>
+          <i class="fas fa-info-circle text-green-700"></i>
           Informações do Sistema
         </h2>
         
@@ -4130,7 +4130,7 @@ function renderRelatoriosModule() {
     <div>
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
-          <i class="fas fa-chart-bar mr-3 text-green-600"></i>Relatórios TSE
+          <i class="fas fa-chart-bar mr-3 text-green-700"></i>Relatórios TSE
         </h1>
         <button 
           onclick="calcularMetricas()"
@@ -4143,7 +4143,7 @@ function renderRelatoriosModule() {
       <!-- Cards de Relatórios -->
       <div class="mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-leaf text-green-600"></i>
+          <i class="fas fa-leaf text-green-700"></i>
           Análises Estratégicas - Bahia
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -4238,11 +4238,11 @@ function renderRelatoriosModule() {
       <!-- Resumo Geral -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-chart-pie text-green-600"></i>
+          <i class="fas fa-chart-pie text-green-700"></i>
           Resumo Geral da Campanha
         </h2>
         <div id="resumo-geral" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="text-center p-4 bg-blue-50 rounded-lg">
+          <div class="text-center p-4 bg-green-50 rounded-lg">
             <i class="fas fa-spinner fa-spin text-2xl text-blue-600 mb-2"></i>
             <p class="text-sm text-gray-600">Carregando...</p>
           </div>
@@ -4307,7 +4307,7 @@ function renderRelatorioCard(relatorio) {
       <div class="flex gap-2">
         <button 
           onclick="visualizarRelatorio(${relatorio.id})"
-          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+          class="bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
           title="Visualizar"
         >
           <i class="fas fa-eye"></i>
@@ -4387,16 +4387,16 @@ function renderRelatorioCobertura(data) {
     
     <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="text-center p-4 bg-blue-50 rounded-lg">
+        <div class="text-center p-4 bg-green-50 rounded-lg">
           <div class="text-3xl font-bold text-blue-600">${municipios.length}</div>
           <p class="text-sm text-gray-600">Municípios Analisados</p>
         </div>
         <div class="text-center p-4 bg-green-50 rounded-lg">
-          <div class="text-3xl font-bold text-green-600">${municipios.filter(m => m.cobertura_nivel !== 'nula').length}</div>
+          <div class="text-3xl font-bold text-green-700">${municipios.filter(m => m.cobertura_nivel !== 'nula').length}</div>
           <p class="text-sm text-gray-600">Com Cobertura</p>
         </div>
         <div class="text-center p-4 bg-red-50 rounded-lg">
-          <div class="text-3xl font-bold text-green-600">${municipios.filter(m => m.cobertura_nivel === 'nula').length}</div>
+          <div class="text-3xl font-bold text-green-700">${municipios.filter(m => m.cobertura_nivel === 'nula').length}</div>
           <p class="text-sm text-gray-600">Sem Cobertura</p>
         </div>
       </div>
@@ -4446,7 +4446,7 @@ function renderRelatorioTopMunicipios(data) {
   
   return `
     <h1 class="text-3xl font-bold text-gray-800 mb-6">
-      <i class="fas fa-trophy mr-3 text-green-600"></i>Top Municípios (Melhor Cobertura)
+      <i class="fas fa-trophy mr-3 text-green-700"></i>Top Municípios (Melhor Cobertura)
     </h1>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -4457,7 +4457,7 @@ function renderRelatorioTopMunicipios(data) {
             index === 0 ? 'border-yellow-500' :
             index === 1 ? 'border-gray-400' :
             index === 2 ? 'border-orange-500' :
-            'border-blue-500'
+            'border-green-700'
           }">
             <div class="flex items-start justify-between mb-4">
               <h3 class="text-lg font-bold text-gray-800">${m.municipio}</h3>
@@ -4473,7 +4473,7 @@ function renderRelatorioTopMunicipios(data) {
             <div class="space-y-2">
               <div class="flex justify-between items-center">
                 <span class="text-sm text-gray-600">Lideranças:</span>
-                <span class="font-bold text-green-600">${m.total_liderancas}</span>
+                <span class="font-bold text-green-700">${m.total_liderancas}</span>
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-sm text-gray-600">Eleitores:</span>
@@ -4481,7 +4481,7 @@ function renderRelatorioTopMunicipios(data) {
               </div>
               <div class="flex justify-between items-center">
                 <span class="text-sm text-gray-600">Cobertura:</span>
-                <span class="font-bold text-green-600">${m.cobertura_percentual}%</span>
+                <span class="font-bold text-green-700">${m.cobertura_percentual}%</span>
               </div>
             </div>
             
@@ -4500,7 +4500,7 @@ function renderRelatorioCriticos(data) {
   
   return `
     <h1 class="text-3xl font-bold text-gray-800 mb-6">
-      <i class="fas fa-exclamation-triangle mr-3 text-green-600"></i>Municípios Críticos (Sem Cobertura)
+      <i class="fas fa-exclamation-triangle mr-3 text-green-700"></i>Municípios Críticos (Sem Cobertura)
     </h1>
     
     <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6">
@@ -4523,7 +4523,7 @@ function renderRelatorioCriticos(data) {
           </thead>
           <tbody class="divide-y divide-gray-200">
             ${municipios.length === 0 ?
-              '<tr><td colspan="4" class="px-4 py-8 text-center text-green-600 font-semibold">🎉 Parabéns! Você tem cobertura em todos os municípios!</td></tr>' :
+              '<tr><td colspan="4" class="px-4 py-8 text-center text-green-700 font-semibold">🎉 Parabéns! Você tem cobertura em todos os municípios!</td></tr>' :
               municipios.slice(0, 20).map(m => `
                 <tr class="hover:bg-gray-50">
                   <td class="px-4 py-3 text-sm font-medium text-gray-900">${m.municipio}</td>
@@ -4561,7 +4561,7 @@ function renderRelatorioCriticos(data) {
 function renderRelatorioMetas(data) {
   return `
     <h1 class="text-3xl font-bold text-gray-800 mb-6">
-      <i class="fas fa-bullseye mr-3 text-green-600"></i>Metas e Objetivos
+      <i class="fas fa-bullseye mr-3 text-green-700"></i>Metas e Objetivos
     </h1>
     
     <div class="bg-white rounded-xl shadow-lg p-6">
@@ -4577,7 +4577,7 @@ function renderRelatorioMetas(data) {
 function renderRelatorioZonas(data) {
   return `
     <h1 class="text-3xl font-bold text-gray-800 mb-6">
-      <i class="fas fa-layer-group mr-3 text-green-600"></i>Análise de Zonas Eleitorais
+      <i class="fas fa-layer-group mr-3 text-green-700"></i>Análise de Zonas Eleitorais
     </h1>
     
     <div class="bg-white rounded-xl shadow-lg p-6">
@@ -4621,13 +4621,13 @@ function renderRelatorioAlertas(data) {
           <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 ${
             a.severidade === 'alta' ? 'border-red-500' :
             a.severidade === 'media' ? 'border-yellow-500' :
-            'border-blue-500'
+            'border-green-700'
           }">
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <h3 class="text-lg font-bold text-gray-800 mb-2">
                   <i class="fas fa-exclamation-circle mr-2 ${
-                    a.severidade === 'alta' ? 'text-green-600' :
+                    a.severidade === 'alta' ? 'text-green-700' :
                     a.severidade === 'media' ? 'text-yellow-600' :
                     'text-blue-600'
                   }"></i>
@@ -4678,7 +4678,7 @@ function renderRelatorioPerfilEleitorado(data) {
   
   return `
     <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-      <i class="fas fa-users text-green-600"></i>
+      <i class="fas fa-users text-green-700"></i>
       🌱 Perfil do Eleitorado - Bahia
     </h1>
     
@@ -4733,7 +4733,7 @@ function renderRelatorioPerfilEleitorado(data) {
       <!-- Distribuição por Faixa Etária -->
       <div class="bg-white rounded-xl shadow-lg p-6">
         <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-chart-bar text-green-600"></i>
+          <i class="fas fa-chart-bar text-green-700"></i>
           Distribuição por Faixa Etária
         </h3>
         <div class="space-y-3">
@@ -4864,7 +4864,7 @@ function renderRelatorioMunicipiosPrioritarios(data) {
     <!-- Ranking -->
     <div class="bg-white rounded-xl shadow-lg p-6">
       <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-        <i class="fas fa-list-ol text-green-600"></i>
+        <i class="fas fa-list-ol text-green-700"></i>
         Ranking Top 20 - Municípios Prioritários
       </h3>
       <div class="overflow-x-auto">
@@ -4909,7 +4909,7 @@ function renderRelatorioMunicipiosPrioritarios(data) {
     <!-- Insights -->
     <div class="bg-green-50 border-l-4 border-green-500 p-4 mt-6">
       <div class="flex items-start">
-        <i class="fas fa-lightbulb text-green-600 text-xl mr-3 mt-1"></i>
+        <i class="fas fa-lightbulb text-green-700 text-xl mr-3 mt-1"></i>
         <div>
           <p class="font-semibold text-green-800 mb-1">💡 Ação Recomendada</p>
           <p class="text-sm text-green-700">
@@ -4932,7 +4932,7 @@ function renderRelatorioPerfilVsCobertura(data) {
     </h1>
     
     <!-- Explicação -->
-    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+    <div class="bg-green-50 border-l-4 border-green-700 p-4 mb-6">
       <div class="flex items-start">
         <i class="fas fa-info-circle text-blue-600 text-xl mr-3 mt-1"></i>
         <div>
@@ -4988,7 +4988,7 @@ function renderRelatorioPerfilVsCobertura(data) {
           </thead>
           <tbody class="divide-y">
             ${gaps.map(g => {
-              const gapColor = g.gap > 0 ? 'text-red-600' : 'text-green-600';
+              const gapColor = g.gap > 0 ? 'text-red-600' : 'text-green-700';
               const prioridadeColor = g.prioridade === 'ALTA' ? 'bg-red-100 text-red-800' : 
                                        g.prioridade === 'MÉDIA' ? 'bg-yellow-100 text-yellow-800' : 
                                        'bg-green-100 text-green-800';
@@ -5034,7 +5034,7 @@ function renderRelatorioPerfilVsCobertura(data) {
       
       <div class="bg-green-50 border-l-4 border-green-500 p-4">
         <div class="flex items-start">
-          <i class="fas fa-check-circle text-green-600 text-xl mr-3 mt-1"></i>
+          <i class="fas fa-check-circle text-green-700 text-xl mr-3 mt-1"></i>
           <div>
             <p class="font-semibold text-green-800 mb-1">✅ Cobertura Equilibrada</p>
             <p class="text-sm text-green-700">
@@ -5187,7 +5187,7 @@ function renderModalCoordenador() {
       <!-- Cabeçalho -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <i class="fas fa-user-tie text-green-600"></i>
+          <i class="fas fa-user-tie text-green-700"></i>
           ${titulo}
         </h2>
         <button type="button" onclick="fecharModal()" class="text-gray-400 hover:text-gray-600 text-2xl">
@@ -5262,7 +5262,7 @@ function renderModalCoordenador() {
               type="text" 
               id="modal-regiao"
               placeholder="Ex: Nordeste"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
           
@@ -5272,7 +5272,7 @@ function renderModalCoordenador() {
               type="text" 
               id="modal-territorio"
               placeholder="Ex: Recôncavo"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
           
@@ -5282,7 +5282,7 @@ function renderModalCoordenador() {
               type="text" 
               id="modal-municipio"
               placeholder="Ex: Salvador"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
         </div>
@@ -5420,7 +5420,7 @@ function renderModalProfissional() {
               type="text" 
               id="modal-nome"
               placeholder="Digite o nome completo"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
               required
             >
           </div>
@@ -5434,7 +5434,7 @@ function renderModalProfissional() {
               id="modal-cpf"
               placeholder="000.000.000-00"
               maxlength="14"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
               required
             >
           </div>
@@ -5447,7 +5447,7 @@ function renderModalProfissional() {
               type="text" 
               id="modal-registro"
               placeholder="Ex: CRM 12345"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
               required
             >
           </div>
@@ -5643,7 +5643,7 @@ function renderModalAgenda() {
       <!-- Cabeçalho -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <i class="fas fa-calendar-alt text-green-600"></i>
+          <i class="fas fa-calendar-alt text-green-700"></i>
           ${titulo}
         </h2>
         <button type="button" onclick="fecharModal()" class="text-gray-400 hover:text-gray-600 text-2xl">
@@ -5733,7 +5733,7 @@ function renderModalAgenda() {
             <input 
               type="datetime-local" 
               id="modal-data-inicio"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
               required
             >
           </div>
@@ -5745,7 +5745,7 @@ function renderModalAgenda() {
             <input 
               type="datetime-local" 
               id="modal-data-fim"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
         </div>
@@ -5929,7 +5929,7 @@ function renderModalDadosEleitorais() {
               id="modal-total-eleitores"
               placeholder="0"
               min="0"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
           
@@ -5942,7 +5942,7 @@ function renderModalDadosEleitorais() {
               id="modal-eleitores-apoio"
               placeholder="0"
               min="0"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
           
@@ -5957,7 +5957,7 @@ function renderModalDadosEleitorais() {
               min="0"
               max="100"
               step="0.01"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
             >
           </div>
         </div>
@@ -6724,7 +6724,7 @@ function showFieldError(input, message) {
   
   // Cria mensagem de erro
   const errorMsg = document.createElement('p');
-  errorMsg.className = 'text-green-600 text-sm mt-2 flex items-center gap-2 font-semibold field-error';
+  errorMsg.className = 'text-green-700 text-sm mt-2 flex items-center gap-2 font-semibold field-error';
   errorMsg.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
   input.parentElement.appendChild(errorMsg);
 }
@@ -6895,7 +6895,7 @@ function showValidationError(message, fieldId) {
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-fadeIn">
       <div class="text-center">
         <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-exclamation-circle text-green-600 text-3xl"></i>
+          <i class="fas fa-exclamation-circle text-green-700 text-3xl"></i>
         </div>
         <h3 class="text-xl font-bold text-gray-800 mb-3">Atenção!</h3>
         <p class="text-base text-gray-700 mb-6 leading-relaxed">${message}</p>
@@ -6934,7 +6934,7 @@ function showSuccessMessage(message) {
   modal.innerHTML = `
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center animate-fadeIn">
       <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-        <i class="fas fa-check-circle text-green-600 text-4xl"></i>
+        <i class="fas fa-check-circle text-green-700 text-4xl"></i>
       </div>
       <p class="text-xl text-gray-800 font-bold leading-relaxed mb-6">${message}</p>
       <button 
@@ -6955,7 +6955,7 @@ function showErrorMessage(message) {
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-fadeIn">
       <div class="text-center">
         <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-times-circle text-green-600 text-3xl"></i>
+          <i class="fas fa-times-circle text-green-700 text-3xl"></i>
         </div>
         <p class="text-base text-gray-700 mb-6 leading-relaxed">${message}</p>
         <button 
@@ -7251,7 +7251,7 @@ function criarModalEleitor(data = null) {
         <form onsubmit="salvarEleitor(event)" class="p-6 space-y-6">
           <input type="hidden" id="modal-eleitor-id" value="${d.id || ''}" />
           <!-- Seção 1: Identificação -->
-          <div class="bg-blue-50 rounded-xl p-6">
+          <div class="bg-green-50 rounded-xl p-6">
             <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
               <i class="fas fa-id-card mr-2 text-blue-600"></i>
               Identificação
@@ -7266,7 +7266,7 @@ function criarModalEleitor(data = null) {
                   id="modal-eleitor-nome"
                   value="${d.nome || ''}"
                   placeholder="Nome completo do eleitor"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
                   required
                 />
               </div>
@@ -7279,7 +7279,7 @@ function criarModalEleitor(data = null) {
                   value="${d.cpf || ''}"
                   placeholder="000.000.000-00"
                   maxlength="14"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
                 />
               </div>
               
@@ -7291,7 +7291,7 @@ function criarModalEleitor(data = null) {
                   value="${d.telefone || ''}"
                   placeholder="(00) 00000-0000"
                   maxlength="15"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
                 />
               </div>
               
@@ -7302,7 +7302,7 @@ function criarModalEleitor(data = null) {
                   id="modal-eleitor-email"
                   value="${d.email || ''}"
                   placeholder="exemplo@email.com"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
                 />
               </div>
             </div>
@@ -7342,7 +7342,7 @@ function criarModalEleitor(data = null) {
           <!-- Seção 3: Localização -->
           <div class="bg-green-50 rounded-xl p-6">
             <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
-              <i class="fas fa-map-marker-alt mr-2 text-green-600"></i>
+              <i class="fas fa-map-marker-alt mr-2 text-green-700"></i>
               Localização
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -7481,7 +7481,7 @@ function criarModalEleitor(data = null) {
               id="modal-eleitor-observacoes"
               rows="3"
               placeholder="Informações adicionais sobre o eleitor..."
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
             >${d.observacoes || ''}</textarea>
           </div>
           
@@ -7492,7 +7492,7 @@ function criarModalEleitor(data = null) {
               id="modal-eleitor-tags"
               value="${d.tags || ''}"
               placeholder="whatsapp, facebook, lider-comunitario"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
             />
           </div>
           
@@ -7780,7 +7780,7 @@ function renderModalUsuario() {
     <form id="form-modal" onsubmit="salvarUsuario(event)" class="p-6">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <i class="fas fa-user-plus text-green-600"></i>
+          <i class="fas fa-user-plus text-green-700"></i>
           ${titulo}
         </h2>
         <button type="button" onclick="fecharModal()" class="text-gray-400 hover:text-gray-600 text-2xl">
@@ -8236,18 +8236,18 @@ async function carregarResumoGeral() {
       const resumo = response.data.resumo;
       
       const html = `
-        <div class="text-center p-4 bg-blue-50 rounded-lg">
+        <div class="text-center p-4 bg-green-50 rounded-lg">
           <div class="text-3xl font-bold text-blue-600 mb-1">${resumo.total_liderancas || 0}</div>
           <p class="text-sm text-gray-600">Lideranças Ativas</p>
         </div>
         
         <div class="text-center p-4 bg-green-50 rounded-lg">
-          <div class="text-3xl font-bold text-green-600 mb-1">${resumo.municipios_cobertos || 0}</div>
+          <div class="text-3xl font-bold text-green-700 mb-1">${resumo.municipios_cobertos || 0}</div>
           <p class="text-sm text-gray-600">Municípios com Cobertura</p>
         </div>
         
         <div class="text-center p-4 bg-purple-50 rounded-lg">
-          <div class="text-3xl font-bold text-green-600 mb-1">${(resumo.influencia_total || 0).toLocaleString()}</div>
+          <div class="text-3xl font-bold text-green-700 mb-1">${(resumo.influencia_total || 0).toLocaleString()}</div>
           <p class="text-sm text-gray-600">Votos Potenciais</p>
         </div>
         
@@ -8719,9 +8719,9 @@ function renderRegisterForm() {
       <!-- Background animado -->
       <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-700">
         <div class="absolute inset-0 opacity-30">
-          <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+          <div class="absolute top-0 -left-4 w-72 h-72 d-none mix-blend-multiply filter blur-xl animate-blob"></div>
           <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-          <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+          <div class="absolute -bottom-8 left-20 w-72 h-72 d-none mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
       </div>
       
@@ -8737,7 +8737,7 @@ function renderRegisterForm() {
             <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg">
               <i class="fas fa-user-plus text-4xl text-white"></i>
             </div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-green-700 to-blue-700 bg-clip-text text-transparent mb-2">
               Comece Agora
             </h1>
             <p class="text-gray-600 font-medium">Junte-se à plataforma profissional de gestão de campanhas</p>
@@ -8766,13 +8766,13 @@ function renderRegisterForm() {
             <!-- Tipo de Conta -->
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-3">
-                <i class="fas fa-user-tag text-green-600 mr-2"></i>Tipo de Conta
+                <i class="fas fa-user-tag text-green-700 mr-2"></i>Tipo de Conta
               </label>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <label class="relative">
                   <input type="radio" name="tipo" value="lideranca" required class="peer sr-only" />
                   <div class="p-4 border-2 border-gray-200 rounded-xl cursor-pointer peer-checked:border-indigo-500 peer-checked:bg-indigo-50 transition-all hover:border-indigo-300">
-                    <i class="fas fa-users text-2xl text-green-600 mb-2"></i>
+                    <i class="fas fa-users text-2xl text-green-700 mb-2"></i>
                     <p class="font-bold text-gray-800">Liderança</p>
                     <p class="text-xs text-gray-500">Líder comunitário</p>
                   </div>
@@ -8781,7 +8781,7 @@ function renderRegisterForm() {
                 <label class="relative">
                   <input type="radio" name="tipo" value="coordenador" class="peer sr-only" />
                   <div class="p-4 border-2 border-gray-200 rounded-xl cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50 transition-all hover:border-purple-300">
-                    <i class="fas fa-user-tie text-2xl text-green-600 mb-2"></i>
+                    <i class="fas fa-user-tie text-2xl text-green-700 mb-2"></i>
                     <p class="font-bold text-gray-800">Coordenador</p>
                     <p class="text-xs text-gray-500">Coordenador regional</p>
                   </div>
@@ -8793,7 +8793,7 @@ function renderRegisterForm() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-user text-green-600 mr-2"></i>Nome Completo
+                  <i class="fas fa-user text-green-700 mr-2"></i>Nome Completo
                 </label>
                 <input 
                   type="text" 
@@ -8806,7 +8806,7 @@ function renderRegisterForm() {
               
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-id-card text-green-600 mr-2"></i>CPF
+                  <i class="fas fa-id-card text-green-700 mr-2"></i>CPF
                 </label>
                 <input 
                   type="text" 
@@ -8823,7 +8823,7 @@ function renderRegisterForm() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-envelope text-green-600 mr-2"></i>E-mail
+                  <i class="fas fa-envelope text-green-700 mr-2"></i>E-mail
                 </label>
                 <input 
                   type="email" 
@@ -8836,7 +8836,7 @@ function renderRegisterForm() {
               
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-phone text-green-600 mr-2"></i>Telefone
+                  <i class="fas fa-phone text-green-700 mr-2"></i>Telefone
                 </label>
                 <input 
                   type="tel" 
@@ -8853,7 +8853,7 @@ function renderRegisterForm() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>Município
+                  <i class="fas fa-map-marker-alt text-green-700 mr-2"></i>Município
                 </label>
                 <input 
                   type="text" 
@@ -8866,7 +8866,7 @@ function renderRegisterForm() {
               
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-map text-green-600 mr-2"></i>Estado
+                  <i class="fas fa-map text-green-700 mr-2"></i>Estado
                 </label>
                 <select 
                   id="register-estado" 
@@ -8909,7 +8909,7 @@ function renderRegisterForm() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-lock text-green-600 mr-2"></i>Senha
+                  <i class="fas fa-lock text-green-700 mr-2"></i>Senha
                 </label>
                 <input 
                   type="password" 
@@ -8923,7 +8923,7 @@ function renderRegisterForm() {
               
               <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">
-                  <i class="fas fa-lock text-green-600 mr-2"></i>Confirmar Senha
+                  <i class="fas fa-lock text-green-700 mr-2"></i>Confirmar Senha
                 </label>
                 <input 
                   type="password" 
@@ -8956,7 +8956,7 @@ function renderRegisterForm() {
           </form>
           
           <!-- Info -->
-          <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-xl">
+          <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-700 rounded-xl">
             <p class="text-sm text-blue-800">
               <i class="fas fa-info-circle mr-2"></i>
               <strong>Importante:</strong> Seu cadastro será enviado para aprovação. Você receberá um e-mail assim que for aprovado pelo administrador.
@@ -9298,7 +9298,7 @@ function renderFinancasModule() {
     <div>
       <div class="mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-          <i class="fas fa-coins text-green-600"></i>
+          <i class="fas fa-coins text-green-700"></i>
           Gestão Financeira
         </h1>
         <p class="text-gray-600">Emendas, gastos, relatórios e prestação de contas</p>
@@ -9351,7 +9351,7 @@ function renderFinancasModule() {
       <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-12 text-center">
         <div class="max-w-2xl mx-auto">
           <div class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6">
-            <i class="fas fa-chart-pie text-5xl text-green-600"></i>
+            <i class="fas fa-chart-pie text-5xl text-green-700"></i>
           </div>
           <h2 class="text-3xl font-bold text-gray-800 mb-4">
             Módulo de Finanças
@@ -9361,28 +9361,28 @@ function renderFinancasModule() {
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mb-8">
             <div class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <i class="fas fa-check-circle text-green-700 text-xl mt-1"></i>
               <div>
                 <h4 class="font-semibold text-gray-800">Gestão de Emendas</h4>
                 <p class="text-sm text-gray-600">Acompanhamento de emendas parlamentares</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <i class="fas fa-check-circle text-green-700 text-xl mt-1"></i>
               <div>
                 <h4 class="font-semibold text-gray-800">Controle de Gastos</h4>
                 <p class="text-sm text-gray-600">Categorização e relatórios de despesas</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <i class="fas fa-check-circle text-green-700 text-xl mt-1"></i>
               <div>
                 <h4 class="font-semibold text-gray-800">Prestação de Contas</h4>
                 <p class="text-sm text-gray-600">Relatórios automáticos para TCU/TCE</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+              <i class="fas fa-check-circle text-green-700 text-xl mt-1"></i>
               <div>
                 <h4 class="font-semibold text-gray-800">Dashboards Financeiros</h4>
                 <p class="text-sm text-gray-600">Visualização e análise de dados</p>
@@ -9405,7 +9405,7 @@ function renderProjetosModule() {
   return `
     <div class="space-y-6">
       <!-- Header -->
-      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
+      <div class="bg-gradient-to-r from-green-700 to-blue-700 rounded-xl shadow-lg p-6 text-white">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-2xl font-bold flex items-center">
@@ -9416,7 +9416,7 @@ function renderProjetosModule() {
           </div>
           <button 
             onclick="openModalProjeto()"
-            class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
+            class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
           >
             <i class="fas fa-plus mr-2"></i>Novo Projeto
           </button>
@@ -9425,7 +9425,7 @@ function renderProjetosModule() {
 
       <!-- Cards de Resumo -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-700">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm">Em Planejamento</p>
@@ -9527,7 +9527,7 @@ function renderGabineteModule() {
             <i class="fas fa-user-tie text-3xl text-indigo-500"></i>
           </div>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-700">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm">Assessores</p>
@@ -9611,7 +9611,7 @@ function renderFinancasModule() {
           </div>
           <button 
             onclick="openModalFinanca()"
-            class="bg-white text-green-600 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
+            class="bg-white text-green-700 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
           >
             <i class="fas fa-plus mr-2"></i>Nova Transação
           </button>
@@ -9629,7 +9629,7 @@ function renderFinancasModule() {
             <i class="fas fa-wallet text-3xl text-green-500"></i>
           </div>
         </div>
-        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-700">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-gray-500 text-sm">Emendas</p>
@@ -9661,7 +9661,7 @@ function renderFinancasModule() {
       <!-- Tabs de Navegação -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="flex border-b border-gray-200">
-          <button class="flex-1 px-6 py-4 text-center font-semibold bg-green-50 text-green-600 border-b-2 border-green-600">
+          <button class="flex-1 px-6 py-4 text-center font-semibold bg-green-50 text-green-700 border-b-2 border-green-600">
             <i class="fas fa-chart-line mr-2"></i>
             Visão Geral
           </button>
@@ -9701,7 +9701,7 @@ function renderFinancasModule() {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white rounded-xl shadow-lg p-6">
           <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-            <i class="fas fa-chart-pie mr-2 text-green-600"></i>
+            <i class="fas fa-chart-pie mr-2 text-green-700"></i>
             Distribuição de Gastos
           </h3>
           <div class="h-64 flex items-center justify-center text-gray-400">
@@ -9853,13 +9853,13 @@ function showEleitorPublicForm() {
             </div>
             
             <!-- Checkbox LGPD -->
-            <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+            <div class="bg-green-50 border-2 border-blue-200 rounded-lg p-4">
               <label class="flex items-start gap-3 cursor-pointer">
                 <input 
                   type="checkbox" 
                   id="eleitor-lgpd-consent"
                   required
-                  class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                  class="mt-1 w-5 h-5 text-green-700 border-gray-300 rounded focus:ring-green-500"
                 />
                 <span class="text-sm text-gray-700">
                   <strong>Consentimento de Dados (LGPD)</strong><br/>
