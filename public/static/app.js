@@ -82,10 +82,8 @@ function renderLogin() {
             <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
               Magno Lavigne
             </h1>
-            <p class="text-gray-600 font-medium">Plataforma Inteligente de Gestão de Campanha</p>
+            <p class="text-gray-600 font-medium">Deputado Federal</p>
             <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 rounded-full">
-              <i class="fas fa-shield-check text-blue-600 text-sm"></i>
-              <p class="text-sm text-blue-700 font-semibold">Sistema Seguro e Profissional</p>
             </div>
           </div>
           
@@ -186,10 +184,6 @@ function renderLogin() {
           
           <!-- Footer -->
           <div class="mt-6 text-center space-y-3">
-            <p class="text-xs text-gray-400 flex items-center justify-center gap-2">
-              <i class="fas fa-shield-alt text-green-500"></i>
-              <span>Conexão segura e criptografada</span>
-            </p>
           </div>
         </div>
         
@@ -199,11 +193,8 @@ function renderLogin() {
             <div class="flex items-center justify-between text-xs">
               <span>© 2026 Magno Lavigne</span>
               <div class="flex items-center gap-2">
-                <i class="fas fa-shield-check text-blue-400"></i>
-                <span class="text-blue-300">Plataforma Profissional</span>
               </div>
             </div>
-            <p class="text-xs text-blue-300 mt-1">Tecnologia para campanhas vencedoras</p>
           </p>
         </div>
       </div>
@@ -6250,11 +6241,12 @@ async function login(e) {
       
       // Mostrar loading no lugar do form
       document.getElementById('app').innerHTML = `
-        <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-yellow-50">
+        <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50">
           <div class="text-center">
-            <i class="fas fa-spinner fa-spin text-6xl text-green-600 mb-4"></i>
-            <p class="text-xl text-gray-700 font-semibold">Carregando dados...</p>
-            <p class="text-sm text-gray-500 mt-2">Aguarde enquanto preparamos tudo para você</p>
+            <div class="relative">
+              <div class="w-24 h-24 border-8 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+            </div>
+            <p class="text-xl text-gray-700 font-semibold">Carregando...</p>
           </div>
         </div>
       `;
@@ -8750,7 +8742,6 @@ function renderRegisterForm() {
             </h1>
             <p class="text-gray-600 font-medium">Junte-se à plataforma profissional de gestão de campanhas</p>
             <div class="mt-3 flex items-center justify-center gap-2 text-sm text-gray-500">
-              <i class="fas fa-shield-check text-blue-600"></i>
               <span>Sua solicitação será analisada em até 24h</span>
             </div>
           </div>
@@ -9859,6 +9850,22 @@ function showEleitorPublicForm() {
                 class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none"
                 placeholder="Conte-nos um pouco sobre você ou como podemos ajudar..."
               ></textarea>
+            </div>
+            
+            <!-- Checkbox LGPD -->
+            <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  id="eleitor-lgpd-consent"
+                  required
+                  class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                />
+                <span class="text-sm text-gray-700">
+                  <strong>Consentimento de Dados (LGPD)</strong><br/>
+                  Ao cadastrar-me, autorizo o uso dos meus dados pessoais para fins de comunicação política e declaro estar ciente de que posso solicitar a exclusão dos meus dados a qualquer momento.
+                </span>
+              </label>
             </div>
             
             <div class="flex gap-3">
