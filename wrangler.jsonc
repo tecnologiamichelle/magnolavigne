@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "joao-silva",
-  "main": "src/index.tsx",
+  "name": "meupolitico-digital",
   "compatibility_date": "2024-01-01",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist",
@@ -9,8 +8,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "meupolitico-joao-silva",
-      "database_id": "MANUAL_REQUIRED"
+      "database_name": "meupolitico-production",
+      "database_id": "318dba28-af2a-4d71-857a-059243e7f771"
     }
   ]
 }
