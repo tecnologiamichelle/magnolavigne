@@ -1649,17 +1649,21 @@ app.post('/api/eleitores', async (c) => {
   try {
     const data = await c.req.json()
     
-    // Validar campos obrigatórios
-    if (!data.lideranca_id || !data.nome || !data.municipio) {
+    // Validar campos obrigatórios (nome e município sempre obrigatórios)
+    if (!data.nome || !data.municipio) {
       return c.json({ 
-        error: 'Campos obrigatórios: lideranca_id, nome, municipio' 
+        error: 'Campos obrigatórios: nome, municipio' 
       }, 400)
     }
     
-    // Buscar coordenador_id da liderança
-    const lideranca = await c.env.DB.prepare(`
-      SELECT coordenador_id FROM liderancas WHERE id = ?
-    `).bind(data.lideranca_id).first()
+    // Buscar coordenador_id da liderança (se fornecido)
+    let coordenador_id = null
+    if (data.lideranca_id) {
+      const lideranca = await c.env.DB.prepare(`
+        SELECT coordenador_id FROM liderancas WHERE id = ?
+      `).bind(data.lideranca_id).first()
+      coordenador_id = lideranca?.coordenador_id || null
+    }
     
     const result = await c.env.DB.prepare(`
       INSERT INTO eleitores (
@@ -1672,8 +1676,8 @@ app.post('/api/eleitores', async (c) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       data.candidato_id || 1,
-      data.lideranca_id,
-      lideranca?.coordenador_id || null,
+      data.lideranca_id || null,
+      coordenador_id,
       data.nome,
       data.cpf || null,
       data.telefone || null,
@@ -1693,21 +1697,23 @@ app.post('/api/eleitores', async (c) => {
       data.data_captacao || new Date().toISOString().split('T')[0]
     ).run()
     
-    // Atualizar contador na liderança
-    await c.env.DB.prepare(`
-      UPDATE liderancas 
-      SET qtd_eleitores = qtd_eleitores + 1,
-          qtd_eleitores_confirmados = qtd_eleitores_confirmados + ?
-      WHERE id = ?
-    `).bind(data.confirmado || 0, data.lideranca_id).run()
-    
-    // Atualizar contador no coordenador
-    if (lideranca?.coordenador_id) {
+    // Atualizar contador na liderança (apenas se lideranca_id foi fornecido)
+    if (data.lideranca_id) {
       await c.env.DB.prepare(`
-        UPDATE coordenadores 
-        SET qtd_eleitores_captados = qtd_eleitores_captados + 1
+        UPDATE liderancas 
+        SET qtd_eleitores = qtd_eleitores + 1,
+            qtd_eleitores_confirmados = qtd_eleitores_confirmados + ?
         WHERE id = ?
-      `).bind(lideranca.coordenador_id).run()
+      `).bind(data.confirmado || 0, data.lideranca_id).run()
+      
+      // Atualizar contador no coordenador
+      if (coordenador_id) {
+        await c.env.DB.prepare(`
+          UPDATE coordenadores 
+          SET qtd_eleitores_captados = qtd_eleitores_captados + 1
+          WHERE id = ?
+        `).bind(coordenador_id).run()
+      }
     }
     
     return c.json({ 
