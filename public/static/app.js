@@ -160,15 +160,6 @@ function renderLogin() {
             </div>
           </div>
           
-          <!-- Botão Criar Conta -->
-          <button 
-            onclick="showRegisterForm(); return false;"
-            class="w-full bg-white border-2 border-blue-200 text-blue-700 py-4 rounded-xl font-bold hover:bg-green-50 hover:border-blue-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center justify-center gap-2"
-          >
-            <i class="fas fa-user-plus"></i>
-            <span>Criar Nova Conta</span>
-          </button>
-          
           <!-- Botão Cadastro de Eleitor -->
           <button 
             onclick="showEleitorPublicForm(); return false;"
@@ -289,13 +280,8 @@ function renderDashboard() {
           ${renderMenuItem('agenda', 'fa-sun', 'Agenda')}
           <div class="border-t border-green-600 my-2"></div>
           ${renderMenuItem('territorios', 'fa-map-marked-alt', 'Territórios')}
-          ${renderMenuItem('bi-investimento', 'fa-chart-pie', 'BI Investimento')}
+          ${renderMenuItem('bi-investimento', 'fa-chart-pie', 'Desempenho')}
           <div class="border-t border-green-600 my-2"></div>
-          ${renderMenuItem('relatorios', 'fa-chart-line', 'Relatórios', 0, true)}
-          <div class="border-t border-blue-600 my-2"></div>
-          ${renderMenuItem('projetos', 'fa-tasks', 'Projetos')}
-          ${renderMenuItem('gabinete', 'fa-building', 'Gabinete')}
-          ${renderMenuItem('financas', 'fa-coins', 'Finanças')}
           ${state.candidato.tipo === 'admin' ? renderMenuItem('usuarios', 'fa-users-cog', 'Usuários') : ''}
           ${state.candidato.tipo === 'admin' ? `<div class="border-t border-green-600 my-2"></div>` : ''}
           ${state.candidato.tipo === 'admin' ? renderMenuItem('configuracoes', 'fa-recycle', 'Configurações') : ''}
@@ -7754,13 +7740,20 @@ async function abrirModalUsuario(id = null) {
   const modal = document.getElementById('modal-overlay');
   const modalContent = document.getElementById('modal-content');
   
+  // Verificar se elementos existem
+  if (!modal || !modalContent) {
+    console.error('❌ Erro: Elementos do modal não encontrados');
+    showErrorMessage('Erro ao abrir modal de usuário');
+    return;
+  }
+  
   if (id) {
     // Carregar dados do usuário para edição
     const usuario = state.data.usuarios.find(u => u.id === id);
     if (usuario) {
       modalContent.innerHTML = renderModalUsuario();
       modal.classList.remove('hidden');
-      carregarDadosModal(usuario);
+      setTimeout(() => carregarDadosModal(usuario), 100);
     }
   } else {
     modalContent.innerHTML = renderModalUsuario();
