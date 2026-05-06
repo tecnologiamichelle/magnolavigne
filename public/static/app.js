@@ -76,15 +76,11 @@ function renderLogin() {
         <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
           <!-- Header -->
           <div class="text-center mb-8 animate-fadeIn">
-            <div class="inline-flex items-center justify-center mb-4 transition-transform duration-300">
-              <i class="fas fa-leaf text-6xl text-green-700"></i>
-            </div>
+            <i class="fas fa-leaf text-6xl text-green-700 mb-4"></i>
             <h1 class="text-4xl font-bold bg-gradient-to-r from-green-700 to-blue-700 bg-clip-text text-transparent mb-2">
               Magno Lavigne
             </h1>
             <p class="text-gray-600 font-medium">Deputado Federal</p>
-            <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-green-50 rounded-full">
-            </div>
           </div>
           
           <!-- Mensagens de erro/sucesso -->
@@ -8065,6 +8061,11 @@ function showAddAgendaForm() {
 async function addAgenda(data) {
   try {
     data.candidato_id = state.candidato.id;
+    // Corrigir nome do campo: data_inicio -> data_hora
+    if (data.data_inicio) {
+      data.data_hora = data.data_inicio;
+      delete data.data_inicio;
+    }
     await axios.post('/api/agenda', data);
     showSuccessMessage('✅ Evento criado com sucesso!');
     await loadAllData();
