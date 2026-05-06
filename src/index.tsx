@@ -42,7 +42,7 @@ app.get('/', (c) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MeuPolitico.Digital - Plataforma Profissional de Gestão de Campanhas</title>
+        <title>Magno Lavigne - Plataforma Profissional de Gestão de Campanhas</title>
         <meta name="description" content="Plataforma inteligente de gestão de campanhas políticas com hierarquia organizacional, analytics e muito mais.">
         <meta name="keywords" content="campanha política, gestão eleitoral, lideranças, coordenadores, eleitores, saas">
         <script src="https://cdn.tailwindcss.com"></script>

@@ -80,7 +80,7 @@ function renderLogin() {
               <i class="fas fa-chart-network text-4xl text-white"></i>
             </div>
             <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-              MeuPolitico.Digital
+              Magno Lavigne
             </h1>
             <p class="text-gray-600 font-medium">Plataforma Inteligente de Gestão de Campanha</p>
             <div class="mt-3 inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 rounded-full">
@@ -197,7 +197,7 @@ function renderLogin() {
         <div class="text-center mt-6 animate-fadeIn animation-delay-800">
           <p class="text-white/80 text-sm">
             <div class="flex items-center justify-between text-xs">
-              <span>© 2026 MeuPolitico.Digital</span>
+              <span>© 2026 Magno Lavigne</span>
               <div class="flex items-center gap-2">
                 <i class="fas fa-shield-check text-blue-400"></i>
                 <span class="text-blue-300">Plataforma Profissional</span>
@@ -274,8 +274,8 @@ function renderDashboard() {
           <h2 class="text-2xl font-bold flex items-center">
             <i class="fas fa-chart-network text-blue-300 mr-3 text-3xl"></i>
             <div>
-              <span class="text-2xl font-bold">MeuPolitico</span>
-              <span class="text-xs block text-blue-300 -mt-1">.Digital</span>
+              <span class="text-2xl font-bold">Magno Lavigne</span>
+              <span class="text-xs block text-blue-300 -mt-1">Deputado Federal</span>
             </div>
           </h2>
           <p class="text-blue-200 text-sm mt-2 flex items-center gap-2 px-3 py-2 bg-blue-800 bg-opacity-30 rounded-lg border border-blue-500">
@@ -4009,7 +4009,7 @@ function renderConfiguracoesModule() {
             <span class="text-gray-600">Versão do Sistema</span>
             <span class="font-semibold text-blue-700 flex items-center gap-2">
               <i class="fas fa-code-branch text-sm"></i>
-              V2.0.0 - MeuPolitico.Digital
+              V8.4.1 - Magno Lavigne
             </span>
           </div>
           
@@ -9922,3 +9922,4 @@ async function submitEleitorPublicForm(e) {
 
 // Renderizar ao carregar
 render();
+nder();

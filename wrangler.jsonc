@@ -1,16 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "meupolitico-digital",
-  "compatibility_date": "2026-03-17",
+  "name": "joao-silva",
+  "main": "src/index.tsx",
+  "compatibility_date": "2024-01-01",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist",
   
-  // Banco D1 - MeuPolitico.Digital (criado em 17/03/2026)
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "meupolitico-production",
-      "database_id": "318dba28-af2a-4d71-857a-059243e7f771"
+      "database_name": "meupolitico-joao-silva",
+      "database_id": "MANUAL_REQUIRED"
     }
   ]
 }
