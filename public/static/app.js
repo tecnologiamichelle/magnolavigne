@@ -10,6 +10,7 @@ const state = {
   liderancaEditando: null, // Liderança sendo editada
   relatorioAtivo: null,
   relatorioData: null,
+  isRendering: false, // Flag para prevenir renders simultâneos
   // Estados dos modais
   modalAtivo: null, // 'coordenador', 'profissional', 'agenda', 'eleitor'
   modalData: {},
@@ -47,14 +48,32 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 // ============= FUNÇÕES DE RENDERIZAÇÃO =============
 
 function render() {
-  const app = document.getElementById('app');
+  console.log('🔴 render() chamada, state.candidato:', state.candidato);
+  console.log('🔴 render() isRendering:', state.isRendering);
   
-  if (!state.candidato) {
-    app.innerHTML = renderLogin();
-    attachLoginEvents();
-  } else {
-    app.innerHTML = renderDashboard();
-    attachDashboardEvents();
+  if (state.isRendering) {
+    console.warn('⚠️ render() BLOQUEADO - já existe um render em andamento');
+    return;
+  }
+  
+  state.isRendering = true;
+  
+  try {
+    const app = document.getElementById('app');
+    
+    if (!state.candidato) {
+      console.log('🔴 ❌ state.candidato é NULL - mostrando tela de login');
+      console.trace('🔴 STACK TRACE:');
+      app.innerHTML = renderLogin();
+      attachLoginEvents();
+    } else {
+      console.log('🔴 ✅ state.candidato OK - mostrando dashboard');
+      app.innerHTML = renderDashboard();
+      attachDashboardEvents();
+    }
+  } finally {
+    state.isRendering = false;
+    console.log('🔴 render() finalizado');
   }
 }
 
@@ -6140,6 +6159,11 @@ function carregarDadosModal(data) {
 async function salvarModal(e) {
   e.preventDefault();
   
+  console.log('🟣 salvarModal iniciada');
+  console.log('🟣 state.candidato:', state.candidato);
+  console.log('🟣 state.modalAtivo:', state.modalAtivo);
+  console.log('🟣 state.modalEditId:', state.modalEditId);
+  
   showLoadingMessage('Salvando...');
   
   try {
@@ -6149,24 +6173,59 @@ async function salvarModal(e) {
     switch(state.modalAtivo) {
       case 'coordenador':
         endpoint = state.modalEditId ? `/api/coordenadores/${state.modalEditId}` : '/api/coordenadores';
+        
+        // Validar campos obrigatórios ANTES de coletar dados
+        const nomeCoord = document.getElementById('modal-nome')?.value?.trim();
+        const municipioCoord = document.getElementById('modal-municipio')?.value?.trim();
+        
+        if (!nomeCoord || nomeCoord.length < 3) {
+          hideLoadingMessage();
+          showErrorMessage('❌ Nome é obrigatório (mínimo 3 caracteres)!');
+          return;
+        }
+        
+        if (!municipioCoord || municipioCoord.length < 2) {
+          hideLoadingMessage();
+          showErrorMessage('❌ Município é obrigatório!');
+          return;
+        }
+        
         dados = {
           ...dados,
-          nome: document.getElementById('modal-nome')?.value || '',
+          nome: nomeCoord,
           telefone: document.getElementById('modal-telefone')?.value?.replace(/\D/g, '') || 
                     document.getElementById('modal-celular')?.value?.replace(/\D/g, '') || '',
           email: document.getElementById('modal-email')?.value || '',
-          municipio: document.getElementById('modal-municipio')?.value || '',
+          municipio: municipioCoord,
           area_atuacao: document.getElementById('modal-area-atuacao')?.value || 
                         document.getElementById('modal-tipo')?.value || ''
         };
+        console.log('🟣 Dados COORDENADOR coletados:', dados);
         break;
         
       case 'profissional':
         endpoint = state.modalEditId ? `/api/profissionais/${state.modalEditId}` : '/api/profissionais';
+        
+        // Validar campos obrigatórios ANTES de coletar dados
+        const nomeProf = document.getElementById('modal-nome')?.value?.trim();
+        const profissao = document.getElementById('modal-profissao')?.value?.trim();
+        
+        if (!nomeProf || nomeProf.length < 3) {
+          hideLoadingMessage();
+          showErrorMessage('❌ Nome é obrigatório (mínimo 3 caracteres)!');
+          return;
+        }
+        
+        if (!profissao || profissao.length < 2) {
+          hideLoadingMessage();
+          showErrorMessage('❌ Profissão é obrigatória!');
+          return;
+        }
+        
         dados = {
           ...dados,
-          nome: document.getElementById('modal-nome')?.value || '',
-          profissao: document.getElementById('modal-profissao')?.value || '',
+          nome: nomeProf,
+          profissao: profissao,
           telefone: document.getElementById('modal-telefone')?.value?.replace(/\D/g, '') || 
                     document.getElementById('modal-celular')?.value?.replace(/\D/g, '') || '',
           email: document.getElementById('modal-email')?.value || '',
@@ -6175,6 +6234,7 @@ async function salvarModal(e) {
           area_especialidade: document.getElementById('modal-especialidade')?.value || 
                              document.getElementById('modal-area-especialidade')?.value || ''
         };
+        console.log('🟣 Dados PROFISSIONAL coletados:', dados);
         break;
         
       case 'agenda':
@@ -6212,17 +6272,33 @@ async function salvarModal(e) {
     }
     
     const method = state.modalEditId ? 'PUT' : 'POST';
+    console.log('🟣 Fazendo requisição:', method, endpoint);
+    console.log('🟣 Payload:', dados);
+    
     const response = await axios({ method, url: endpoint, data: dados });
+    
+    console.log('🟣 Resposta recebida:', response.data);
+    console.log('🟣 state.candidato ANTES de hideLoadingMessage:', state.candidato);
     
     hideLoadingMessage();
     
+    console.log('🟣 state.candidato DEPOIS de hideLoadingMessage:', state.candidato);
+    
     // Backend retorna { id, ...data }, não { success: true }
     if (response.data && (response.data.id || response.data.success)) {
+      console.log('🟣 Salvamento bem-sucedido, fechando modal...');
       showSuccessMessage('✅ Salvo com sucesso!');
       fecharModal();
+      
+      console.log('🟣 state.candidato ANTES de loadAllData:', state.candidato);
       await loadAllData();
+      console.log('🟣 state.candidato DEPOIS de loadAllData:', state.candidato);
+      
+      console.log('🟣 Chamando render...');
       render();
+      console.log('🟣 state.candidato DEPOIS de render:', state.candidato);
     } else {
+      console.error('🟣 ❌ Resposta inválida do servidor:', response.data);
       showErrorMessage('Erro ao salvar: resposta inválida do servidor');
     }
   } catch (error) {
@@ -6242,8 +6318,8 @@ async function salvarModal(e) {
     
     // Identificar campos faltantes
     const camposObrigatorios = {
-      'coordenador': ['nome', 'cpf', 'tipo', 'celular'],
-      'profissional': ['nome', 'cpf', 'profissao', 'registro_profissional', 'especialidade', 'celular'],
+      'coordenador': ['nome', 'municipio'], // Campos obrigatórios no schema: nome NOT NULL, municipio NOT NULL
+      'profissional': ['nome', 'profissao'], // Campos obrigatórios no schema: nome NOT NULL, profissao NOT NULL
       'agenda': ['titulo', 'tipo', 'data_inicio'],
       'eleitor': ['municipio', 'zona_eleitoral', 'secao_eleitoral']
     };
