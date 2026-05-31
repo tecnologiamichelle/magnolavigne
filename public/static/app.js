@@ -2147,7 +2147,7 @@ function renderCoordenadorCard(coord) {
       
       <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
         <button 
-          onclick='abrirModal("coordenador", ${JSON.stringify(coord)})'
+          onclick="editarCoordenador(${coord.id})"
           class="flex-1 bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
         >
           <i class="fas fa-edit mr-2"></i>Editar
@@ -3179,7 +3179,7 @@ function renderProfissionalCard(prof) {
       
       <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
         <button 
-          onclick='abrirModal("profissional", ${JSON.stringify(prof)})'
+          onclick="editarProfissional(${prof.id})"
           class="flex-1 bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
         >
           <i class="fas fa-edit mr-2"></i>Editar
@@ -7186,6 +7186,58 @@ async function deleteCoordenador(id) {
     render();
   } catch (error) {
     alert('Erro ao deletar');
+  }
+}
+
+async function editarCoordenador(id) {
+  try {
+    showLoadingMessage('Carregando dados...');
+    
+    // Buscar coordenador do state (já carregado)
+    const coordenador = state.data.coordenadores.find(c => c.id == id);
+    
+    if (!coordenador) {
+      hideLoadingMessage();
+      showErrorMessage('Coordenador não encontrado');
+      return;
+    }
+    
+    console.log('📝 Editando coordenador:', coordenador);
+    
+    hideLoadingMessage();
+    
+    // Abrir modal com dados
+    abrirModal('coordenador', coordenador);
+  } catch (error) {
+    hideLoadingMessage();
+    console.error('❌ Erro ao carregar coordenador para edição:', error);
+    showErrorMessage('Erro ao carregar coordenador: ' + (error.response?.data?.error || error.message));
+  }
+}
+
+async function editarProfissional(id) {
+  try {
+    showLoadingMessage('Carregando dados...');
+    
+    // Buscar profissional do state (já carregado)
+    const profissional = state.data.profissionais.find(p => p.id == id);
+    
+    if (!profissional) {
+      hideLoadingMessage();
+      showErrorMessage('Profissional não encontrado');
+      return;
+    }
+    
+    console.log('📝 Editando profissional:', profissional);
+    
+    hideLoadingMessage();
+    
+    // Abrir modal com dados
+    abrirModal('profissional', profissional);
+  } catch (error) {
+    hideLoadingMessage();
+    console.error('❌ Erro ao carregar profissional para edição:', error);
+    showErrorMessage('Erro ao carregar profissional: ' + (error.response?.data?.error || error.message));
   }
 }
 
