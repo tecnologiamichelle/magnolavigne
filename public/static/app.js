@@ -6911,7 +6911,11 @@ async function buscarCEP() {
 }
 
 async function submitLiderancaForm() {
+  console.log('🔵 submitLiderancaForm iniciada');
+  console.log('🔵 state.candidato:', state.candidato);
+  
   const formData = collectFormData();
+  console.log('🔵 formData coletado:', formData);
   
   // Validações básicas - apenas campos obrigatórios
   if (!formData.nome || formData.nome.trim().length < 3) {
@@ -6925,25 +6929,25 @@ async function submitLiderancaForm() {
   }
   
   try {
+    console.log('🔵 Iniciando salvamento...');
+    
     // Mostrar loading
     showLoadingMessage('Salvando liderança...');
     
     await addLideranca(formData);
     
+    console.log('🔵 Salvamento concluído, state.candidato:', state.candidato);
+    
     // Limpar rascunho
     localStorage.removeItem('lideranca_draft');
-    
-    // Fechar formulário
-    state.liderancaFormMode = false;
     
     hideLoadingMessage();
     showSuccessMessage('✅ Liderança salva com sucesso!');
     
-    setTimeout(() => {
-      render();
-    }, 1500);
+    // NÃO chamar render() aqui - addLideranca() já faz isso
+    console.log('✅ submitLiderancaForm finalizada com sucesso');
   } catch (error) {
-    console.error('Erro ao salvar:', error);
+    console.error('❌ Erro em submitLiderancaForm:', error);
     hideLoadingMessage();
     showErrorMessage('❌ Erro ao salvar liderança. Tente novamente.');
   }
@@ -7067,35 +7071,55 @@ async function addDadosEleitorais(data) {
 
 async function addLideranca(data) {
   try {
+    console.log('🟢 addLideranca iniciada');
+    console.log('🟢 state.candidato:', state.candidato);
+    console.log('🟢 data recebida:', data);
+    
     if (!state.candidato || !state.candidato.id) {
+      console.error('❌ state.candidato inválido!');
       showErrorMessage('❌ Sessão expirada. Faça login novamente.');
       logout();
       return;
     }
     
     data.candidato_id = state.candidato.id;
+    console.log('🟢 candidato_id adicionado:', data.candidato_id);
     
     let response;
     if (state.liderancaEditando && state.liderancaEditando.id) {
       // Modo edição
+      console.log('🟢 Modo EDIÇÃO - ID:', state.liderancaEditando.id);
       response = await axios.put(`/api/liderancas/${state.liderancaEditando.id}`, data);
+      console.log('🟢 Resposta PUT:', response.data);
       showSuccessMessage('✅ Liderança atualizada com sucesso!');
     } else {
       // Modo criação
+      console.log('🟢 Modo CRIAÇÃO');
       response = await axios.post('/api/liderancas', data);
+      console.log('🟢 Resposta POST:', response.data);
       showSuccessMessage('✅ Liderança cadastrada com sucesso!');
     }
     
+    console.log('🟢 Resetando estado do formulário...');
     // Resetar estado do formulário ANTES de recarregar
     state.liderancaFormMode = false;
     state.liderancaEditando = null;
     
+    console.log('🟢 Chamando loadAllData...');
+    console.log('🟢 state.candidato ANTES loadAllData:', state.candidato);
+    
     // Recarregar dados e voltar para lista
     await loadAllData();
+    
+    console.log('🟢 state.candidato DEPOIS loadAllData:', state.candidato);
+    
     state.currentModule = 'liderancas';
+    console.log('🟢 Chamando render...');
     render();
+    console.log('✅ addLideranca finalizada com sucesso');
   } catch (error) {
-    console.error('Erro ao salvar liderança:', error);
+    console.error('❌ Erro em addLideranca:', error);
+    console.error('❌ error.response:', error.response);
     showErrorMessage('Erro ao salvar liderança: ' + (error.response?.data?.error || error.message));
   }
 }
