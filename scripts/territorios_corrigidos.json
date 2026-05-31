@@ -1,0 +1,1832 @@
+{
+  "01": {
+    "nome": "Irecê",
+    "municipios": [
+      {
+        "nome": "América Dourada",
+        "eleitores": 13146
+      },
+      {
+        "nome": "Barra do Mendes",
+        "eleitores": 12431
+      },
+      {
+        "nome": "Barro Alto",
+        "eleitores": 11874
+      },
+      {
+        "nome": "Cafarnaum",
+        "eleitores": 14187
+      },
+      {
+        "nome": "Canarana",
+        "eleitores": 18923
+      },
+      {
+        "nome": "Central",
+        "eleitores": 13467
+      },
+      {
+        "nome": "Gentio do Ouro",
+        "eleitores": 9812
+      },
+      {
+        "nome": "Ibipeba",
+        "eleitores": 14088
+      },
+      {
+        "nome": "Ibitiá",
+        "eleitores": 14792
+      },
+      {
+        "nome": "Irecê",
+        "eleitores": 52402
+      },
+      {
+        "nome": "Itaguaçu da Bahia",
+        "eleitores": 10543
+      },
+      {
+        "nome": "João Dourado",
+        "eleitores": 19231
+      },
+      {
+        "nome": "Jussara",
+        "eleitores": 12876
+      },
+      {
+        "nome": "Lap�o",
+        "eleitores": 21455
+      },
+      {
+        "nome": "Mulungu do Morro",
+        "eleitores": 10123
+      },
+      {
+        "nome": "Presidente Dutra",
+        "eleitores": 11489
+      },
+      {
+        "nome": "São Gabriel",
+        "eleitores": 14278
+      },
+      {
+        "nome": "Uibaí",
+        "eleitores": 10765
+      },
+      {
+        "nome": "Xique-Xique",
+        "eleitores": 34567
+      }
+    ],
+    "total_eleitores": 320449
+  },
+  "02": {
+    "nome": "Velho Chico",
+    "municipios": [
+      {
+        "nome": "Barra",
+        "eleitores": 36214
+      },
+      {
+        "nome": "Bom Jesus da Lapa",
+        "eleitores": 54100
+      },
+      {
+        "nome": "Brotas de Macaúbas",
+        "eleitores": 8912
+      },
+      {
+        "nome": "Carinhanha",
+        "eleitores": 22834
+      },
+      {
+        "nome": "Feira da Mata",
+        "eleitores": 5412
+      },
+      {
+        "nome": "Ibotirama",
+        "eleitores": 20145
+      },
+      {
+        "nome": "Igaporã",
+        "eleitores": 12345
+      },
+      {
+        "nome": "Malhada",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Matina",
+        "eleitores": 9213
+      },
+      {
+        "nome": "Morpará",
+        "eleitores": 7124
+      },
+      {
+        "nome": "Muquém do São Francisco",
+        "eleitores": 8812
+      },
+      {
+        "nome": "Oliveira dos Brejinhos",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Paratinga",
+        "eleitores": 23145
+      },
+      {
+        "nome": "Riacho de Santana",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Serra do Ramalho",
+        "eleitores": 24123
+      },
+      {
+        "nome": "Sítio do Mato",
+        "eleitores": 9814
+      }
+    ],
+    "total_eleitores": 297513
+  },
+  "03": {
+    "nome": "Chapada Diamantina",
+    "municipios": [
+      {
+        "nome": "Aba�ra",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Andaraí",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Barra da Estiva",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Boninal",
+        "eleitores": 10912
+      },
+      {
+        "nome": "Ibicoara",
+        "eleitores": 14231
+      },
+      {
+        "nome": "Iramaia",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Itaeté",
+        "eleitores": 11823
+      },
+      {
+        "nome": "Jussiape",
+        "eleitores": 6812
+      },
+      {
+        "nome": "Marcionílio Souza",
+        "eleitores": 8124
+      },
+      {
+        "nome": "Mucugê",
+        "eleitores": 8912
+      },
+      {
+        "nome": "Nova Redenção",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Piaté",
+        "eleitores": 14567
+      },
+      {
+        "nome": "Rio de Contas",
+        "eleitores": 11432
+      }
+    ],
+    "total_eleitores": 139292
+  },
+  "04": {
+    "nome": "Sisal",
+    "municipios": [
+      {
+        "nome": "Araci",
+        "eleitores": 39567
+      },
+      {
+        "nome": "Barrocas",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Biritinga",
+        "eleitores": 12143
+      },
+      {
+        "nome": "Candeal",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Cansanção",
+        "eleitores": 26845
+      },
+      {
+        "nome": "Conceição do Coité",
+        "eleitores": 52143
+      },
+      {
+        "nome": "Ichu",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Itiúba",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Lamarão",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Monte Santo",
+        "eleitores": 38912
+      },
+      {
+        "nome": "Nordestina",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Queimadas",
+        "eleitores": 19876
+      },
+      {
+        "nome": "Quijingue",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Retrolândia",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Santaluz",
+        "eleitores": 29456
+      },
+      {
+        "nome": "São Domingos",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Serrinha",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Teofilândia",
+        "eleitores": 16543
+      },
+      {
+        "nome": "Tucano",
+        "eleitores": 39876
+      },
+      {
+        "nome": "Valente",
+        "eleitores": 21234
+      }
+    ],
+    "total_eleitores": 468253
+  },
+  "05": {
+    "nome": "Litoral Sul",
+    "municipios": [
+      {
+        "nome": "Almadina",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Arataca",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Aurelino Leal",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Barro Preto",
+        "eleitores": 5432
+      },
+      {
+        "nome": "Buerarema",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Camacan",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Canavieiras",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Coaraci",
+        "eleitores": 15234
+      },
+      {
+        "nome": "Floresta Azul",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Ibicaraí",
+        "eleitores": 16245
+      },
+      {
+        "nome": "Ilhéus",
+        "eleitores": 127147
+      },
+      {
+        "nome": "Itabuna",
+        "eleitores": 152012
+      },
+      {
+        "nome": "Itacar�",
+        "eleitores": 19456
+      },
+      {
+        "nome": "Itaju do Col�nia",
+        "eleitores": 5812
+      },
+      {
+        "nome": "Itajuípe",
+        "eleitores": 16124
+      },
+      {
+        "nome": "Itapé",
+        "eleitores": 7823
+      },
+      {
+        "nome": "Itapitanga",
+        "eleitores": 8124
+      },
+      {
+        "nome": "Jussari",
+        "eleitores": 5234
+      },
+      {
+        "nome": "Maraú",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Mascote",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Pau Brasil",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Santa Luzia",
+        "eleitores": 9823
+      },
+      {
+        "nome": "São José da Vitória",
+        "eleitores": 4912
+      },
+      {
+        "nome": "Una",
+        "eleitores": 15143
+      },
+      {
+        "nome": "Uruçuca",
+        "eleitores": 14876
+      }
+    ],
+    "total_eleitores": 550182
+  },
+  "06": {
+    "nome": "Baixo Sul",
+    "municipios": [
+      {
+        "nome": "Aratuípe",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Cairu",
+        "eleitores": 15234
+      },
+      {
+        "nome": "Camamu",
+        "eleitores": 25876
+      },
+      {
+        "nome": "Gandu",
+        "eleitores": 22432
+      },
+      {
+        "nome": "Igrapiúna",
+        "eleitores": 7912
+      },
+      {
+        "nome": "Ituberá",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Jaguaripe",
+        "eleitores": 13876
+      },
+      {
+        "nome": "Nilo Peçanha",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Piraí do Norte",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Presidente Tancredo Neves",
+        "eleitores": 18912
+      },
+      {
+        "nome": "Taperoá",
+        "eleitores": 12143
+      },
+      {
+        "nome": "Teolândia",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Valença",
+        "eleitores": 64567
+      },
+      {
+        "nome": "Wenceslau Guimarães",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Ibirapitanga",
+        "eleitores": 14567
+      },
+      {
+        "nome": "Ubaitaba",
+        "eleitores": 15143
+      }
+    ],
+    "total_eleitores": 283664
+  },
+  "07": {
+    "nome": "Extremo Sul",
+    "municipios": [
+      {
+        "nome": "Alcobaça",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Caravelas",
+        "eleitores": 16876
+      },
+      {
+        "nome": "Ibirapuã",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Itanhém",
+        "eleitores": 15432
+      },
+      {
+        "nome": "Jucuruçu",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Lajedão",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Medeiros Neto",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Mucuri",
+        "eleitores": 29876
+      },
+      {
+        "nome": "Nova Viçosa",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Prado",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Teixeira de Freitas",
+        "eleitores": 105432
+      },
+      {
+        "nome": "Vereda",
+        "eleitores": 6123
+      }
+    ],
+    "total_eleitores": 279977
+  },
+  "08": {
+    "nome": "Médio Sudoeste",
+    "municipios": [
+      {
+        "nome": "Caatiba",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Firmino Alves",
+        "eleitores": 4812
+      },
+      {
+        "nome": "Ibicuí",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Iguaí",
+        "eleitores": 18432
+      },
+      {
+        "nome": "Itambé",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Itapetinga",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Itarantim",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Itororó",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Macarani",
+        "eleitores": 13812
+      },
+      {
+        "nome": "Maiquinique",
+        "eleitores": 7145
+      },
+      {
+        "nome": "Nova Cana�",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Potiraguá",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ribeirão do Largo",
+        "eleitores": 6812
+      }
+    ],
+    "total_eleitores": 189857
+  },
+  "09": {
+    "nome": "Vale do Jiquiriçá",
+    "municipios": [
+      {
+        "nome": "Amargosa",
+        "eleitores": 27812
+      },
+      {
+        "nome": "Brejões",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Cravolândia",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Elísio Medrado",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Irajuba",
+        "eleitores": 5812
+      },
+      {
+        "nome": "Itiruçu",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Jaguaquara",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Jiquiriçá",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Laje",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Lajedo do Tabocal",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Maracás",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Milagres",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Mutuípe",
+        "eleitores": 16812
+      },
+      {
+        "nome": "Nova Itarana",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Planaltino",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Santa Inês",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Santa Teresinha",
+        "eleitores": 8145
+      },
+      {
+        "nome": "São Miguel das Matas",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Ubaíra",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Lafaiete Coutinho",
+        "eleitores": 3812
+      }
+    ],
+    "total_eleitores": 245669
+  },
+  "10": {
+    "nome": "Sertão do São Francisco",
+    "municipios": [
+      {
+        "nome": "Campo Alegre de Lourdes",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Canudos",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Casa Nova",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Curaçá",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Juazeiro",
+        "eleitores": 158910
+      },
+      {
+        "nome": "Pilão Arcado",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Remanso",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Sento Sé",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Sobradinho",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Uauá",
+        "eleitores": 20145
+      }
+    ],
+    "total_eleitores": 392320
+  },
+  "11": {
+    "nome": "Bacia do Rio Grande",
+    "municipios": [
+      {
+        "nome": "Angical",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Baianópolis",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Barreiras",
+        "eleitores": 114730
+      },
+      {
+        "nome": "Catolândia",
+        "eleitores": 3412
+      },
+      {
+        "nome": "Cotegipe",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Cristópolis",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Formosa do Rio Preto",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Luís Eduardo Magalhães",
+        "eleitores": 68432
+      },
+      {
+        "nome": "Mansidão",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Riachão das Neves",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Santa Rita de Cássia",
+        "eleitores": 20456
+      },
+      {
+        "nome": "São Desidério",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Tabocas do Brejo Velho",
+        "eleitores": 9812
+      },
+      {
+        "nome": "Wanderley",
+        "eleitores": 10145
+      }
+    ],
+    "total_eleitores": 338588
+  },
+  "12": {
+    "nome": "Bacia do Rio Corrente",
+    "municipios": [
+      {
+        "nome": "Canápolis",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Cocos",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Coribe",
+        "eleitores": 12345
+      },
+      {
+        "nome": "Correntina",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Jaborandi",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Santa Maria da Vitória",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Santana",
+        "eleitores": 19876
+      },
+      {
+        "nome": "São Félix do Coribe",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Serra Dourada",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Brejolândia",
+        "eleitores": 8412
+      }
+    ],
+    "total_eleitores": 154046
+  },
+  "13": {
+    "nome": "Sert�o do Itapicuru",
+    "municipios": [
+      {
+        "nome": "Andorinha",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Antônio Gonçalves",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Caldeirão Grande",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Campo Formoso",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Filadélfia",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Jaguarari",
+        "eleitores": 25143
+      },
+      {
+        "nome": "Pindobaçu",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Ponto Novo",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Saúde",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Senhor do Bonfim",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Itiúba",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Nordestina",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Queimadas",
+        "eleitores": 19876
+      },
+      {
+        "nome": "Quijingue",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Tucano",
+        "eleitores": 39876
+      },
+      {
+        "nome": "Uauá",
+        "eleitores": 20145
+      }
+    ],
+    "total_eleitores": 360151
+  },
+  "14": {
+    "nome": "Piemonte do Paragua�u",
+    "municipios": [
+      {
+        "nome": "Boa Vista do Tupim",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Iaçu",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Ibiquera",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Itaberaba",
+        "eleitores": 48432
+      },
+      {
+        "nome": "Lajedinho",
+        "eleitores": 3812
+      },
+      {
+        "nome": "Macajuba",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Mundo Novo",
+        "eleitores": 19124
+      },
+      {
+        "nome": "Piritiba",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Rafael Jambeiro",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Ruy Barbosa",
+        "eleitores": 24123
+      },
+      {
+        "nome": "Tapiramutá",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Wagner",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Santa Teresinha",
+        "eleitores": 8145
+      }
+    ],
+    "total_eleitores": 207318
+  },
+  "15": {
+    "nome": "Bacia do Jacuípe",
+    "municipios": [
+      {
+        "nome": "Baixa Grande",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Capela do Alto Alegre",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Gavião",
+        "eleitores": 4212
+      },
+      {
+        "nome": "Ipirá",
+        "eleitores": 44123
+      },
+      {
+        "nome": "Mairi",
+        "eleitores": 15124
+      },
+      {
+        "nome": "Nova Fátima",
+        "eleitores": 6812
+      },
+      {
+        "nome": "Pé de Serra",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Pintadas",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Quixabeira",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Riachão do Jacuípe",
+        "eleitores": 25876
+      },
+      {
+        "nome": "São José do Jacuípe",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Serra Preta",
+        "eleitores": 12432
+      },
+      {
+        "nome": "Várzea da Roça",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Várzea do Poço",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Ichu",
+        "eleitores": 5123
+      }
+    ],
+    "total_eleitores": 193364
+  },
+  "16": {
+    "nome": "Piemonte da Diamantina",
+    "municipios": [
+      {
+        "nome": "Caém",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Capim Grosso",
+        "eleitores": 24123
+      },
+      {
+        "nome": "Jacobina",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Miguel Calmon",
+        "eleitores": 21234
+      },
+      {
+        "nome": "Mirangaba",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Ourolândia",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Saúde",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Serrolândia",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Umburanas",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Várzea Nova",
+        "eleitores": 10145
+      }
+    ],
+    "total_eleitores": 180247
+  },
+  "17": {
+    "nome": "Semiárido Nordeste II",
+    "municipios": [
+      {
+        "nome": "Adustina",
+        "eleitores": 12432
+      },
+      {
+        "nome": "Antas",
+        "eleitores": 13124
+      },
+      {
+        "nome": "Banzaê",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Cícero Dantas",
+        "eleitores": 25876
+      },
+      {
+        "nome": "Cipó",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Coronel João Sá",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Euclides da Cunha",
+        "eleitores": 45123
+      },
+      {
+        "nome": "Fátima",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Heliópolis",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Jeremoabo",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Nova Soure",
+        "eleitores": 19124
+      },
+      {
+        "nome": "Novo Triunfo",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Paripiranga",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Pedro Alexandre",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Ribeira do Amparo",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Ribeira do Pombal",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Santa Brígida",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Sítio do Quinto",
+        "eleitores": 8432
+      }
+    ],
+    "total_eleitores": 321245
+  },
+  "18": {
+    "nome": "Litoral Norte e Agreste",
+    "municipios": [
+      {
+        "nome": "Acajutiba",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Alagoinhas",
+        "eleitores": 112456
+      },
+      {
+        "nome": "Aporá",
+        "eleitores": 13876
+      },
+      {
+        "nome": "Araças",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Aramari",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Cardeal da Silva",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Catu",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Conde",
+        "eleitores": 18912
+      },
+      {
+        "nome": "Crisópolis",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Entre Rios",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Esplanada",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Inhambupe",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Itanagra",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Itapicuru",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Jandaíra",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Olindina",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Ouriçangas",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Pedrão",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Pojuca",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Rio Real",
+        "eleitores": 29876
+      },
+      {
+        "nome": "Santanópolis",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Sátiro Dias",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Teodoro Sampaio",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Terra Nova",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Mata de São João",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Araças",
+        "eleitores": 9432
+      }
+    ],
+    "total_eleitores": 527382
+  },
+  "19": {
+    "nome": "Portal do Sert�o",
+    "municipios": [
+      {
+        "nome": "Água Fria",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Amélia Rodrigues",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Anguera",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Antônio Cardoso",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Conceição da Feira",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Conceição do Jacuípe",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Coração de Maria",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Feira de Santana",
+        "eleitores": 441845
+      },
+      {
+        "nome": "Ipecaetá",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Irará",
+        "eleitores": 23456
+      },
+      {
+        "nome": "Santa Bárbara",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Santo Estêvão",
+        "eleitores": 38432
+      },
+      {
+        "nome": "São Gonçalo dos Campos",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Tanquinho",
+        "eleitores": 7123
+      }
+    ],
+    "total_eleitores": 681661
+  },
+  "20": {
+    "nome": "Vitória da Conquista",
+    "municipios": [
+      {
+        "nome": "Anagé",
+        "eleitores": 18124
+      },
+      {
+        "nome": "Aracatu",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Barra do Choça",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Belo Campo",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Bom Jesus da Serra",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Caatiba",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Caetanos",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Cândido Sales",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Caraíbas",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Condeúba",
+        "eleitores": 14812
+      },
+      {
+        "nome": "Cordeiros",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Encruzilhada",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Guajeru",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Jacaraci",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Licínio de Almeida",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Maetinga",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Mirante",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Mortugaba",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Piripá",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Planalto",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Poções",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Presidente Jânio Quadros",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Tremedal",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Vitória da Conquista",
+        "eleitores": 257784
+      },
+      {
+        "nome": "Ribeirão do Largo",
+        "eleitores": 6234
+      }
+    ],
+    "total_eleitores": 567638
+  },
+  "21": {
+    "nome": "Recôncavo",
+    "municipios": [
+      {
+        "nome": "Cabaceiras do Paraguaçu",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Cachoeira",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Castro Alves",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Conceição do Almeida",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Cruz das Almas",
+        "eleitores": 48432
+      },
+      {
+        "nome": "Dom Macedo Costa",
+        "eleitores": 3912
+      },
+      {
+        "nome": "Governador Mangabeira",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Maragogipe",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Muniz Ferreira",
+        "eleitores": 6812
+      },
+      {
+        "nome": "Muritiba",
+        "eleitores": 23145
+      },
+      {
+        "nome": "Nazar�",
+        "eleitores": 22432
+      },
+      {
+        "nome": "Salinas da Margarida",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Santo Amaro",
+        "eleitores": 45123
+      },
+      {
+        "nome": "Santo Antônio de Jesus",
+        "eleitores": 74123
+      },
+      {
+        "nome": "São Felipe",
+        "eleitores": 16432
+      },
+      {
+        "nome": "São Félix",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Sapeaçu",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Saubara",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Varzedo",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Aratuípe",
+        "eleitores": 7812
+      }
+    ],
+    "total_eleitores": 429354
+  },
+  "22": {
+    "nome": "Médio Rio de Contas",
+    "municipios": [
+      {
+        "nome": "Aiquara",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Apuarema",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Barra do Rocha",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Dário Meira",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ibirataia",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Ipiaú",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Itagi",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Itagibá",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Itaquara",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Jequié",
+        "eleitores": 117382
+      },
+      {
+        "nome": "Jitaúna",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Manoel Vitorino",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Nova Ibiá",
+        "eleitores": 5432
+      },
+      {
+        "nome": "Santa Inês",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Gongogi",
+        "eleitores": 6234
+      }
+    ],
+    "total_eleitores": 261406
+  },
+  "23": {
+    "nome": "Bacia do Paramirim",
+    "municipios": [
+      {
+        "nome": "Boquira",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Botupor�",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Caturama",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Érico Cardoso",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Macaúbas",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Paramirim",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Rio do Pires",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Érico Cardoso",
+        "eleitores": 8234
+      }
+    ],
+    "total_eleitores": 112177
+  },
+  "24": {
+    "nome": "Sertão Produtivo",
+    "municipios": [
+      {
+        "nome": "Brumado",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Caculé",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Caeté",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Candiba",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Contendas do Sincor�",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Dom Bas�lio",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Guanambi",
+        "eleitores": 64123
+      },
+      {
+        "nome": "Ibiassucê",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ituaçu",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Iuiu",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Lagoa Real",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Livramento de Nossa Senhora",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Malhada de Pedras",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Palmas de Monte Alto",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Pinda�",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Rio do Antônio",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Sebastião Laranjeiras",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Tanhaçu",
+        "eleitores": 18124
+      },
+      {
+        "nome": "Urandi",
+        "eleitores": 12812
+      }
+    ],
+    "total_eleitores": 359011
+  },
+  "25": {
+    "nome": "Chapada Velha",
+    "municipios": [
+      {
+        "nome": "Béaquimé",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Bonito",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Ibitiara",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Ipupiara",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Iraquara",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Morro do Chapéu",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Novo Horizonte",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Oliveira dos Brejinhos",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Palmeiras",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Seabra",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Souto Soares",
+        "eleitores": 14234
+      }
+    ],
+    "total_eleitores": 170990
+  },
+  "26": {
+    "nome": "Metropolitano",
+    "municipios": [
+      {
+        "nome": "Camaçari",
+        "eleitores": 205865
+      },
+      {
+        "nome": "Candeias",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Dias d'Ávila",
+        "eleitores": 45123
+      },
+      {
+        "nome": "Itaparica",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Lauro de Freitas",
+        "eleitores": 151782
+      },
+      {
+        "nome": "Madre de Deus",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Salvador",
+        "eleitores": 1969757
+      },
+      {
+        "nome": "São Francisco do Conde",
+        "eleitores": 31234
+      },
+      {
+        "nome": "São Sebastião do Passé",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Simões Filho",
+        "eleitores": 84123
+      },
+      {
+        "nome": "Vera Cruz",
+        "eleitores": 34567
+      }
+    ],
+    "total_eleitores": 2647474
+  },
+  "27": {
+    "nome": "Costa Descobrimento",
+    "municipios": [
+      {
+        "nome": "Belmonte",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Eunápolis",
+        "eleitores": 84123
+      },
+      {
+        "nome": "Guaratinga",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Itabela",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Itagimirim",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Itapebi",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Porto Seguro",
+        "eleitores": 121432
+      },
+      {
+        "nome": "Santa Cruz Cabrália",
+        "eleitores": 24123
+      }
+    ],
+    "total_eleitores": 297244
+  }
+}
