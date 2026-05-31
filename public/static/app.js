@@ -5982,6 +5982,9 @@ function renderModalDadosEleitorais() {
   `;
 }
 
+// Alias para compatibilidade - 'eleitor' e 'dados-eleitorais' usam o mesmo modal
+const renderModalEleitor = renderModalDadosEleitorais;
+
 function aplicarMascarasModal() {
   const cpfInput = document.getElementById('modal-cpf');
   const celularInput = document.getElementById('modal-celular');
@@ -6040,6 +6043,8 @@ function anexarEventosModal() {
 }
 
 function carregarDadosModal(data) {
+  console.log('📝 Carregando dados no modal:', data);
+  
   // Preencher campos com dados existentes
   Object.keys(data).forEach(key => {
     const input = document.getElementById(`modal-${key.replace(/_/g, '-')}`);
@@ -6052,6 +6057,71 @@ function carregarDadosModal(data) {
     }
   });
   
+  // ========================================
+  // MAPEAMENTOS ESPECIAIS (campos com nomes diferentes)
+  // ========================================
+  
+  // COORDENADORES
+  // area_atuacao → modal-area-atuacao ou modal-tipo
+  if (data.area_atuacao && document.getElementById('modal-area-atuacao')) {
+    document.getElementById('modal-area-atuacao').value = data.area_atuacao;
+  }
+  if (data.area_atuacao && document.getElementById('modal-tipo')) {
+    document.getElementById('modal-tipo').value = data.area_atuacao;
+  }
+  
+  // tipo → modal-area-atuacao (compatibilidade reversa)
+  if (data.tipo && document.getElementById('modal-area-atuacao')) {
+    document.getElementById('modal-area-atuacao').value = data.tipo;
+  }
+  
+  // telefone → modal-celular
+  if (data.telefone && document.getElementById('modal-celular')) {
+    document.getElementById('modal-celular').value = data.telefone;
+  }
+  
+  // celular → modal-telefone (compatibilidade reversa)
+  if (data.celular && document.getElementById('modal-telefone')) {
+    document.getElementById('modal-telefone').value = data.celular;
+  }
+  
+  // PROFISSIONAIS
+  // area_especialidade → modal-especialidade
+  if (data.area_especialidade && document.getElementById('modal-especialidade')) {
+    document.getElementById('modal-especialidade').value = data.area_especialidade;
+  }
+  
+  // especialidade → modal-area-especialidade (compatibilidade reversa)
+  if (data.especialidade && document.getElementById('modal-area-especialidade')) {
+    document.getElementById('modal-area-especialidade').value = data.especialidade;
+  }
+  
+  // cidade → modal-municipio
+  if (data.cidade && document.getElementById('modal-municipio')) {
+    document.getElementById('modal-municipio').value = data.cidade;
+  }
+  
+  // municipio → modal-cidade (compatibilidade reversa)
+  if (data.municipio && document.getElementById('modal-cidade')) {
+    document.getElementById('modal-cidade').value = data.municipio;
+  }
+  
+  // TODOS OS MÓDULOS
+  // territorio_id → state.territorioId (para salvar depois)
+  if (data.territorio_id) {
+    state.territorioId = data.territorio_id;
+  }
+  
+  // coordenador_id → modal-coordenador
+  if (data.coordenador_id && document.getElementById('modal-coordenador')) {
+    document.getElementById('modal-coordenador').value = data.coordenador_id;
+  }
+  
+  // observacoes → modal-observacoes
+  if (data.observacoes && document.getElementById('modal-observacoes')) {
+    document.getElementById('modal-observacoes').value = data.observacoes;
+  }
+  
   // Atualizar barra de progresso se existir
   const progressoInput = document.getElementById('modal-progresso');
   if (progressoInput && data.progresso !== undefined) {
@@ -6063,6 +6133,8 @@ function carregarDadosModal(data) {
     if (progressoBarra) progressoBarra.style.width = `${valor}%`;
     if (progressoValor) progressoValor.textContent = `${valor}%`;
   }
+  
+  console.log('✅ Dados carregados no modal');
 }
 
 async function salvarModal(e) {
