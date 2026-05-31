@@ -74,6 +74,9 @@ Município: Salvador
 ✅ Eleitores: 11 (incluindo 1 cadastro público)
 ✅ Profissionais: 0
 ✅ Solicitações Pendentes: 0
+✅ Territórios: 27 (todos os territórios de identidade da Bahia)
+✅ Municípios: 417 (todos os municípios da Bahia)
+✅ Total de Eleitores (TSE): 10.976.472
 ```
 
 ### **Estrutura de Dados Principal**
@@ -541,6 +544,9 @@ curl https://magnolavigne.pages.dev
 - ✅ Remoção de módulos (Projetos, Gabinete, Finanças, Relatórios)
 - ✅ Correção de erro ao editar usuário
 - ✅ Correção de erro ao criar evento/agenda
+- ✅ Módulo Territórios populado com dados reais do TSE
+- ✅ 27 territórios de identidade da Bahia com 417 municípios
+- ✅ 10.976.472 eleitores aptos (dados TSE 04/05/2026)
 - ✅ Sistema totalmente funcional em desenvolvimento
 
 ---
