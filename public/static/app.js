@@ -7125,10 +7125,20 @@ async function deleteDadosEleitorais(id) {
 
 async function editarLideranca(id) {
   try {
-    const response = await axios.get(`/api/liderancas/${id}`);
-    const lideranca = response.data;
+    showLoadingMessage('Carregando dados...');
+    
+    // Buscar liderança do state (já carregado)
+    const lideranca = state.data.liderancas.find(l => l.id == id);
+    
+    if (!lideranca) {
+      hideLoadingMessage();
+      showErrorMessage('Liderança não encontrada');
+      return;
+    }
     
     console.log('📝 Editando liderança:', lideranca);
+    
+    hideLoadingMessage();
     
     // Preencher o formulário com os dados da liderança
     state.liderancaEditando = lideranca;
@@ -7157,9 +7167,12 @@ async function editarLideranca(id) {
         if (window.updateInfluenciaValue) {
           updateInfluenciaValue(lideranca.qtd_influenciados || 50);
         }
+        
+        console.log('✅ Dados da liderança carregados no formulário');
       }
     }, 200);
   } catch (error) {
+    hideLoadingMessage();
     console.error('❌ Erro ao carregar liderança para edição:', error);
     showErrorMessage('Erro ao carregar liderança: ' + (error.response?.data?.error || error.message));
   }
