@@ -6364,6 +6364,13 @@ function changeModule(module) {
 }
 
 async function loadAllData() {
+  // Verificar se está logado
+  if (!state.candidato || !state.candidato.id) {
+    console.error('❌ Tentativa de carregar dados sem estar logado');
+    logout();
+    return;
+  }
+  
   const candidatoId = state.candidato.id;
   
   // Inicializar com valores padrão para evitar undefined
@@ -7060,6 +7067,12 @@ async function addDadosEleitorais(data) {
 
 async function addLideranca(data) {
   try {
+    if (!state.candidato || !state.candidato.id) {
+      showErrorMessage('❌ Sessão expirada. Faça login novamente.');
+      logout();
+      return;
+    }
+    
     data.candidato_id = state.candidato.id;
     
     let response;
@@ -7073,11 +7086,13 @@ async function addLideranca(data) {
       showSuccessMessage('✅ Liderança cadastrada com sucesso!');
     }
     
+    // Resetar estado do formulário ANTES de recarregar
+    state.liderancaFormMode = false;
+    state.liderancaEditando = null;
+    
     // Recarregar dados e voltar para lista
     await loadAllData();
     state.currentModule = 'liderancas';
-    state.liderancaFormMode = false;
-    state.liderancaEditando = null;
     render();
   } catch (error) {
     console.error('Erro ao salvar liderança:', error);
