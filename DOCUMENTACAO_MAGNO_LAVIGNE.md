@@ -1,8 +1,8 @@
 # 📋 Documentação Completa - Sistema Magno Lavigne
 
-**Versão:** 1.0.0  
-**Data da última atualização:** 06/05/2026  
-**Status:** ✅ Produção (Local) - Totalmente Funcional
+**Versão:** 1.1.0  
+**Data da última atualização:** 31/05/2026  
+**Status:** ✅ Produção (Local e Remoto) - Totalmente Funcional
 
 ---
 
@@ -66,7 +66,7 @@ Município: Salvador
 - **Total de Tabelas:** 27 tabelas
 - **Migrations Aplicadas:** 11 migrations
 
-### **Dados Atuais (Banco Local)**
+### **Dados Atuais (Banco Local e Produção)**
 ```
 ✅ Candidatos: 1 (Admin - ID 3)
 ✅ Coordenadores: 3
@@ -74,10 +74,20 @@ Município: Salvador
 ✅ Eleitores: 11 (incluindo 1 cadastro público)
 ✅ Profissionais: 0
 ✅ Solicitações Pendentes: 0
-✅ Territórios: 27 (todos os territórios de identidade da Bahia)
+✅ Territórios: 28 (incluindo Salvador separado como TI-28)
 ✅ Municípios: 417 (todos os municípios da Bahia)
 ✅ Total de Eleitores (TSE): 10.976.472
 ```
+
+### **Territórios de Identidade da Bahia**
+**Salvador Separado (TI-28):**
+- Salvador foi separado do território Metropolitano
+- TI-28 - Salvador: 1 município, 1.969.757 eleitores (Capital)
+- TI-26 - Metropolitano: 10 municípios, 677.717 eleitores (sem Salvador)
+
+**Correções de Acentuação Aplicadas:**
+- Territórios corrigidos: Sertão do Itapicuru, Piemonte do Paraguaçu, Portal do Sertão
+- Municípios corrigidos: Lapão, Abaíra, Itacaré, Itaju do Colônia, Nova Canaã, Nazaré, Botupor, Contendas do Sincorá, Dom Basílio, Pindaí
 
 ### **Estrutura de Dados Principal**
 
@@ -220,10 +230,12 @@ Município: Salvador
 - ✅ Filtros avançados
 
 ### **Territórios**
-- ✅ Visualização dos 27 territórios da Bahia
+- ✅ Visualização dos 28 territórios da Bahia (Salvador separado como TI-28)
+- ✅ 417 municípios com dados do TSE
 - ✅ Busca por município
 - ✅ Estatísticas de cobertura
 - ✅ Integração com coordenadores e lideranças
+- ✅ Dados de eleitores por município (TSE 04/05/2026)
 
 ### **Agenda**
 - ✅ Criação de eventos
@@ -464,9 +476,11 @@ pm2 start ecosystem.config.cjs
 - `DELETE /api/agenda/:id` - Deletar evento
 
 ### **Territórios**
-- `GET /api/territorios` - Listar territórios
-- `GET /api/territorios/:id` - Obter território específico
-- `GET /api/territorios/:id/municipios` - Municípios do território
+- `GET /api/territorios` - Listar todos os 28 territórios
+- `GET /api/territorios/:id` - Obter território específico (ID 1-28)
+- `GET /api/territorios/:id/municipios` - Municípios do território com dados do TSE
+- `GET /api/territorios/28` - Salvador (território separado)
+- `GET /api/territorios/26` - Metropolitano (10 municípios, sem Salvador)
 
 ---
 
@@ -534,6 +548,14 @@ curl https://magnolavigne.pages.dev
 
 ## 🎉 Changelog
 
+### **v1.1.0 - 31/05/2026**
+- ✅ Salvador separado como território independente (TI-28)
+- ✅ Metropolitano reduzido para 10 municípios (TI-26)
+- ✅ Correção de acentuação em 3 títulos de territórios
+- ✅ Correção de acentuação em 10 nomes de municípios
+- ✅ Total de 28 territórios de identidade da Bahia
+- ✅ Dados aplicados em produção (banco remoto)
+
 ### **v1.0.0 - 06/05/2026**
 - ✅ Rebranding completo (Meu Político → Magno Lavigne)
 - ✅ Banco de dados populado com dados demo
@@ -545,7 +567,7 @@ curl https://magnolavigne.pages.dev
 - ✅ Correção de erro ao editar usuário
 - ✅ Correção de erro ao criar evento/agenda
 - ✅ Módulo Territórios populado com dados reais do TSE
-- ✅ 27 territórios de identidade da Bahia com 417 municípios
+- ✅ 27 territórios iniciais com 417 municípios
 - ✅ 10.976.472 eleitores aptos (dados TSE 04/05/2026)
 - ✅ Sistema totalmente funcional em desenvolvimento
 
