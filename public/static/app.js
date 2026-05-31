@@ -1444,7 +1444,7 @@ function renderDadosEleitoraisModule() {
           <i class="fas fa-chart-bar mr-3"></i>Dados Eleitorais
         </h1>
         <button 
-          onclick="abrirModal('dados-eleitorais')"
+          onclick="abrirModal('eleitor')"
           class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform transition-all"
         >
           <i class="fas fa-plus mr-2"></i>Adicionar Dados
@@ -6124,6 +6124,7 @@ async function salvarModal(e) {
         break;
         
       case 'eleitor':
+        // Dados Eleitorais (módulo específico de estatísticas eleitorais por zona/seção)
         endpoint = state.modalEditId ? `/api/dados-eleitorais/${state.modalEditId}` : '/api/dados-eleitorais';
         dados = {
           ...dados,
