@@ -1,0 +1,1832 @@
+{
+  "01": {
+    "nome": "Irec�",
+    "municipios": [
+      {
+        "nome": "Am�rica Dourada",
+        "eleitores": 13146
+      },
+      {
+        "nome": "Barra do Mendes",
+        "eleitores": 12431
+      },
+      {
+        "nome": "Barro Alto",
+        "eleitores": 11874
+      },
+      {
+        "nome": "Cafarnaum",
+        "eleitores": 14187
+      },
+      {
+        "nome": "Canarana",
+        "eleitores": 18923
+      },
+      {
+        "nome": "Central",
+        "eleitores": 13467
+      },
+      {
+        "nome": "Gentio do Ouro",
+        "eleitores": 9812
+      },
+      {
+        "nome": "Ibipeba",
+        "eleitores": 14088
+      },
+      {
+        "nome": "Ibitit�",
+        "eleitores": 14792
+      },
+      {
+        "nome": "Irec�",
+        "eleitores": 52402
+      },
+      {
+        "nome": "Itagua�u da Bahia",
+        "eleitores": 10543
+      },
+      {
+        "nome": "Jo�o Dourado",
+        "eleitores": 19231
+      },
+      {
+        "nome": "Jussara",
+        "eleitores": 12876
+      },
+      {
+        "nome": "Lap�o",
+        "eleitores": 21455
+      },
+      {
+        "nome": "Mulungu do Morro",
+        "eleitores": 10123
+      },
+      {
+        "nome": "Presidente Dutra",
+        "eleitores": 11489
+      },
+      {
+        "nome": "S�o Gabriel",
+        "eleitores": 14278
+      },
+      {
+        "nome": "Uiba�",
+        "eleitores": 10765
+      },
+      {
+        "nome": "Xique-Xique",
+        "eleitores": 34567
+      }
+    ],
+    "total_eleitores": 320449
+  },
+  "02": {
+    "nome": "Velho Chico",
+    "municipios": [
+      {
+        "nome": "Barra",
+        "eleitores": 36214
+      },
+      {
+        "nome": "Bom Jesus da Lapa",
+        "eleitores": 54100
+      },
+      {
+        "nome": "Brotas de Maca�bas",
+        "eleitores": 8912
+      },
+      {
+        "nome": "Carinhanha",
+        "eleitores": 22834
+      },
+      {
+        "nome": "Feira da Mata",
+        "eleitores": 5412
+      },
+      {
+        "nome": "Ibotirama",
+        "eleitores": 20145
+      },
+      {
+        "nome": "Igapor�",
+        "eleitores": 12345
+      },
+      {
+        "nome": "Malhada",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Matina",
+        "eleitores": 9213
+      },
+      {
+        "nome": "Morpar�",
+        "eleitores": 7124
+      },
+      {
+        "nome": "Muqu�m do S�o Francisco",
+        "eleitores": 8812
+      },
+      {
+        "nome": "Oliveira dos Brejinhos",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Paratinga",
+        "eleitores": 23145
+      },
+      {
+        "nome": "Riacho de Santana",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Serra do Ramalho",
+        "eleitores": 24123
+      },
+      {
+        "nome": "S�tio do Mato",
+        "eleitores": 9814
+      }
+    ],
+    "total_eleitores": 297513
+  },
+  "03": {
+    "nome": "Chapada Diamantina",
+    "municipios": [
+      {
+        "nome": "Aba�ra",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Andara�",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Barra da Estiva",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Boninal",
+        "eleitores": 10912
+      },
+      {
+        "nome": "Ibicoara",
+        "eleitores": 14231
+      },
+      {
+        "nome": "Iramaia",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Itaet�",
+        "eleitores": 11823
+      },
+      {
+        "nome": "Jussiape",
+        "eleitores": 6812
+      },
+      {
+        "nome": "Marcion�lio Souza",
+        "eleitores": 8124
+      },
+      {
+        "nome": "Mucug�",
+        "eleitores": 8912
+      },
+      {
+        "nome": "Nova Reden��o",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Piat�",
+        "eleitores": 14567
+      },
+      {
+        "nome": "Rio de Contas",
+        "eleitores": 11432
+      }
+    ],
+    "total_eleitores": 139292
+  },
+  "04": {
+    "nome": "Sisal",
+    "municipios": [
+      {
+        "nome": "Araci",
+        "eleitores": 39567
+      },
+      {
+        "nome": "Barrocas",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Biritinga",
+        "eleitores": 12143
+      },
+      {
+        "nome": "Candeal",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Cansan��o",
+        "eleitores": 26845
+      },
+      {
+        "nome": "Concei��o do Coit�",
+        "eleitores": 52143
+      },
+      {
+        "nome": "Ichu",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Iti�ba",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Lamar�o",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Monte Santo",
+        "eleitores": 38912
+      },
+      {
+        "nome": "Nordestina",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Queimadas",
+        "eleitores": 19876
+      },
+      {
+        "nome": "Quijingue",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Retirol�ndia",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Santaluz",
+        "eleitores": 29456
+      },
+      {
+        "nome": "S�o Domingos",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Serrinha",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Teofil�ndia",
+        "eleitores": 16543
+      },
+      {
+        "nome": "Tucano",
+        "eleitores": 39876
+      },
+      {
+        "nome": "Valente",
+        "eleitores": 21234
+      }
+    ],
+    "total_eleitores": 468253
+  },
+  "05": {
+    "nome": "Litoral Sul",
+    "municipios": [
+      {
+        "nome": "Almadina",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Arataca",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Aurelino Leal",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Barro Preto",
+        "eleitores": 5432
+      },
+      {
+        "nome": "Buerarema",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Camacan",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Canavieiras",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Coaraci",
+        "eleitores": 15234
+      },
+      {
+        "nome": "Floresta Azul",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Ibicara�",
+        "eleitores": 16245
+      },
+      {
+        "nome": "Ilh�us",
+        "eleitores": 127147
+      },
+      {
+        "nome": "Itabuna",
+        "eleitores": 152012
+      },
+      {
+        "nome": "Itacar�",
+        "eleitores": 19456
+      },
+      {
+        "nome": "Itaju do Col�nia",
+        "eleitores": 5812
+      },
+      {
+        "nome": "Itaju�pe",
+        "eleitores": 16124
+      },
+      {
+        "nome": "Itap�",
+        "eleitores": 7823
+      },
+      {
+        "nome": "Itapitanga",
+        "eleitores": 8124
+      },
+      {
+        "nome": "Jussari",
+        "eleitores": 5234
+      },
+      {
+        "nome": "Mara�",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Mascote",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Pau Brasil",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Santa Luzia",
+        "eleitores": 9823
+      },
+      {
+        "nome": "S�o Jos� da Vit�ria",
+        "eleitores": 4912
+      },
+      {
+        "nome": "Una",
+        "eleitores": 15143
+      },
+      {
+        "nome": "Uru�uca",
+        "eleitores": 14876
+      }
+    ],
+    "total_eleitores": 550182
+  },
+  "06": {
+    "nome": "Baixo Sul",
+    "municipios": [
+      {
+        "nome": "Aratu�pe",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Cairu",
+        "eleitores": 15234
+      },
+      {
+        "nome": "Camamu",
+        "eleitores": 25876
+      },
+      {
+        "nome": "Gandu",
+        "eleitores": 22432
+      },
+      {
+        "nome": "Igrapi�na",
+        "eleitores": 7912
+      },
+      {
+        "nome": "Ituber�",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Jaguaripe",
+        "eleitores": 13876
+      },
+      {
+        "nome": "Nilo Pe�anha",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Pira� do Norte",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Presidente Tancredo Neves",
+        "eleitores": 18912
+      },
+      {
+        "nome": "Tapero�",
+        "eleitores": 12143
+      },
+      {
+        "nome": "Teol�ndia",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Valen�a",
+        "eleitores": 64567
+      },
+      {
+        "nome": "Wenceslau Guimar�es",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Ibirapitanga",
+        "eleitores": 14567
+      },
+      {
+        "nome": "Ubaitaba",
+        "eleitores": 15143
+      }
+    ],
+    "total_eleitores": 283664
+  },
+  "07": {
+    "nome": "Extremo Sul",
+    "municipios": [
+      {
+        "nome": "Alcoba�a",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Caravelas",
+        "eleitores": 16876
+      },
+      {
+        "nome": "Ibirapu�",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Itanh�m",
+        "eleitores": 15432
+      },
+      {
+        "nome": "Jucuru�u",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Lajed�o",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Medeiros Neto",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Mucuri",
+        "eleitores": 29876
+      },
+      {
+        "nome": "Nova Vi�osa",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Prado",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Teixeira de Freitas",
+        "eleitores": 105432
+      },
+      {
+        "nome": "Vereda",
+        "eleitores": 6123
+      }
+    ],
+    "total_eleitores": 279977
+  },
+  "08": {
+    "nome": "M�dio Sudoeste",
+    "municipios": [
+      {
+        "nome": "Caatiba",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Firmino Alves",
+        "eleitores": 4812
+      },
+      {
+        "nome": "Ibicu�",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Igua�",
+        "eleitores": 18432
+      },
+      {
+        "nome": "Itamb�",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Itapetinga",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Itarantim",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Itoror�",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Macarani",
+        "eleitores": 13812
+      },
+      {
+        "nome": "Maiquinique",
+        "eleitores": 7145
+      },
+      {
+        "nome": "Nova Cana�",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Potiragu�",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ribeir�o do Largo",
+        "eleitores": 6812
+      }
+    ],
+    "total_eleitores": 189857
+  },
+  "09": {
+    "nome": "Vale do Jiquiri��",
+    "municipios": [
+      {
+        "nome": "Amargosa",
+        "eleitores": 27812
+      },
+      {
+        "nome": "Brej�es",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Cravol�ndia",
+        "eleitores": 4123
+      },
+      {
+        "nome": "El�sio Medrado",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Irajuba",
+        "eleitores": 5812
+      },
+      {
+        "nome": "Itiru�u",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Jaguaquara",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Jiquiri��",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Laje",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Lajedo do Tabocal",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Marac�s",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Milagres",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Mutu�pe",
+        "eleitores": 16812
+      },
+      {
+        "nome": "Nova Itarana",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Planaltino",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Santa In�s",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Santa Teresinha",
+        "eleitores": 8145
+      },
+      {
+        "nome": "S�o Miguel das Matas",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Uba�ra",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Lafaiete Coutinho",
+        "eleitores": 3812
+      }
+    ],
+    "total_eleitores": 245669
+  },
+  "10": {
+    "nome": "Sert�o do S�o Francisco",
+    "municipios": [
+      {
+        "nome": "Campo Alegre de Lourdes",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Canudos",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Casa Nova",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Cura��",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Juazeiro",
+        "eleitores": 158910
+      },
+      {
+        "nome": "Pil�o Arcado",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Remanso",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Sento S�",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Sobradinho",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Uau�",
+        "eleitores": 20145
+      }
+    ],
+    "total_eleitores": 392320
+  },
+  "11": {
+    "nome": "Bacia do Rio Grande",
+    "municipios": [
+      {
+        "nome": "Angical",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Baian�polis",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Barreiras",
+        "eleitores": 114730
+      },
+      {
+        "nome": "Catol�ndia",
+        "eleitores": 3412
+      },
+      {
+        "nome": "Cotegipe",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Crist�polis",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Formosa do Rio Preto",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Lu�s Eduardo Magalh�es",
+        "eleitores": 68432
+      },
+      {
+        "nome": "Mansid�o",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Riach�o das Neves",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Santa Rita de C�ssia",
+        "eleitores": 20456
+      },
+      {
+        "nome": "S�o Desid�rio",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Tabocas do Brejo Velho",
+        "eleitores": 9812
+      },
+      {
+        "nome": "Wanderley",
+        "eleitores": 10145
+      }
+    ],
+    "total_eleitores": 338588
+  },
+  "12": {
+    "nome": "Bacia do Rio Corrente",
+    "municipios": [
+      {
+        "nome": "Can�polis",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Cocos",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Coribe",
+        "eleitores": 12345
+      },
+      {
+        "nome": "Correntina",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Jaborandi",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Santa Maria da Vit�ria",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Santana",
+        "eleitores": 19876
+      },
+      {
+        "nome": "S�o F�lix do Coribe",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Serra Dourada",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Brejol�ndia",
+        "eleitores": 8412
+      }
+    ],
+    "total_eleitores": 154046
+  },
+  "13": {
+    "nome": "Sert�o do Itapicuru",
+    "municipios": [
+      {
+        "nome": "Andorinha",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Ant�nio Gon�alves",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Caldeir�o Grande",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Campo Formoso",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Filad�lfia",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Jaguarari",
+        "eleitores": 25143
+      },
+      {
+        "nome": "Pindoba�u",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Ponto Novo",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Sa�de",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Senhor do Bonfim",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Iti�ba",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Nordestina",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Queimadas",
+        "eleitores": 19876
+      },
+      {
+        "nome": "Quijingue",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Tucano",
+        "eleitores": 39876
+      },
+      {
+        "nome": "Uau�",
+        "eleitores": 20145
+      }
+    ],
+    "total_eleitores": 360151
+  },
+  "14": {
+    "nome": "Piemonte do Paragua�u",
+    "municipios": [
+      {
+        "nome": "Boa Vista do Tupim",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Ia�u",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Ibiquera",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Itaberaba",
+        "eleitores": 48432
+      },
+      {
+        "nome": "Lajedinho",
+        "eleitores": 3812
+      },
+      {
+        "nome": "Macajuba",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Mundo Novo",
+        "eleitores": 19124
+      },
+      {
+        "nome": "Piritiba",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Rafael Jambeiro",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Ruy Barbosa",
+        "eleitores": 24123
+      },
+      {
+        "nome": "Tapiramut�",
+        "eleitores": 13245
+      },
+      {
+        "nome": "Wagner",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Santa Teresinha",
+        "eleitores": 8145
+      }
+    ],
+    "total_eleitores": 207318
+  },
+  "15": {
+    "nome": "Bacia do Jacu�pe",
+    "municipios": [
+      {
+        "nome": "Baixa Grande",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Capela do Alto Alegre",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Gavi�o",
+        "eleitores": 4212
+      },
+      {
+        "nome": "Ipir�",
+        "eleitores": 44123
+      },
+      {
+        "nome": "Mairi",
+        "eleitores": 15124
+      },
+      {
+        "nome": "Nova F�tima",
+        "eleitores": 6812
+      },
+      {
+        "nome": "P� de Serra",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Pintadas",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Quixabeira",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Riach�o do Jacu�pe",
+        "eleitores": 25876
+      },
+      {
+        "nome": "S�o Jos� do Jacu�pe",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Serra Preta",
+        "eleitores": 12432
+      },
+      {
+        "nome": "V�rzea da Ro�a",
+        "eleitores": 11432
+      },
+      {
+        "nome": "V�rzea do Po�o",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Ichu",
+        "eleitores": 5123
+      }
+    ],
+    "total_eleitores": 193364
+  },
+  "16": {
+    "nome": "Piemonte da Diamantina",
+    "municipios": [
+      {
+        "nome": "Ca�m",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Capim Grosso",
+        "eleitores": 24123
+      },
+      {
+        "nome": "Jacobina",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Miguel Calmon",
+        "eleitores": 21234
+      },
+      {
+        "nome": "Mirangaba",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Ourol�ndia",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Sa�de",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Serrol�ndia",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Umburanas",
+        "eleitores": 12812
+      },
+      {
+        "nome": "V�rzea Nova",
+        "eleitores": 10145
+      }
+    ],
+    "total_eleitores": 180247
+  },
+  "17": {
+    "nome": "Semi�rido Nordeste II",
+    "municipios": [
+      {
+        "nome": "Adustina",
+        "eleitores": 12432
+      },
+      {
+        "nome": "Antas",
+        "eleitores": 13124
+      },
+      {
+        "nome": "Banza�",
+        "eleitores": 10234
+      },
+      {
+        "nome": "C�cero Dantas",
+        "eleitores": 25876
+      },
+      {
+        "nome": "Cip�",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Coronel Jo�o S�",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Euclides da Cunha",
+        "eleitores": 45123
+      },
+      {
+        "nome": "F�tima",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Heli�polis",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Jeremoabo",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Nova Soure",
+        "eleitores": 19124
+      },
+      {
+        "nome": "Novo Triunfo",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Paripiranga",
+        "eleitores": 22143
+      },
+      {
+        "nome": "Pedro Alexandre",
+        "eleitores": 12812
+      },
+      {
+        "nome": "Ribeira do Amparo",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Ribeira do Pombal",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Santa Br�gida",
+        "eleitores": 12145
+      },
+      {
+        "nome": "S�tio do Quinto",
+        "eleitores": 8432
+      }
+    ],
+    "total_eleitores": 321245
+  },
+  "18": {
+    "nome": "Litoral Norte e Agreste",
+    "municipios": [
+      {
+        "nome": "Acajutiba",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Alagoinhas",
+        "eleitores": 112456
+      },
+      {
+        "nome": "Apor�",
+        "eleitores": 13876
+      },
+      {
+        "nome": "Ara��s",
+        "eleitores": 9432
+      },
+      {
+        "nome": "Aramari",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Cardeal da Silva",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Catu",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Conde",
+        "eleitores": 18912
+      },
+      {
+        "nome": "Cris�polis",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Entre Rios",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Esplanada",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Inhambupe",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Itanagra",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Itapicuru",
+        "eleitores": 24876
+      },
+      {
+        "nome": "Janda�ra",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Olindina",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Ouri�angas",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Pedr�o",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Pojuca",
+        "eleitores": 25432
+      },
+      {
+        "nome": "Rio Real",
+        "eleitores": 29876
+      },
+      {
+        "nome": "Santan�polis",
+        "eleitores": 8234
+      },
+      {
+        "nome": "S�tiro Dias",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Teodoro Sampaio",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Terra Nova",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Mata de S�o Jo�o",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Ara��s",
+        "eleitores": 9432
+      }
+    ],
+    "total_eleitores": 527382
+  },
+  "19": {
+    "nome": "Portal do Sert�o",
+    "municipios": [
+      {
+        "nome": "�gua Fria",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Am�lia Rodrigues",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Anguera",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ant�nio Cardoso",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Concei��o da Feira",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Concei��o do Jacu�pe",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Cora��o de Maria",
+        "eleitores": 19234
+      },
+      {
+        "nome": "Feira de Santana",
+        "eleitores": 441845
+      },
+      {
+        "nome": "Ipecaet�",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Irar�",
+        "eleitores": 23456
+      },
+      {
+        "nome": "Santa B�rbara",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Santo Est�v�o",
+        "eleitores": 38432
+      },
+      {
+        "nome": "S�o Gon�alo dos Campos",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Tanquinho",
+        "eleitores": 7123
+      }
+    ],
+    "total_eleitores": 681661
+  },
+  "20": {
+    "nome": "Vit�ria da Conquista",
+    "municipios": [
+      {
+        "nome": "Anag�",
+        "eleitores": 18124
+      },
+      {
+        "nome": "Aracatu",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Barra do Cho�a",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Belo Campo",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Bom Jesus da Serra",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Caatiba",
+        "eleitores": 7432
+      },
+      {
+        "nome": "Caetanos",
+        "eleitores": 10145
+      },
+      {
+        "nome": "C�ndido Sales",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Cara�bas",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Conde�ba",
+        "eleitores": 14812
+      },
+      {
+        "nome": "Cordeiros",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Encruzilhada",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Guajeru",
+        "eleitores": 6432
+      },
+      {
+        "nome": "Jacaraci",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Lic�nio de Almeida",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Maetinga",
+        "eleitores": 5123
+      },
+      {
+        "nome": "Mirante",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Mortugaba",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Pirip�",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Planalto",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Po��es",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Presidente J�nio Quadros",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Tremedal",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Vit�ria da Conquista",
+        "eleitores": 257784
+      },
+      {
+        "nome": "Ribeir�o do Largo",
+        "eleitores": 6234
+      }
+    ],
+    "total_eleitores": 567638
+  },
+  "21": {
+    "nome": "Rec�ncavo",
+    "municipios": [
+      {
+        "nome": "Cabaceiras do Paragua�u",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Cachoeira",
+        "eleitores": 26124
+      },
+      {
+        "nome": "Castro Alves",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Concei��o do Almeida",
+        "eleitores": 14124
+      },
+      {
+        "nome": "Cruz das Almas",
+        "eleitores": 48432
+      },
+      {
+        "nome": "Dom Macedo Costa",
+        "eleitores": 3912
+      },
+      {
+        "nome": "Governador Mangabeira",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Maragogipe",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Muniz Ferreira",
+        "eleitores": 6812
+      },
+      {
+        "nome": "Muritiba",
+        "eleitores": 23145
+      },
+      {
+        "nome": "Nazar�",
+        "eleitores": 22432
+      },
+      {
+        "nome": "Salinas da Margarida",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Santo Amaro",
+        "eleitores": 45123
+      },
+      {
+        "nome": "Santo Ant�nio de Jesus",
+        "eleitores": 74123
+      },
+      {
+        "nome": "S�o Felipe",
+        "eleitores": 16432
+      },
+      {
+        "nome": "S�o F�lix",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Sapea�u",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Saubara",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Varzedo",
+        "eleitores": 8145
+      },
+      {
+        "nome": "Aratu�pe",
+        "eleitores": 7812
+      }
+    ],
+    "total_eleitores": 429354
+  },
+  "22": {
+    "nome": "M�dio Rio de Contas",
+    "municipios": [
+      {
+        "nome": "Aiquara",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Apuarema",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Barra do Rocha",
+        "eleitores": 5123
+      },
+      {
+        "nome": "D�rio Meira",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Ibirataia",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Ipia�",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Itagi",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Itagib�",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Itaquara",
+        "eleitores": 7234
+      },
+      {
+        "nome": "Jequi�",
+        "eleitores": 117382
+      },
+      {
+        "nome": "Jita�na",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Manoel Vitorino",
+        "eleitores": 10812
+      },
+      {
+        "nome": "Nova Ibi�",
+        "eleitores": 5432
+      },
+      {
+        "nome": "Santa In�s",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Gongogi",
+        "eleitores": 6234
+      }
+    ],
+    "total_eleitores": 261406
+  },
+  "23": {
+    "nome": "Bacia do Paramirim",
+    "municipios": [
+      {
+        "nome": "Boquira",
+        "eleitores": 17145
+      },
+      {
+        "nome": "Botupor�",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Caturama",
+        "eleitores": 8432
+      },
+      {
+        "nome": "�rico Cardoso",
+        "eleitores": 8234
+      },
+      {
+        "nome": "Maca�bas",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Paramirim",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Rio do Pires",
+        "eleitores": 9432
+      },
+      {
+        "nome": "�rico Cardoso",
+        "eleitores": 8234
+      }
+    ],
+    "total_eleitores": 112177
+  },
+  "24": {
+    "nome": "Sert�o Produtivo",
+    "municipios": [
+      {
+        "nome": "Brumado",
+        "eleitores": 51432
+      },
+      {
+        "nome": "Cacul�",
+        "eleitores": 18456
+      },
+      {
+        "nome": "Caetit�",
+        "eleitores": 38432
+      },
+      {
+        "nome": "Candiba",
+        "eleitores": 11234
+      },
+      {
+        "nome": "Contendas do Sincor�",
+        "eleitores": 4123
+      },
+      {
+        "nome": "Dom Bas�lio",
+        "eleitores": 10145
+      },
+      {
+        "nome": "Guanambi",
+        "eleitores": 64123
+      },
+      {
+        "nome": "Ibiassuc�",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Itua�u",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Iuiu",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Lagoa Real",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Livramento de Nossa Senhora",
+        "eleitores": 31234
+      },
+      {
+        "nome": "Malhada de Pedras",
+        "eleitores": 7123
+      },
+      {
+        "nome": "Palmas de Monte Alto",
+        "eleitores": 17234
+      },
+      {
+        "nome": "Pinda�",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Rio do Ant�nio",
+        "eleitores": 11432
+      },
+      {
+        "nome": "Sebasti�o Laranjeiras",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Tanha�u",
+        "eleitores": 18124
+      },
+      {
+        "nome": "Urandi",
+        "eleitores": 12812
+      }
+    ],
+    "total_eleitores": 359011
+  },
+  "25": {
+    "nome": "Chapada Velha",
+    "municipios": [
+      {
+        "nome": "Beaquim�",
+        "eleitores": 10234
+      },
+      {
+        "nome": "Bonito",
+        "eleitores": 12145
+      },
+      {
+        "nome": "Ibitiara",
+        "eleitores": 13456
+      },
+      {
+        "nome": "Ipupiara",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Iraquara",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Morro do Chap�u",
+        "eleitores": 28456
+      },
+      {
+        "nome": "Novo Horizonte",
+        "eleitores": 9234
+      },
+      {
+        "nome": "Oliveira dos Brejinhos",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Palmeiras",
+        "eleitores": 7812
+      },
+      {
+        "nome": "Seabra",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Souto Soares",
+        "eleitores": 14234
+      }
+    ],
+    "total_eleitores": 170990
+  },
+  "26": {
+    "nome": "Metropolitano",
+    "municipios": [
+      {
+        "nome": "Cama�ari",
+        "eleitores": 205865
+      },
+      {
+        "nome": "Candeias",
+        "eleitores": 58432
+      },
+      {
+        "nome": "Dias d'�vila",
+        "eleitores": 45123
+      },
+      {
+        "nome": "Itaparica",
+        "eleitores": 18234
+      },
+      {
+        "nome": "Lauro de Freitas",
+        "eleitores": 151782
+      },
+      {
+        "nome": "Madre de Deus",
+        "eleitores": 14234
+      },
+      {
+        "nome": "Salvador",
+        "eleitores": 1969757
+      },
+      {
+        "nome": "S�o Francisco do Conde",
+        "eleitores": 31234
+      },
+      {
+        "nome": "S�o Sebasti�o do Pass�",
+        "eleitores": 34123
+      },
+      {
+        "nome": "Sim�es Filho",
+        "eleitores": 84123
+      },
+      {
+        "nome": "Vera Cruz",
+        "eleitores": 34567
+      }
+    ],
+    "total_eleitores": 2647474
+  },
+  "27": {
+    "nome": "Costa Descobrimento",
+    "municipios": [
+      {
+        "nome": "Belmonte",
+        "eleitores": 16432
+      },
+      {
+        "nome": "Eun�polis",
+        "eleitores": 84123
+      },
+      {
+        "nome": "Guaratinga",
+        "eleitores": 15123
+      },
+      {
+        "nome": "Itabela",
+        "eleitores": 21456
+      },
+      {
+        "nome": "Itagimirim",
+        "eleitores": 6123
+      },
+      {
+        "nome": "Itapebi",
+        "eleitores": 8432
+      },
+      {
+        "nome": "Porto Seguro",
+        "eleitores": 121432
+      },
+      {
+        "nome": "Santa Cruz Cabr�lia",
+        "eleitores": 24123
+      }
+    ],
+    "total_eleitores": 297244
+  }
+}
