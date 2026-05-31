@@ -25,8 +25,11 @@ Sistema completo de gestão política desenvolvido para **Magno Lavigne - Deputa
 📌 **Último Commit:** `1afb8ac` - "FIX: Permitir cadastro público de eleitor sem lideranca_id"
 
 ### **Produção Cloudflare Pages**
-🔗 **URL Planejada:** https://magnolavigne.pages.dev  
-⏳ **Status:** Pendente deploy final
+🔗 **URL Principal:** https://magnolavigne.pages.dev  
+🔗 **Domínio Customizado:** https://app.magnolavigne.com.br  
+✅ **Status:** Online e Funcional  
+📅 **Último Deploy:** 31/05/2026 (v1.1.0)  
+🎯 **Deployment ID:** 1e27a880
 
 ---
 
@@ -509,12 +512,13 @@ curl https://magnolavigne.pages.dev
 ```
 
 ### **Pós-Deploy**
-- [ ] Testar login em produção
-- [ ] Verificar dashboard
-- [ ] Testar cadastro público de eleitor
-- [ ] Configurar domínio customizado (se aplicável)
-- [ ] Adicionar secrets/variáveis de ambiente
-- [ ] Documentar URL final
+- [x] Testar login em produção
+- [x] Verificar dashboard
+- [x] Testar cadastro público de eleitor
+- [x] Configurar domínio customizado (app.magnolavigne.com.br)
+- [x] Adicionar secrets/variáveis de ambiente
+- [x] Documentar URL final
+- [x] Deploy v1.1.0 com 28 territórios concluído (31/05/2026)
 
 ---
 
