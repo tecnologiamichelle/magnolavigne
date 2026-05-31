@@ -10076,4 +10076,3 @@ async function submitEleitorPublicForm(e) {
 
 // Renderizar ao carregar
 render();
-nder();
