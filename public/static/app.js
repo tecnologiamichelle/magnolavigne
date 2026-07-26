@@ -5893,7 +5893,9 @@ function renderModalDadosEleitorais() {
 }
 
 // Alias para compatibilidade - 'eleitor' e 'dados-eleitorais' usam o mesmo modal
-const renderModalEleitor = renderModalDadosEleitorais;
+function renderModalEleitor() {
+  return renderModalDadosEleitorais();
+}
 
 function aplicarMascarasModal() {
   const cpfInput = document.getElementById('modal-cpf');
