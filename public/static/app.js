@@ -6255,6 +6255,7 @@ async function salvarModal(e) {
         };
         break;
         
+      case 'dados-eleitorais':
       case 'eleitor':
         // Dados Eleitorais (módulo específico de estatísticas eleitorais por zona/seção)
         endpoint = state.modalEditId ? `/api/dados-eleitorais/${state.modalEditId}` : '/api/dados-eleitorais';
