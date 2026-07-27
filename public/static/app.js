@@ -5163,10 +5163,8 @@ function renderModal() {
       conteudo = renderModalAgenda();
       break;
     case 'dados-eleitorais':
-      conteudo = renderModalDadosEleitorais();
-      break;
     case 'eleitor':
-      conteudo = renderModalEleitor();
+      conteudo = renderModalDadosEleitorais();
       break;
   }
   
@@ -6000,9 +5998,6 @@ function renderModalDadosEleitorais() {
     </form>
   `;
 }
-
-// Alias para compatibilidade - 'eleitor' e 'dados-eleitorais' usam o mesmo modal
-const renderModalEleitor = renderModalDadosEleitorais;
 
 function aplicarMascarasModal() {
   const cpfInput = document.getElementById('modal-cpf');
