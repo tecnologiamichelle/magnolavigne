@@ -793,6 +793,43 @@ app.post('/api/dados-eleitorais', async (c) => {
 })
 
 /**
+ * PUT /api/dados-eleitorais/:id
+ */
+app.put('/api/dados-eleitorais/:id', async (c) => {
+  try {
+    const id = c.req.param('id')
+    const data = await c.req.json()
+    
+    await c.env.DB.prepare(`
+      UPDATE dados_eleitorais SET
+        municipio = ?,
+        zona = ?,
+        secao = ?,
+        total_eleitores = ?,
+        eleitores_apoio = ?,
+        percentual_apoio = ?,
+        observacoes = ?,
+        updated_at = datetime('now')
+      WHERE id = ?
+    `).bind(
+      data.municipio,
+      data.zona || null,
+      data.secao || null,
+      data.total_eleitores || 0,
+      data.eleitores_apoio || 0,
+      data.percentual_apoio || 0,
+      data.observacoes || null,
+      id
+    ).run()
+
+    return c.json({ id: parseInt(id), ...data })
+  } catch (error) {
+    console.error('Erro ao atualizar dados eleitorais:', error)
+    return c.json({ error: 'Erro ao atualizar dados eleitorais' }, 500)
+  }
+})
+
+/**
  * DELETE /api/dados-eleitorais/:id
  */
 app.delete('/api/dados-eleitorais/:id', async (c) => {
