@@ -5504,6 +5504,24 @@ function renderModalProfissional() {
         </div>
       </div>
       
+      <!-- Seção 4: Observações -->
+      <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl p-6 mb-6">
+        <h3 class="text-lg font-semibold text-yellow-800 mb-4 flex items-center gap-2">
+          <i class="fas fa-sticky-note"></i>
+          Observações
+        </h3>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
+          <textarea 
+            id="modal-observacoes"
+            placeholder="Informações adicionais sobre o profissional..."
+            rows="3"
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-yellow-500 focus:outline-none text-lg"
+          ></textarea>
+        </div>
+      </div>
+      
       <!-- Botões de Ação -->
       <div class="flex gap-4 justify-end">
         <button 
@@ -5660,6 +5678,16 @@ function renderModalAgenda() {
           </div>
           
           <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Município</label>
+            <input 
+              type="text" 
+              id="modal-municipio"
+              placeholder="Digite o município"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg"
+            >
+          </div>
+          
+          <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Participantes</label>
             <input 
               type="text" 
@@ -5707,10 +5735,10 @@ function renderModalAgenda() {
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Notas</label>
             <textarea 
-              id="modal-observacoes"
-              placeholder="Informações adicionais..."
+              id="modal-notas"
+              placeholder="Informações adicionais sobre o evento..."
               rows="3"
               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg"
             ></textarea>
@@ -6025,6 +6053,17 @@ function carregarDadosModal(data) {
     document.getElementById('modal-observacoes').value = data.observacoes;
   }
   
+  // AGENDA
+  // notas → modal-notas (para agenda)
+  if (data.notas && document.getElementById('modal-notas')) {
+    document.getElementById('modal-notas').value = data.notas;
+  }
+  
+  // participantes → modal-participantes (para agenda)
+  if (data.participantes && document.getElementById('modal-participantes')) {
+    document.getElementById('modal-participantes').value = data.participantes;
+  }
+  
   // Atualizar barra de progresso se existir
   const progressoInput = document.getElementById('modal-progresso');
   if (progressoInput && data.progresso !== undefined) {
@@ -6113,7 +6152,8 @@ async function salvarModal(e) {
           telefone: document.getElementById('modal-telefone')?.value?.replace(/\D/g, '') || '',
           email: document.getElementById('modal-email')?.value || '',
           municipio: document.getElementById('modal-municipio')?.value || '',
-          area_especialidade: document.getElementById('modal-area-especialidade')?.value || ''
+          area_especialidade: document.getElementById('modal-area-especialidade')?.value || '',
+          observacoes: document.getElementById('modal-observacoes')?.value || ''
         };
         console.log('🟣 Dados PROFISSIONAL coletados:', dados);
         break;
@@ -6132,7 +6172,9 @@ async function salvarModal(e) {
           municipio: document.getElementById('modal-municipio')?.value || '',
           prioridade: document.getElementById('modal-prioridade')?.value || 'media',
           status: document.getElementById('modal-status')?.value || 'pendente',
-          progresso: parseInt(document.getElementById('modal-progresso')?.value || '0')
+          progresso: parseInt(document.getElementById('modal-progresso')?.value || '0'),
+          participantes: document.getElementById('modal-participantes')?.value || '',
+          notas: document.getElementById('modal-notas')?.value || ''
         };
         break;
         
