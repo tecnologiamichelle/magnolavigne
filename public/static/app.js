@@ -6070,7 +6070,14 @@ function carregarDadosModal(data) {
     // "2024-01-15 14:30:00" → "2024-01-15T14:30"
     const dataFormatada = data.data_hora.replace(' ', 'T').substring(0, 16);
     document.getElementById('modal-data-inicio').value = dataFormatada;
-    console.log('✅ Data/hora carregada:', dataFormatada);
+    console.log('✅ Data/hora início carregada:', dataFormatada);
+  }
+  
+  // data_hora_fim → modal-data-fim (para agenda)
+  if (data.data_hora_fim && document.getElementById('modal-data-fim')) {
+    const dataFormatada = data.data_hora_fim.replace(' ', 'T').substring(0, 16);
+    document.getElementById('modal-data-fim').value = dataFormatada;
+    console.log('✅ Data/hora fim carregada:', dataFormatada);
   }
   
   // Atualizar barra de progresso se existir
@@ -6171,12 +6178,14 @@ async function salvarModal(e) {
         endpoint = state.modalEditId ? `/api/agenda/${state.modalEditId}` : '/api/agenda';
         const dataHora = document.getElementById('modal-data-hora')?.value || 
                         document.getElementById('modal-data-inicio')?.value || '';
+        const dataHoraFim = document.getElementById('modal-data-fim')?.value || '';
         dados = {
           ...dados,
           titulo: document.getElementById('modal-titulo')?.value || '',
           descricao: document.getElementById('modal-descricao')?.value || '',
           tipo: document.getElementById('modal-tipo')?.value || 'reuniao',
           data_hora: dataHora ? dataHora.replace('T', ' ') + ':00' : null,
+          data_hora_fim: dataHoraFim ? dataHoraFim.replace('T', ' ') + ':00' : null,
           local: document.getElementById('modal-local')?.value || '',
           municipio: document.getElementById('modal-municipio')?.value || '',
           prioridade: document.getElementById('modal-prioridade')?.value || 'media',

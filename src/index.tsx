@@ -577,13 +577,14 @@ app.post('/api/agenda', async (c) => {
     
     const result = await c.env.DB.prepare(`
       INSERT INTO agenda (
-        candidato_id, titulo, descricao, data_hora, local, municipio, tipo, prioridade, status, progresso, participantes, notas
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        candidato_id, titulo, descricao, data_hora, data_hora_fim, local, municipio, tipo, prioridade, status, progresso, participantes, notas
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       data.candidato_id,
       data.titulo,
       data.descricao || null,
       data.data_hora,
+      data.data_hora_fim || null,
       data.local || null,
       data.municipio || null,
       data.tipo || 'reuniao',
@@ -611,13 +612,14 @@ app.put('/api/agenda/:id', async (c) => {
     
     await c.env.DB.prepare(`
       UPDATE agenda SET
-        titulo = ?, descricao = ?, data_hora = ?, local = ?, municipio = ?,
+        titulo = ?, descricao = ?, data_hora = ?, data_hora_fim = ?, local = ?, municipio = ?,
         tipo = ?, prioridade = ?, status = ?, progresso = ?, participantes = ?, notas = ?, updated_at = datetime('now')
       WHERE id = ?
     `).bind(
       data.titulo,
       data.descricao || null,
       data.data_hora,
+      data.data_hora_fim || null,
       data.local || null,
       data.municipio || null,
       data.tipo,
@@ -1789,6 +1791,7 @@ app.put('/api/eleitores/:id', async (c) => {
     
     await c.env.DB.prepare(`
       UPDATE eleitores SET
+        lideranca_id = ?,
         nome = ?,
         cpf = ?,
         telefone = ?,
@@ -1808,6 +1811,7 @@ app.put('/api/eleitores/:id', async (c) => {
         updated_at = CURRENT_TIMESTAMP
       WHERE id = ?
     `).bind(
+      data.lideranca_id || eleitorAtual.lideranca_id,
       data.nome || eleitorAtual.nome,
       data.cpf || eleitorAtual.cpf,
       data.telefone || eleitorAtual.telefone,
