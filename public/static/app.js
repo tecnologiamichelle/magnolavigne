@@ -3190,10 +3190,10 @@ function renderProfissionalCard(prof) {
       </div>
       
       <div class="space-y-2 text-sm">
-        ${prof.registro_profissional ? `<p><i class="fas fa-id-card w-5 text-gray-500"></i> ${prof.registro_profissional}</p>` : ''}
-        ${prof.celular ? `<p><i class="fas fa-mobile-alt w-5 text-gray-500"></i> ${prof.celular}</p>` : ''}
+        ${prof.area_especialidade ? `<p><i class="fas fa-star w-5 text-gray-500"></i> ${prof.area_especialidade}</p>` : ''}
+        ${prof.telefone ? `<p><i class="fas fa-mobile-alt w-5 text-gray-500"></i> ${prof.telefone}</p>` : ''}
         ${prof.email ? `<p><i class="fas fa-envelope w-5 text-gray-500"></i> ${prof.email}</p>` : ''}
-        ${prof.cidade && prof.estado ? `<p><i class="fas fa-map-marker-alt w-5 text-gray-500"></i> ${prof.cidade} - ${prof.estado}</p>` : ''}
+        ${prof.municipio ? `<p><i class="fas fa-map-marker-alt w-5 text-gray-500"></i> ${prof.municipio}</p>` : ''}
       </div>
       
       <div class="mt-4 pt-4 border-t border-gray-200 flex gap-2">
@@ -5410,8 +5410,8 @@ function renderModalProfissional() {
           Dados Pessoais
         </h3>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="md:col-span-2">
+        <div class="grid grid-cols-1 gap-4">
+          <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">
               Nome Completo <span class="text-red-500">*</span>
             </label>
@@ -5419,33 +5419,6 @@ function renderModalProfissional() {
               type="text" 
               id="modal-nome"
               placeholder="Digite o nome completo"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
-              required
-            >
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
-              CPF <span class="text-red-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="modal-cpf"
-              placeholder="000.000.000-00"
-              maxlength="14"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
-              required
-            >
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
-              Registro Profissional <span class="text-red-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="modal-registro"
-              placeholder="Ex: CRM 12345"
               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-700 focus:outline-none text-lg"
               required
             >
@@ -5476,94 +5449,24 @@ function renderModalProfissional() {
           
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">
-              Especialidade <span class="text-red-500">*</span>
+              Área de Especialidade
             </label>
             <input 
               type="text" 
-              id="modal-especialidade"
-              placeholder="Ex: Cardiologia"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
-              required
-            >
-          </div>
-          
-          <div class="md:col-span-2">
-            <label class="block text-sm font-medium text-gray-700 mb-2">
-              Disponibilidade
-            </label>
-            <input 
-              type="text" 
-              id="modal-disponibilidade"
-              placeholder="Ex: Segunda a Sexta, 8h-17h"
+              id="modal-area-especialidade"
+              placeholder="Ex: Cardiologia, Direito Trabalhista"
               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
             >
           </div>
           
           <div class="md:col-span-2">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Endereço</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Município</label>
             <input 
               type="text" 
-              id="modal-endereco"
-              placeholder="Rua, Número, Bairro"
+              id="modal-municipio"
+              placeholder="Digite o município"
               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
             >
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Cidade</label>
-            <input 
-              type="text" 
-              id="modal-cidade"
-              placeholder="Digite a cidade"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
-            >
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Estado</label>
-            <select 
-              id="modal-estado"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
-            >
-              <option value="">Selecione o estado</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-            </select>
-          </div>
-          
-          <div class="md:col-span-2">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
-            <textarea 
-              id="modal-observacoes"
-              rows="3"
-              placeholder="Informações adicionais sobre o profissional"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg resize-none"
-            ></textarea>
           </div>
         </div>
       </div>
@@ -5575,26 +5478,14 @@ function renderModalProfissional() {
           Contato
         </h3>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">
-              Celular <span class="text-red-500">*</span>
+              Telefone
             </label>
             <input 
               type="tel" 
-              id="modal-celular"
-              placeholder="(00) 00000-0000"
-              maxlength="15"
-              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg"
-              required
-            >
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">WhatsApp</label>
-            <input 
-              type="tel" 
-              id="modal-whatsapp"
+              id="modal-telefone"
               placeholder="(00) 00000-0000"
               maxlength="15"
               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg"
@@ -5999,6 +5890,9 @@ function renderModalDadosEleitorais() {
   `;
 }
 
+// Alias para compatibilidade - 'eleitor' e 'dados-eleitorais' usam o mesmo modal
+const renderModalEleitor = renderModalDadosEleitorais;
+
 function aplicarMascarasModal() {
   const cpfInput = document.getElementById('modal-cpf');
   const celularInput = document.getElementById('modal-celular');
@@ -6100,24 +5994,19 @@ function carregarDadosModal(data) {
   }
   
   // PROFISSIONAIS
-  // area_especialidade → modal-especialidade
-  if (data.area_especialidade && document.getElementById('modal-especialidade')) {
-    document.getElementById('modal-especialidade').value = data.area_especialidade;
+  // telefone → modal-telefone (para profissionais)
+  if (data.telefone && document.getElementById('modal-telefone')) {
+    document.getElementById('modal-telefone').value = data.telefone;
   }
   
-  // especialidade → modal-area-especialidade (compatibilidade reversa)
-  if (data.especialidade && document.getElementById('modal-area-especialidade')) {
-    document.getElementById('modal-area-especialidade').value = data.especialidade;
+  // municipio → modal-municipio (para profissionais)
+  if (data.municipio && document.getElementById('modal-municipio')) {
+    document.getElementById('modal-municipio').value = data.municipio;
   }
   
-  // cidade → modal-municipio
-  if (data.cidade && document.getElementById('modal-municipio')) {
-    document.getElementById('modal-municipio').value = data.cidade;
-  }
-  
-  // municipio → modal-cidade (compatibilidade reversa)
-  if (data.municipio && document.getElementById('modal-cidade')) {
-    document.getElementById('modal-cidade').value = data.municipio;
+  // area_especialidade → modal-area-especialidade
+  if (data.area_especialidade && document.getElementById('modal-area-especialidade')) {
+    document.getElementById('modal-area-especialidade').value = data.area_especialidade;
   }
   
   // TODOS OS MÓDULOS
@@ -6221,13 +6110,10 @@ async function salvarModal(e) {
           ...dados,
           nome: nomeProf,
           profissao: profissao,
-          telefone: document.getElementById('modal-telefone')?.value?.replace(/\D/g, '') || 
-                    document.getElementById('modal-celular')?.value?.replace(/\D/g, '') || '',
+          telefone: document.getElementById('modal-telefone')?.value?.replace(/\D/g, '') || '',
           email: document.getElementById('modal-email')?.value || '',
-          municipio: document.getElementById('modal-municipio')?.value || 
-                     document.getElementById('modal-cidade')?.value || '',
-          area_especialidade: document.getElementById('modal-especialidade')?.value || 
-                             document.getElementById('modal-area-especialidade')?.value || ''
+          municipio: document.getElementById('modal-municipio')?.value || '',
+          area_especialidade: document.getElementById('modal-area-especialidade')?.value || ''
         };
         console.log('🟣 Dados PROFISSIONAL coletados:', dados);
         break;
