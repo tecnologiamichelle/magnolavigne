@@ -6064,6 +6064,15 @@ function carregarDadosModal(data) {
     document.getElementById('modal-participantes').value = data.participantes;
   }
   
+  // data_hora → modal-data-inicio (para agenda)
+  if (data.data_hora && document.getElementById('modal-data-inicio')) {
+    // Converter formato SQL para datetime-local
+    // "2024-01-15 14:30:00" → "2024-01-15T14:30"
+    const dataFormatada = data.data_hora.replace(' ', 'T').substring(0, 16);
+    document.getElementById('modal-data-inicio').value = dataFormatada;
+    console.log('✅ Data/hora carregada:', dataFormatada);
+  }
+  
   // Atualizar barra de progresso se existir
   const progressoInput = document.getElementById('modal-progresso');
   if (progressoInput && data.progresso !== undefined) {
@@ -7325,8 +7334,14 @@ function abrirModalEleitor(eleitorId = null) {
       municipio: eleitor.municipio,
       lideranca_id: eleitor.lideranca_id
     });
+    
+    // ✅ Definir modalEditId para indicar modo edição
+    state.modalEditId = eleitorId;
   } else {
     console.log('🆕 Modo criação - sem ID');
+    
+    // ✅ Limpar modalEditId para modo criação
+    state.modalEditId = null;
   }
   
   // Renderizar modal diretamente
