@@ -10085,27 +10085,50 @@ function showEleitorPublicForm() {
   `;
 }
 
+// Função para formatar telefone com máscara (XX) XXXXX-XXXX
+function mascaraTelefone(input) {
+  let valor = input.value.replace(/\D/g, '');
+  
+  if (valor.length > 11) {
+    valor = valor.substring(0, 11);
+  }
+  
+  if (valor.length > 10) {
+    input.value = `(${valor.substring(0, 2)}) ${valor.substring(2, 7)}-${valor.substring(7, 11)}`;
+  } else if (valor.length > 6) {
+    input.value = `(${valor.substring(0, 2)}) ${valor.substring(2, 6)}-${valor.substring(6)}`;
+  } else if (valor.length > 2) {
+    input.value = `(${valor.substring(0, 2)}) ${valor.substring(2)}`;
+  } else if (valor.length > 0) {
+    input.value = `(${valor}`;
+  }
+}
+
 async function submitEleitorPublicForm(e) {
   e.preventDefault();
   
   try {
+    // Enviar para solicitações (aguarda aprovação) ao invés de criar eleitor diretamente
     const dados = {
-      candidato_id: 1, // ID padrão do candidato (ajustar conforme necessidade)
+      candidato_id: 1,
+      tipo: 'eleitor',
       nome: document.getElementById('eleitor-nome').value,
       telefone: document.getElementById('eleitor-telefone').value.replace(/\D/g, ''),
       email: document.getElementById('eleitor-email').value || null,
       municipio: document.getElementById('eleitor-municipio').value,
-      bairro: document.getElementById('eleitor-bairro').value || null,
-      zona: document.getElementById('eleitor-zona').value || null,
-      observacoes: document.getElementById('eleitor-observacoes').value || null,
-      status_apoio: 'simpatizante',
-      nivel_engajamento: 'baixo'
+      dados: {
+        bairro: document.getElementById('eleitor-bairro').value || null,
+        zona: document.getElementById('eleitor-zona').value || null,
+        observacoes: document.getElementById('eleitor-observacoes').value || null,
+        status_apoio: 'simpatizante',
+        nivel_engajamento: 'baixo'
+      }
     };
     
-    const response = await axios.post('/api/eleitores', dados);
+    const response = await axios.post('/api/solicitacoes', dados);
     
     if (response.data && response.data.id) {
-      document.getElementById('eleitor-public-success-message').textContent = '✅ Cadastro realizado com sucesso! Obrigado pelo seu apoio!';
+      document.getElementById('eleitor-public-success-message').textContent = '✅ Cadastro enviado com sucesso! Aguarde a aprovação da equipe.';
       document.getElementById('eleitor-public-success').classList.remove('hidden');
       document.getElementById('eleitor-public-form').reset();
       
